@@ -1,21 +1,21 @@
 {
-  "name": "food-delivery",
+  "name": "filmoteka",
   "version": "2.0.0",
   "description": "",
-  "homepage": "https://jokercs.github.io/food-delivery",
+  "homepage": "https://haber-viacheslav.github.io/filmoteka",
   "scripts": {
     "start": "parcel src/*.html",
-    "build": "parcel build src/*.html --public-url /food-delivery/"
+    "build": "parcel build src/*.html --public-url /filmoteka/"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jokercs/food-delivery.git"
+    "url": "git+https://github.com/haber-viacheslav/filmoteka.git"
   },
   "keywords": [],
-  "author": "Alexander Repeta <alexander.repeta@gmail.com>",
+  "author": "Viacheslav Haber <gaberslavik@gmail.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/jokercs/food-delivery/issues"
+    "url": "https://github.com/haber-viacheslav/filmoteka/issues"
   },
   "dependencies": {
     "modern-normalize": "^1.1.0",
