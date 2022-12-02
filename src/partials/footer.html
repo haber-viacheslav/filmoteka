@@ -1,0 +1,88 @@
+<footer class="footer">
+  <div class="container">
+    <div class="footer__wrap-desktop">
+      <div class="footer__wrapper">
+        <a class="footer__logo" href="./index.html">
+          <svg width="71" height="52">
+            <use href="./images/icons.svg#logo"></use>
+          </svg>
+        </a>
+
+        <ul class="footer__list">
+          <li class="footer__item">
+            <a href="#hero" class="footer__link">Home</a>
+          </li>
+          <li class="footer__item">
+            <a href="#offerings" class="footer__link">About</a>
+          </li>
+          <li class="footer__item">
+            <a href="#favorites" class="footer__link">Service</a>
+          </li>
+          <li class="footer__item">
+            <a href="#custumer" class="footer__link">Menu</a>
+          </li>
+          <li class="footer__item">
+            <a href="#subscribe" class="footer__link">Contact</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <strong class="footer-label__text">Subscribe</strong>
+        <form
+          class="footer__form"
+          name="signup_form"
+          autocomplete="on"
+          novalidate
+        >
+          <div class="input-wrap">
+            <input
+              class="subscribtion-form__input footer-label__input"
+              type="email"
+              name="email"
+              placeholder="Enter your email"
+              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+              id="footer-form__title"
+            />
+            <label
+              class="subscribtion-form__title subscribtion-form__title--footer"
+              for="footer-form__title"
+            >
+              <svg class="subscribtion-form__icon" width="12" height="12">
+                <use
+                  class="subscribtion-form__error"
+                  href="./images/icons.svg#error"
+                ></use>
+              </svg>
+              <span
+                class="subscribtion-form__text-error subscribtion-form__text-error--footer"
+                >Not a valid email address (example@email.com)</span
+              >
+            </label>
+          </div>
+          <button class="btn footer__btn" type="submit">Subscribe</button>
+        </form>
+
+        <p class="footer__text">
+          By subscribing you agree to with our
+          <a class="footer__link-doc" href="">Privacy Policy</a>
+        </p>
+      </div>
+    </div>
+
+    <div class="doc-wrap">
+      <ul class="documents-list">
+        <li class="documents-list__item">
+          <a href="" class="footer__link-doc">Privacy Policy</a>
+        </li>
+        <li class="documents-list__item">
+          <a href="" class="footer__link-doc">Terms of Service</a>
+        </li>
+        <li class="documents-list__item">
+          <a href="" class="footer__link-doc">Cookies Settings</a>
+        </li>
+      </ul>
+
+      <p class="footer__description">2022 FoodSta. All right reserved.</p>
+    </div>
+  </div>
+</footer>
