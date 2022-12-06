@@ -86,7 +86,7 @@ async function renderMarkup() {
         oneGenre => oneGenre.name
       ).join(' ');
 
-      return `<li class="film">
+      return ` <li class="film">
           <img src="https://image.tmdb.org/t/p/w500/${poster_path}" alt="${title}" />
         <h2 class="film-title">${title}</h2>
         <p class="film-genres">${genresOfCurrentFilm}</p>
