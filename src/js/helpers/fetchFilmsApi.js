@@ -1,17 +1,53 @@
 import axios from 'axios';
 
 class FetchFilmsApi {
-  constructor(config = { base_url: this.BASE_URL }) {
+  #API_KEY;
+  constructor(config = { baseURL: 'https://api.themoviedb.org/3/' }) {
     this.query = '';
     this.config = config;
-    this.BASE_URL = 'https://api.themoviedb.org/3/';
-    this.API_KEY = 'api_key=76cbb606f190fc237086ec33f1fd98a3';
+    this.#API_KEY = 'api_key=76cbb606f190fc237086ec33f1fd98a3';
+    this.page = 1;
   }
-  fetchAllFilmsData({ typeFetch, timeWindow }) {
-    axios.get(`&${API_KEY} `, this.config);
+  async fetchWithAllFilmsData({
+    typeFetch = 'trending',
+    mediaType = 'movie',
+    timeWindow = 'week',
+  }) {
+    const resp = await axios.get(
+      `${typeFetch}/${mediaType}/${timeWindow}&${this.#API_KEY} `,
+      this.config
+    );
+    return resp;
   }
-  fetchSearchFilmsData() {}
+  async fetchWithSearchFilmData({
+    typeFetch = 'search',
+    mediaType = 'movie',
+    lang = 'en-US',
+    page = 1,
+    include_adult = false,
+  }) {
+    const resp = await axios.get(
+      `${typeFetch}/${mediaType}&${this.#API_KEY}&language=${lang}&${
+        this.query
+      }&page=${page}&include_adult=${include_adult}`,
+      this.config
+    );
+    return resp;
+  }
+  incrementPage({ step = 1 }) {
+    this.page += step;
+  }
+  get actualQuery() {
+    return this.query;
+  }
+  set actualQuery(newQuery) {
+    return (this.query = newQuery.trim());
+  }
 }
+const api = new FetchFilmsApi();
+
+// console.log((api.actualQuery = 'asfas       s     '));
+console.log(api.config);
 export default FetchFilmsApi;
 
 //**Hi JOKERcs,
