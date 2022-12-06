@@ -1,0 +1,12 @@
+.form{
+    display: grid;
+    
+}
+.form__box{
+    text-align: center;
+} 
+.form__input{
+max-width: 280px;
+max-height: 20px;
+border-bottom: $white;
+}
