@@ -37,6 +37,12 @@ class FetchFilmsApi {
   incrementPage({ step = 1 }) {
     this.page += step;
   }
+  get actualPage() {
+    return this.page;
+  }
+  set actualPage(newPage) {
+    this.page = newPage;
+  }
   get actualQuery() {
     return this.query;
   }
