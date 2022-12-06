@@ -1,0 +1,99 @@
+.films {
+  padding: 20px 0 40px;
+
+  @media screen and (min-width: $tablet) {
+    padding: 60px 0;
+  }
+}
+
+.films-title {
+  @extend %visually-hidden;
+}
+
+.film-list {
+  @extend %list;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 40px;
+
+  @media screen and (min-width: $tablet) {
+    gap: 32px;
+    margin-bottom: 60px;
+  }
+
+  @media screen and (min-width: $desktop) {
+    column-gap: 15px;
+  }
+}
+
+.film {
+  @extend %link;
+  width: 280px;
+
+  @media screen and (min-width: $tablet) {
+    width: 336px;
+  }
+
+  @media screen and (min-width: $desktop) {
+    width: 292px;
+  }
+}
+
+.film-title {
+  margin-top: 10px;
+  margin-bottom: 3px;
+
+  font-weight: 500;
+  font-size: 12px;
+  line-height: calc(14 / 12);
+  text-transform: uppercase;
+
+  @media screen and (min-width: $tablet) {
+    margin-top: 8px;
+
+    line-height: 1.33;
+  }
+
+  @media screen and (min-width: $desktop) {
+    margin-top: 12px;
+
+    font-size: 14px;
+    line-height: 1.2;
+  }
+}
+
+.film-genres {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+
+  color: $orange;
+
+  @media screen and (min-width: $desktop) {
+    font-size: 14px;
+    line-height: 1.2;
+  }
+}
+
+.pagination {
+  margin: 10px 30px;
+  user-select: none;
+}
+
+.page {
+  padding: 20px;
+  cursor: pointer;
+}
+
+.page.disabled {
+  cursor: not-allowed;
+  color: grey;
+}
+
+.current {
+  padding: 10px 20px;
+  border-radius: 50px;
+  border: 5px solid orange;
+  font-size: 20px;
+  font-weight: 600;
+}
