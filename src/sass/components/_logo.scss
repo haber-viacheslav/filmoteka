@@ -1,8 +1,15 @@
-.logo{
+.header__logo{
     display: flex;
     align-items: center;
     text-align: center;
     margin-right: auto;
+    
+}
+
+.logo{
+    @extend %link;
+    width: 175px;
+    height: 35px;
 }
 
 .logo__title{
