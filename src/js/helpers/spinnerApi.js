@@ -2,9 +2,13 @@ import { Loading } from 'notiflix/build/notiflix-loading-aio';
 
 class SpinneroOnLoadingApi {
   constructor({
-    label = 'Loading..',
-    options = { backgroundColor: 'rgba(0, 0, 0, 0.56)' },
+    label = 'Loading',
+    options = {
+      backgroundColor: '#000000',
+      svgColor: '#FF6B08',
+    },
   }) {
+    this.time = 0;
     this.label = label;
     this.options = options;
     this.intervalId = null;
@@ -13,19 +17,22 @@ class SpinneroOnLoadingApi {
     Loading.arrows(this.label, this.options);
     this.percentageLoading(timeDelay);
   }
-  disabled() {
-    Loading.remove();
+  disabled(timeDelay = 750) {
+    clearInterval(this.intervalId);
+    Loading.remove(timeDelay);
   }
-  percentageLoading(time = 20) {
+  percentageLoading(timeDelay = 20) {
     let count = 0;
     const limit = 100;
+    const breakPoint = 85;
     this.intervalId = setInterval(() => {
+      Loading.change(`${this.label} ${(count += 1)}%`);
+
       if (count === limit) {
         Loading.change('Ready!');
-        return this.disabled();
+        this.disabled();
       }
-      Loading.change(`Loading ${(count += 1)}%`);
-    }, time);
+    }, timeDelay);
   }
 }
 export default SpinneroOnLoadingApi;

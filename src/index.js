@@ -1,13 +1,9 @@
 // import FetchFilmsApi from './js/helpers/fetchFilmsApi';
-import SpinneroOnLoadingApi from './js/helpers/spinnerApi';
+// import SpinneroOnLoadingApi from './js/helpers/spinnerApi';
 // import refsApiServ from './js/helpers/refsApiServ';
 // import RenderApi from './js/helpers/renderFuncApi';
 // import axios from 'axios';
-const loader = new SpinneroOnLoadingApi({
-  label: 'Loading..',
-  options: { backgroundColor: 'rgba(0, 0, 0, 0.56)' },
-});
-loader.enabled(15);
+//
 /**
  * refsApiServ code for application
  * open this file (refsApiServ.js) and add refs you need
@@ -25,6 +21,15 @@ loader.enabled(15);
  *  createMarkypFunc: api.createFilmCardsMarkup([{ nap: 30 }]),
  * });
  *================================================
+ *
+ * Example of spinnerApi Copy
+ * ========================================
+ * const loader = new SpinneroOnLoadingApi({
+ *   label: 'Loading..',
+ *   options: { backgroundColor: '#000000', svgColor: '#FF6B08' },
+ * });
+ * loader.enabled();
+ * ==========================================================
  *
  *
  */
