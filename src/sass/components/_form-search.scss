@@ -1,8 +1,9 @@
-.form {
-  display: grid;
+.form{
+  display: inline-block;
 }
 .form__box {
   text-align: center;
+  
 }
 .form__input {
   width: 260px;
@@ -40,4 +41,5 @@
 .form__btn {
   height: 20px;
   border-bottom: 0.5px solid $white;
+ 
 }
