@@ -3,6 +3,7 @@
 // import refsApiServ from './js/helpers/refsApiServ';
 // import RenderApi from './js/helpers/renderFuncApi';
 // import axios from 'axios';
+//
 /**
  * refsApiServ code for application
  * open this file (refsApiServ.js) and add refs you need
@@ -20,6 +21,15 @@
  *  createMarkypFunc: api.createFilmCardsMarkup([{ nap: 30 }]),
  * });
  *================================================
+ *
+ * Example of spinnerApi Copy
+ * ========================================
+ * const loader = new SpinneroOnLoadingApi({
+ *   label: 'Loading..',
+ *   options: { backgroundColor: '#000000', svgColor: '#FF6B08' },
+ * });
+ * loader.enabled();
+ * ==========================================================
  *
  *
  */
