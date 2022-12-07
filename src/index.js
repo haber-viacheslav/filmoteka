@@ -1,11 +1,14 @@
 // import FetchFilmsApi from './js/helpers/fetchFilmsApi';
 // import SpinneroOnLoadingApi from './js/helpers/spinnerApi';
 // import refsApiServ from './js/helpers/refsApiServ';
-import RenderApi from './js/helpers/renderFuncApi';
+// import RenderApi from './js/helpers/renderFuncApi';
 // import axios from 'axios';
 /**
- * refsApiServ
- *
+ * refsApiServ code for application
+ * open this file (refsApiServ.js) and add refs you need
+ * ====================
+ * const refs = refsApiServ;
+ *=====================
  * Example of renderAPi Copy
  *
  * ==============================
