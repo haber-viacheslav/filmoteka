@@ -1,12 +1,42 @@
-.form{
-    display: grid;
-    
+.form {
+  display: grid;
 }
-.form__box{
-    text-align: center;
-} 
-.form__input{
-max-width: 280px;
-max-height: 20px;
-border: 0.5px solid $white;
+.form__box {
+  text-align: center;
+}
+.form__input {
+  width: 260px;
+  height: 20px;
+  margin-top: 54px;
+  border: none;
+  border-bottom: 0.5px solid $white;
+  background: rgba(0, 0, 0, 0);
+  &::placeholder {
+    color: $white;
+  }
+
+  @media screen and (min-width: $tablet) {
+    width: 336px;
+    margin-top: 40px;
+  }
+  @media screen and (min-width: $desktop) {
+    width: 394px;
+    margin-top: 41px;
+  }
+}
+.form__text-error {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.14;
+    color: $red;
+    margin-top: 16px;
+    text-align: left;
+    @media screen and (min-width: $tablet) {
+        margin-top: 20px;
+        text-align: center;
+  }
+}
+.form__btn {
+  height: 20px;
+  border-bottom: 0.5px solid $white;
 }
