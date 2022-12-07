@@ -2,34 +2,52 @@ import refsApiServ from './refsApiServ';
 const refs = refsApiServ;
 
 class RenderApi {
-  constructor() {
-    this.markup = ``;
-  }
+  constructor() {}
 
-  createMarkup(data, markup) {
-    return data.map(({}) => markup).join('');
+  createFilmCardsMarkup(data) {
+    return data
+      .map(
+        ({}) => `
+    `
+      )
+      .join('');
+  }
+  createLibraryFilmCardsMarkup(data) {
+    return data
+      .map(
+        ({}) =>
+          `
+        
+    `
+      )
+      .join('');
+  }
+  createMoreFilmDetails(data) {
+    return data
+      .map(
+        ({}) =>
+          `
+        
+    `
+      )
+      .join('');
   }
   renderMarkup({
     selector,
     innerHtml = false,
-    data,
     insAdHtmltype = 'beforeend',
+    createMarkypFunc,
   }) {
     const elem = document.querySelector(selector);
+    // console.log();
     if (innerHtml) {
       elem.innerHTML = '';
     }
-    elem.insertAdjacentHTML(
-      insAdHtmltype,
-      this.createMarkup(data, this.markup)
-    );
-  }
-  get actualMarkup() {
-    return this.markup;
-  }
-  set actualMarkup(newMarkup) {
-    this.markup = newMarkup;
+    elem.insertAdjacentHTML(insAdHtmltype, createMarkypFunc);
   }
 }
 
 export default RenderApi;
+//  <div class="example">
+//
+// </div>;
