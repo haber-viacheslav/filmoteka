@@ -6,11 +6,11 @@
   }
 }
 
-.films-title {
+.films__title {
   @extend %visually-hidden;
 }
 
-.film-list {
+.films__list {
   @extend %list;
   flex-wrap: wrap;
   gap: 20px;
@@ -39,7 +39,31 @@
   }
 }
 
-.film-title {
+.film__thumb {
+  height: 420px;
+
+  overflow: hidden;
+  border-radius: 5px;
+
+  @media screen and (min-width: $tablet) {
+    height: 504px;
+  }
+
+  @media screen and (min-width: $desktop) {
+    height: 438px;
+  }
+}
+
+.film__img {
+  height: 100%;
+  object-fit: cover;
+}
+
+.film__wrap {
+  height: 50px;
+}
+
+.film__title {
   margin-top: 10px;
   margin-bottom: 3px;
 
@@ -62,7 +86,7 @@
   }
 }
 
-.film-genres {
+.film__genres {
   font-weight: 500;
   font-size: 12px;
   line-height: 1.33;
