@@ -1,3 +1,50 @@
-<header class="header">
+<header class="header index-page">
+  <div class="container">
+    <div class="header__container flex">
+      <div class="header__logo">
+        <a class="logo" href="" lang="en">
+          <svg width="24" height="24">
+            <use href="./images/symbol-defs.svg#icon-film"></use></svg
+          ><span class="logo__title">Filmoteka</span></a
+        >
+      </div>
+      <nav class="menu">
+        <ul class="menu__list">
+          <li class="menu__item">
+            <a
+              href="./index.html"
+              target="_self"
+              class="menu__link menu__link--current"
+              >HOME</a
+            >
+          </li>
+          <li class="menu__item">
+            <a href="./user-page.html" target="_self" class="menu__link"
+              >MY LIBRARY</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <!-- for index.html -->
+    <form class="form" name="search-form" autocomplete="on" novalidate>
+      <div class="form__box">
+        <input
+          class="form__input"
+          type="text"
+          name="search_user"
+          placeholder="Movie search"
+        />
+        <button class="form__btn" type="submit">
+          <svg class="form__icon" width="12" height="12" viewBox="0 0 12 12">
+            <use href="./images/symbol-defs.svg#icon-search-2"></use>
+          </svg>
+        </button>
+      </div>
 
+      <span class="form__text-error"
+        >Search result not successful. Enter the correct movie name.
+      </span>
+    </form>
+  </div>
 </header>

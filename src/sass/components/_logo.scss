@@ -1,0 +1,17 @@
+
+.logo{
+    @extend %link;
+    width: 175px;
+    height: 35px;
+}
+
+.logo__title{
+    color: $white;
+    font-size: 30px;
+    font-weight: 500;
+    line-height: 1.16;
+    margin-left: 10px;
+    @media screen and (max-width: 767px) {
+    display: none;
+    }
+}

@@ -4,5 +4,12 @@
 @import './base/reset';
 @import './base/placeholders';
 @import './base/wrappers';
-@import './footer';
+@import './header';
+@import './components/menu';
+@import './components/logo';
+@import './components/form-search';
 @import './main-films';
+@import './footer';
+@import './user-header.scss';
+@import './components/button';
+

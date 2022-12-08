@@ -1,6 +1,10 @@
+// import FetchFilmsApi from './js/helpers/fetchFilmsApi';
+// import SpinneroOnLoadingApi from './js/helpers/spinnerApi';
+// import refsApiServ from './js/helpers/refsApiServ';
+// import RenderApi from './js/helpers/renderFuncApi';
 import axios from 'axios';
 
-// 76cbb606f190fc237086ec33f1fd98a3
+// // 76cbb606f190fc237086ec33f1fd98a3
 
 const BASE_URL = 'https://api.themoviedb.org/3';
 const API_KEY = '76cbb606f190fc237086ec33f1fd98a3';
@@ -116,3 +120,35 @@ async function renderMarkup() {
 
   filmList.innerHTML = markup;
 }
+
+//
+/**
+ * refsApiServ code for application
+ * open this file (refsApiServ.js) and add refs you need
+ * ====================
+ * const refs = refsApiServ;
+ *=====================
+ * Example of renderAPi Copy
+ *
+ * ==============================
+ *  const api = new RenderApi();
+ *  api.renderMarkup({
+ *  selector: '.film-list',
+ *  innerHtml = false/true,
+ *  insAdjacentHTMLtype: //'beforeend' or different//,
+ *  createMarkypFunc: api.createFilmCardsMarkup([{ nap: 30 }]),
+ * });
+ *================================================
+ *
+ * Example of spinnerApi Copy
+ * ========================================
+ * const loader = new SpinneroOnLoadingApi({
+ *   label: 'Loading..',
+ *   options: { backgroundColor: '#000000', svgColor: '#FF6B08' },
+ * });
+ * loader.enabled();
+ * ==========================================================
+ *
+ *
+ */
+//

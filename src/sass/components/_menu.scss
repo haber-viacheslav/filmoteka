@@ -1,0 +1,66 @@
+.menu {
+    @media screen and (max-width: 767px) {
+        font-weight: 500;
+        margin-bottom: 0;
+    }
+}
+
+.menu__list {
+    @extend %list;
+    display: flex;
+    align-items: center;
+    max-height: 14px;
+}
+
+.menu__item {
+    color: $white;
+    font-size: 12px;
+    line-height: 1.16;
+    &:last-child {
+        margin-left: 40px;
+    }
+}
+
+.menu__link {
+    @extend %link;
+    letter-spacing: 0.02em;
+    font-weight: 500;
+    color: $white;
+
+    &:hover,
+    &:focus,
+    &:active {
+        color: $white;
+    }
+
+    &--current {
+        display: block;
+        position: relative;
+        color: $white;
+        text-transform: none;
+        padding-top: 28px;
+        padding-bottom: 28px;
+
+        @media screen and (min-width: 1200px) {
+            padding-top: 32px;
+            padding-bottom: 28px;
+        }
+
+    }
+
+    &--current::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        display: block;
+        width: 100%;
+        height: 3px;
+        background: $red;
+        // border-radius: 2px;
+    }
+
+    @media screen and (min-width: 1200px) {
+        bottom: 2px;
+    }
+
+}
