@@ -4,7 +4,7 @@ import axios from 'axios';
 
 const BASE_URL = 'https://api.themoviedb.org/3';
 const API_KEY = '76cbb606f190fc237086ec33f1fd98a3';
-const filmList = document.querySelector('.film-list');
+const filmList = document.querySelector('.films__list');
 
 let page = 1;
 let totalPages = null;
@@ -74,22 +74,42 @@ async function renderMarkup() {
   const genresObj = await axios.get(`${BASE_URL}/genre/movie/list`, { params });
   const genres = genresObj.data.genres;
 
-  const films = await axios.get(`${BASE_URL}/trending/movie/week`, { params });
+  const films = await axios.get(`${BASE_URL}/trending/movie/day`, { params });
   totalPages = films.data.total_pages;
 
   const markup = films.data.results
-    .map(({ poster_path, title, genre_ids }) => {
-      const ArrayGenresOfCurrentFilm = genre_ids.map(genre_id => {
+    .map(({ poster_path, title, genre_ids, release_date }) => {
+      let genreIsMany = null;
+      let maxGenreIds = genre_ids;
+
+      if (genre_ids.length > 2) {
+        genreIsMany = true;
+        maxGenreIds = genre_ids.slice(0, 2);
+      } else {
+        genreIsMany = false;
+      }
+
+      const ArrayGenresOfCurrentFilm = maxGenreIds.map(genre_id => {
         return genres.find(oneGenre => oneGenre.id === genre_id);
       });
-      const genresOfCurrentFilm = ArrayGenresOfCurrentFilm.map(
+      let genresOfCurrentFilm = ArrayGenresOfCurrentFilm.map(
         oneGenre => oneGenre.name
-      ).join(' ');
+      ).join(', ');
+
+      if (genreIsMany) {
+        genresOfCurrentFilm += ', Other';
+      }
+
+      const date = release_date.slice(0, 4);
 
       return ` <li class="film">
-          <img src="https://image.tmdb.org/t/p/w500/${poster_path}" alt="${title}" />
-        <h2 class="film-title">${title}</h2>
-        <p class="film-genres">${genresOfCurrentFilm}</p>
+      <div class="film__thumb">
+          <img class="film__img" src="https://image.tmdb.org/t/p/w500/${poster_path}" alt="${title}" />
+          </div>
+          <div class="film__wrap">
+        <h2 class="film__title">${title}</h2>
+        <p class="film__genres">${genresOfCurrentFilm} | ${date}</p>
+        </div>
       </li>`;
     })
     .join('');
