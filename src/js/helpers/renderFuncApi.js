@@ -35,13 +35,14 @@ class RenderApi {
   renderMarkup({
     selector,
     innerHtml = false,
+    innerHTMLMarkup = '',
     insAdHtmltype = 'beforeend',
     createMarkypFunc,
   }) {
     const elem = document.querySelector(selector);
     // console.log();
     if (innerHtml) {
-      elem.innerHTML = '';
+      elem.innerHTML = innerHTMLMarkup;
     }
     elem.insertAdjacentHTML(insAdHtmltype, createMarkypFunc);
   }

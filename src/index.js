@@ -1,5 +1,5 @@
 // import FetchFilmsApi from './js/helpers/fetchFilmsApi';
-// import SpinneroOnLoadingApi from './js/helpers/spinnerApi';
+import SpinneroOnLoadingApi from './js/helpers/spinnerApi';
 // import refsApiServ from './js/helpers/refsApiServ';
 // import RenderApi from './js/helpers/renderFuncApi';
 
@@ -7,6 +7,11 @@ import './js/helpers/modals';
 import axios from 'axios';
 import * as basicLightbox from 'basiclightbox';
 
+const spinnerOnMain = new SpinneroOnLoadingApi({
+  options: { backgroundColor: '#000000', svgColor: '#FF6B08' },
+});
+const spinnerOnList = new SpinneroOnLoadingApi({});
+spinnerOnMain.enabled({ timeDelay: 12, delayAfterStop: 400 });
 // // 76cbb606f190fc237086ec33f1fd98a3
 
 const BASE_URL = 'https://api.themoviedb.org/3';
@@ -202,7 +207,7 @@ function onShowNextPage(e) {
   }
 
   page += 1;
-
+  spinnerOnList.enabled({ timeDelay: 5, delayAfterStop: 200 });
   renderMarkup();
 
   currentPage.innerHTML = page;
