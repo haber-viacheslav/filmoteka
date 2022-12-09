@@ -26,22 +26,23 @@
         </ul>
       </nav>
     </div>
-    <!-- for index.html -->
     <form class="form" name="search-form" autocomplete="on" novalidate>
-      <div class="form__box">
+      <div class="form__box flex">
         <input
           class="form__input"
           type="text"
           name="search_user"
           placeholder="Movie search"
         />
+        <!-- <svg class="form__icon" width="12" height="12" viewBox="0 0 12 12">
+          <use href="./images/symbol-defs.svg#icon-search-2"></use>
+        </svg> -->
         <button class="form__btn" type="submit">
           <svg class="form__icon" width="12" height="12" viewBox="0 0 12 12">
             <use href="./images/icons.svg#icon-search-2"></use>
           </svg>
         </button>
       </div>
-
       <span class="form__text-error"
         >Search result not successful. Enter the correct movie name.
       </span>
