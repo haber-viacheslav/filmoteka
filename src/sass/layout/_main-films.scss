@@ -121,3 +121,234 @@
   font-size: 20px;
   font-weight: 600;
 }
+
+// Modal
+
+.film__modal {
+  position: relative;
+  overflow: auto;
+
+  padding: 46px 20px 40px;
+  width: 280px;
+
+  background-color: $white;
+
+  @media screen and (min-width: $tablet) {
+    width: 704px;
+    display: flex;
+    gap: 68px;
+    padding: 40px 36px 40px;
+  }
+
+  @media screen and (min-width: $desktop) {
+    width: 806px;
+  }
+}
+
+.film-modal__close {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  cursor: auto;
+
+  font-size: large;
+  font-weight: 700;
+}
+
+.film-modal__thumb {
+  height: 357px;
+
+  overflow: hidden;
+  border-radius: 5px;
+
+  @media screen and (max-width: 767px) {
+    margin-bottom: 20px;
+  }
+
+  @media screen and (min-width: $tablet) {
+    height: 374px;
+  }
+
+  @media screen and (min-width: $desktop) {
+    height: 478px;
+  }
+}
+
+.film-modal__img {
+  width: 240px;
+  height: 100%;
+  object-fit: cover;
+
+  @media screen and (min-width: $tablet) {
+    width: 264px;
+  }
+
+  @media screen and (min-width: $desktop) {
+    width: 806px;
+  }
+}
+
+.film-modal__text-wrap {
+  @media screen and (min-width: $tablet) {
+    width: 265px;
+  }
+
+  @media screen and (min-width: $desktop) {
+    width: 391px;
+  }
+}
+
+.film-modal__title {
+  margin-bottom: 20px;
+
+  font-weight: 500;
+  font-size: 20px;
+  line-height: calc(23 / 20);
+
+  @media screen and (min-width: $desktop) {
+    font-size: 30px;
+    line-height: 35px;
+  }
+}
+
+.film-modal__list-characteristic {
+  @extend %list;
+  margin-bottom: 20px;
+}
+
+.film-modal__item-characteristic {
+  &:not(:last-child) {
+    margin-bottom: 8px;
+  }
+}
+
+.film-modal__characteristic-text {
+  display: flex;
+
+  font-weight: 500;
+  font-size: 12px;
+}
+
+.characteristic__name {
+  line-height: 1.33;
+
+  color: #8c8c8c;
+}
+
+.characteristic__name--vote {
+  margin-right: 41px;
+}
+
+.characteristic__value--vote {
+  display: flex;
+}
+
+.characteristic__vote {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: $orange-button;
+  color: $white;
+  border-radius: 5px;
+  width: 37px;
+
+  &:not(:last-child) {
+    margin-right: 3px;
+  }
+
+  &:last-child {
+    margin-left: 3px;
+  }
+}
+
+.characteristic__vote--count {
+  background: $grey-footer-background;
+  color: $black;
+}
+
+.characteristic__name--popularity {
+  margin-right: 53px;
+}
+
+.characteristic__name--title {
+  margin-right: 39px;
+}
+
+.characteristic__name--genre {
+  margin-right: 76px;
+}
+
+.characteristic__value {
+  width: 120px;
+
+  line-height: 14px;
+  text-transform: uppercase;
+}
+
+.film-modal__about-film-title {
+  margin-bottom: 8px;
+
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  text-transform: uppercase;
+}
+
+.film-modal__about-film-text {
+  margin-bottom: 20px;
+
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.67;
+
+  @media screen and (min-width: $tablet) and (max-width: 1279px) {
+    margin-bottom: 40px;
+  }
+}
+
+.film-modal__wrap-btn {
+  gap: 20px;
+
+  @media screen and (min-width: $tablet) {
+    gap: 15px;
+  }
+
+  @media screen and (min-width: $desktop) {
+    width: 287px;
+  }
+}
+
+.film-modal__btn {
+  height: 44px;
+  width: 100%;
+  padding: 0 10px;
+
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  text-transform: uppercase;
+  border-radius: 5px;
+}
+
+.film-modal__btn--watched {
+  color: $white;
+  background-color: $orange-button;
+  transition: background-color $transition;
+
+  &:hover,
+  &:focus {
+    background-color: #ff5601;
+  }
+}
+
+.film-modal__btn--queue {
+  border: 1px solid #000000;
+  transition: background-color $transition, color $transition;
+
+  &:hover,
+  &:focus {
+    background-color: #000000;
+    color: $white;
+  }
+}

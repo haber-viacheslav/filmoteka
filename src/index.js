@@ -5,6 +5,7 @@
 
 import './js/helpers/modals';
 import axios from 'axios';
+import * as basicLightbox from 'basiclightbox';
 
 // // 76cbb606f190fc237086ec33f1fd98a3
 
@@ -19,10 +20,151 @@ let totalPages = null;
 const prevPage = document.querySelector('#prev');
 const currentPage = document.querySelector('#curr');
 const nextPage = document.querySelector('#next');
-const scroolToTop = document.querySelector('.films');
+const filmsList = document.querySelector('.films');
 
+filmList.addEventListener('click', onShowFilmModal);
 prevPage.addEventListener('click', onShowPrevPage);
 nextPage.addEventListener('click', onShowNextPage);
+
+async function onShowFilmModal(e) {
+  if (!e.target.classList.contains('film__img')) {
+    return;
+  }
+
+  document.body.style.overflow = 'hidden';
+
+  e.currentTarget.removeEventListener('click', onShowFilmModal);
+
+  const filmId = e.target.dataset.id;
+
+  const params = {
+    api_key: API_KEY,
+  };
+
+  const moreInfo = await axios.get(`${BASE_URL}/movie/${filmId}`, { params });
+
+  const {
+    poster_path,
+    title,
+    vote_average,
+    vote_count,
+    popularity,
+    genres,
+    overview,
+  } = moreInfo.data;
+
+  const fixedGenres = genres[0].name;
+
+  const roundVote = !Number.isInteger(vote_average)
+    ? vote_average.toFixed(1)
+    : String(vote_average);
+
+  const fixedVote = roundVote.includes('.0')
+    ? roundVote.replace('.0', '')
+    : roundVote;
+
+  const roundPopularity = !Number.isInteger(popularity)
+    ? popularity.toFixed(1)
+    : String(popularity);
+
+  const fixedPopularity = roundPopularity.includes('.0')
+    ? roundPopularity.replace('.0', '')
+    : roundPopularity;
+
+  const instance = basicLightbox.create(
+    `
+    <div class="film__modal">
+    
+  <button class="film-modal__close">X</button>
+
+      <div class="film-modal__thumb">
+      <img
+        class="film-modal__img"
+        src="https://image.tmdb.org/t/p/w500/${poster_path}"
+        alt="${title}"
+      />
+      </div>
+
+      <div class="film-modal__text-wrap">
+      <h2 class="film-modal__title">${title}</h2>
+
+      <ul class="film-modal__list-characteristic">
+        <li class="film-modal__item-characteristic">
+          <p class="film-modal__characteristic-text">
+            <span class="characteristic__name characteristic__name--vote"
+              >Vote / Votes</span
+            ><span class="characteristic__value characteristic__value--vote">
+            <span class="characteristic__vote">${fixedVote}</span> / 
+            <span class="characteristic__vote characteristic__vote--count">${vote_count}</span>
+            </span>
+          </p>
+        </li>
+        <li class="film-modal__item-characteristic">
+          <p class="film-modal__characteristic-text">
+            <span class="characteristic__name characteristic__name--popularity"
+              >Popularity</span
+            ><span class="characteristic__value">${fixedPopularity}</span>
+          </p>
+        </li>
+        <li class="film-modal__item-characteristic">
+          <p class="film-modal__characteristic-text">
+            <span class="characteristic__name characteristic__name--title"
+              >Original Title</span
+            ><span class="characteristic__value">${title}</span>
+          </p>
+        </li>
+        <li class="film-modal__item-characteristic">
+          <p class="film-modal__characteristic-text">
+            <span class="characteristic__name characteristic__name--genre"
+              >Genre</span
+            ><span class="characteristic__value">${fixedGenres}</span>
+          </p>
+        </li>
+      </ul>
+
+      <h3 class="film-modal__about-film-title">About</h3>
+      <p class="film-modal__about-film-text"> ${overview}
+      </p>
+
+      <div class="film-modal__wrap-btn flex">
+        <button class="film-modal__btn film-modal__btn--watched">
+          add to Watched
+        </button>
+        <button class="film-modal__btn film-modal__btn--queue">
+          add to queue
+        </button>
+      </div>
+     </div>
+    </div>
+`,
+    {
+      onShow: instance => {
+        instance.element().querySelector('.film-modal__close').onclick =
+          instance.close;
+      },
+
+      onClose: instance => {
+        document.body.style.overflow = 'visible';
+      },
+    }
+  );
+
+  instance.show();
+
+  document.addEventListener(
+    'keydown',
+    e => {
+      if (e.code !== 'Escape') {
+        return;
+      }
+
+      instance.close();
+    },
+    { once: true }
+  );
+
+  filmList.addEventListener('click', onShowFilmModal);
+}
 
 function onShowPrevPage(e) {
   if (page === 1) {
@@ -44,7 +186,7 @@ function onShowPrevPage(e) {
   renderMarkup();
 
   currentPage.innerHTML = page;
-  scroolToTop.scrollIntoView({ behavior: 'smooth' });
+  filmsList.scrollIntoView({ behavior: 'smooth' });
 }
 
 function onShowNextPage(e) {
@@ -64,7 +206,7 @@ function onShowNextPage(e) {
   renderMarkup();
 
   currentPage.innerHTML = page;
-  scroolToTop.scrollIntoView({ behavior: 'smooth' });
+  filmsList.scrollIntoView({ behavior: 'smooth' });
 }
 
 // renderMarkup
@@ -82,9 +224,10 @@ async function renderMarkup() {
 
   const films = await axios.get(`${BASE_URL}/trending/movie/day`, { params });
   totalPages = films.data.total_pages;
+  console.log(films.data.results);
 
   const markup = films.data.results
-    .map(({ poster_path, title, genre_ids, release_date }) => {
+    .map(({ poster_path, title, genre_ids, release_date, id }) => {
       let genreIsMany = null;
       let maxGenreIds = genre_ids;
 
@@ -109,12 +252,12 @@ async function renderMarkup() {
       const date = release_date.slice(0, 4);
 
       return ` <li class="film">
-      <div class="film__thumb">
-          <img class="film__img" src="https://image.tmdb.org/t/p/w500/${poster_path}" alt="${title}" />
-          </div>
-          <div class="film__wrap">
-        <h2 class="film__title">${title}</h2>
-        <p class="film__genres">${genresOfCurrentFilm} | ${date}</p>
+        <div class="film__thumb">
+          <img data-id='${id}' class="film__img" src="https://image.tmdb.org/t/p/w500/${poster_path}" alt="${title}" />
+        </div>
+        <div class="film__wrap">
+          <h2 class="film__title">${title}</h2>
+          <p class="film__genres">${genresOfCurrentFilm} | ${date}</p>
         </div>
       </li>`;
     })
