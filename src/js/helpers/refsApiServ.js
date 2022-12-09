@@ -1,4 +1,10 @@
-export default {
+export const refs = {
+  btnOpenRef: document.querySelector('[data-modal-open]'),
+  btnOpenUserRef: document.querySelector('[data-modal-open-user]'),
+  btnCloseRef: document.querySelector('[data-modal-close]'),
+  body: document.querySelector('body'),
+  teamModal: document.querySelector('[data-modal]'),
+  teamLinks: document.querySelectorAll('.team-modal__link'),
   // enter refs of elements you want
   // like this ---> inputEl: document.querySelector('.header__search-form')  (EXAMPLE!!!)
 };

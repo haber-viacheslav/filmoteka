@@ -2,6 +2,8 @@
 // import SpinneroOnLoadingApi from './js/helpers/spinnerApi';
 // import refsApiServ from './js/helpers/refsApiServ';
 // import RenderApi from './js/helpers/renderFuncApi';
+
+import './js/helpers/modals';
 import axios from 'axios';
 import * as basicLightbox from 'basiclightbox';
 
@@ -187,7 +189,7 @@ function onShowPrevPage(e) {
   filmsList.scrollIntoView({ behavior: 'smooth' });
 }
 
-function onShowNextPage() {
+function onShowNextPage(e) {
   if (page === totalPages) {
     if (!e.currentTarget.classList.contains('disabled')) {
       e.currentTarget.classList.add('disabled');
