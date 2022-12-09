@@ -72,9 +72,8 @@ async function onShowFilmModal(e) {
   const instance = basicLightbox.create(
     `
     <div class="film__modal">
-    <svg class="film-modal__close" width="30" height="30">
-    <use href="./images/symbol-defs.svg#icon-film"></use>
-  </svg>
+    
+  <button class="film-modal__close">X</button>
 
       <div class="film-modal__thumb">
       <img

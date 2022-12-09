@@ -147,8 +147,12 @@
 
 .film-modal__close {
   position: absolute;
-  top: 8px;
-  right: 8px;
+  top: 12px;
+  right: 14px;
+  cursor: auto;
+
+  font-size: large;
+  font-weight: 700;
 }
 
 .film-modal__thumb {
