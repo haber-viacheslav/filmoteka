@@ -4,33 +4,31 @@ class SpinneroOnLoadingApi {
   constructor({
     label = 'Loading',
     options = {
-      backgroundColor: '#000000',
+      backgroundColor: 'rgba(0,0,0,0.8)',
       svgColor: '#FF6B08',
     },
   }) {
-    this.time = 0;
     this.label = label;
     this.options = options;
     this.intervalId = null;
   }
-  enabled(timeDelay) {
+  enabled({ timeDelay = 20, delayAfterStop = 400 }) {
     Loading.arrows(this.label, this.options);
-    this.percentageLoading(timeDelay);
+    this.percentageLoading(timeDelay, delayAfterStop);
   }
-  disabled(timeDelay = 750) {
+  disabled(delayAfterStop) {
     clearInterval(this.intervalId);
-    Loading.remove(timeDelay);
+    Loading.remove(delayAfterStop);
   }
-  percentageLoading(timeDelay = 20) {
+  percentageLoading(timeDelay, delayAfterStop) {
     let count = 0;
     const limit = 100;
-    const breakPoint = 85;
     this.intervalId = setInterval(() => {
       Loading.change(`${this.label} ${(count += 1)}%`);
 
       if (count === limit) {
         Loading.change('Ready!');
-        this.disabled();
+        this.disabled(delayAfterStop);
       }
     }, timeDelay);
   }
