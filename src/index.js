@@ -2,8 +2,9 @@
 // import SpinneroOnLoadingApi from './js/helpers/spinnerApi';
 // import refsApiServ from './js/helpers/refsApiServ';
 // import RenderApi from './js/helpers/renderFuncApi';
-import axios from 'axios';
 
+import axios from 'axios';
+import { addData } from './js/backend/fetchDataWithSDK';
 // // 76cbb606f190fc237086ec33f1fd98a3
 
 const BASE_URL = 'https://api.themoviedb.org/3';
