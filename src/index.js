@@ -2,6 +2,8 @@
 // import SpinneroOnLoadingApi from './js/helpers/spinnerApi';
 // import refsApiServ from './js/helpers/refsApiServ';
 // import RenderApi from './js/helpers/renderFuncApi';
+
+import './js/helpers/modals';
 import axios from 'axios';
 
 // // 76cbb606f190fc237086ec33f1fd98a3
@@ -45,7 +47,7 @@ function onShowPrevPage(e) {
   scroolToTop.scrollIntoView({ behavior: 'smooth' });
 }
 
-function onShowNextPage() {
+function onShowNextPage(e) {
   if (page === totalPages) {
     if (!e.currentTarget.classList.contains('disabled')) {
       e.currentTarget.classList.add('disabled');
