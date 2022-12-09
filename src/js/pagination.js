@@ -17,3 +17,6 @@ const myPagination = new Pagination(container, {
   // enable usage statistics
   usageStatistics: true,
 });
+
+// https://www.cssscript.com/pagination-component-tui/
+// https://nhn.github.io/tui.pagination/latest/Pagination#getCurrentPage

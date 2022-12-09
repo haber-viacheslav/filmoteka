@@ -3,6 +3,7 @@
 // import refsApiServ from './js/helpers/refsApiServ';
 // import RenderApi from './js/helpers/renderFuncApi';
 // import axios from 'axios';
+import './js/helpers/modals';
 //
 /**
  * refsApiServ code for application
