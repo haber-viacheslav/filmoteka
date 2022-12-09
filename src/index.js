@@ -47,7 +47,7 @@ function onShowPrevPage(e) {
   scroolToTop.scrollIntoView({ behavior: 'smooth' });
 }
 
-function onShowNextPage() {
+function onShowNextPage(e) {
   if (page === totalPages) {
     if (!e.currentTarget.classList.contains('disabled')) {
       e.currentTarget.classList.add('disabled');
@@ -123,7 +123,6 @@ async function renderMarkup() {
   filmList.innerHTML = markup;
 }
 
->>>>>>> main
 //
 /**
  * refsApiServ code for application
