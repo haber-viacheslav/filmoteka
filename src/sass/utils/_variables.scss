@@ -6,9 +6,9 @@ $main-font: 'Roboto', sans-serif;
 $black: #000000;
 $white: #ffffff;
 $orange: #ff6b08;
-$orange-button: #FF6B01;
+$orange-button: #ff6b01;
 $grey: #545454;
-$grey-card-color: #8C8C8C;
+$grey-card-color: #8c8c8c;
 $red: #ff001b;
 $box-shadow-color: #ff6b0199;
 $overlay-header-color: rgba(0, 0, 0, 0.56);
@@ -29,6 +29,6 @@ $mobile: 320px;
 $tablet: 768px;
 $desktop: 1280px;
 
-//animation 
- $transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
- $animation-modal: 250ms ease-in-out 20ms;
+//animation
+$transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+$animation-modal: 250ms ease-in-out 20ms;
