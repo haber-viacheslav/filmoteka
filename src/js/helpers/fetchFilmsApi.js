@@ -5,7 +5,7 @@ class FetchFilmsApi {
   constructor(config = { baseURL: 'https://api.themoviedb.org/3/' }) {
     this.query = '';
     this.config = config;
-    this.#API_KEY = 'api_key=76cbb606f190fc237086ec33f1fd98a3';
+    this.#API_KEY = '76cbb606f190fc237086ec33f1fd98a3';
     this.page = 1;
   }
   async fetchWithAllFilmsData({
@@ -14,7 +14,7 @@ class FetchFilmsApi {
     timeWindow = 'week',
   }) {
     const resp = await axios.get(
-      `${typeFetch}/${mediaType}/${timeWindow}&${this.#API_KEY} `,
+      `${typeFetch}/${mediaType}/${timeWindow}?api_key=${this.#API_KEY} `,
       this.config
     );
     return resp;
@@ -27,7 +27,7 @@ class FetchFilmsApi {
     include_adult = false,
   }) {
     const resp = await axios.get(
-      `${typeFetch}/${mediaType}&${this.#API_KEY}&language=${lang}&${
+      `${typeFetch}/${mediaType}?api_key=${this.#API_KEY}&language=${lang}&${
         this.query
       }&page=${page}&include_adult=${include_adult}`,
       this.config
