@@ -4,6 +4,8 @@ import SpinneroOnLoadingApi from './js/helpers/spinnerApi';
 // import RenderApi from './js/helpers/renderFuncApi';
 
 import './js/helpers/modals';
+import { BASE_URL, API_KEY } from './js/baseConsts';
+import onShowTrailer from './js/showTrailer';
 import axios from 'axios';
 import * as basicLightbox from 'basiclightbox';
 
@@ -12,20 +14,15 @@ const spinnerOnMain = new SpinneroOnLoadingApi({
 });
 const spinnerOnList = new SpinneroOnLoadingApi({});
 spinnerOnMain.enabled({ timeDelay: 12, delayAfterStop: 400 });
-// // 76cbb606f190fc237086ec33f1fd98a3
-
-const BASE_URL = 'https://api.themoviedb.org/3';
-const API_KEY = '76cbb606f190fc237086ec33f1fd98a3';
-const filmList = document.querySelector('.films__list');
-
-let page = 1;
-let totalPages = null;
 
 // Pagination
 const prevPage = document.querySelector('#prev');
 const currentPage = document.querySelector('#curr');
 const nextPage = document.querySelector('#next');
-const filmsList = document.querySelector('.films');
+const filmList = document.querySelector('.films__list');
+
+let page = 1;
+let totalPages = null;
 
 filmList.addEventListener('click', onShowFilmModal);
 prevPage.addEventListener('click', onShowPrevPage);
@@ -131,6 +128,8 @@ async function onShowFilmModal(e) {
       <p class="film-modal__about-film-text"> ${overview}
       </p>
 
+      <button class="film-modal__trailer" data-id="${filmId}">Show trailer</button>
+
       <div class="film-modal__wrap-btn flex">
         <button class="film-modal__btn film-modal__btn--watched">
           add to Watched
@@ -156,19 +155,22 @@ async function onShowFilmModal(e) {
 
   instance.show();
 
-  document.addEventListener(
-    'keydown',
-    e => {
-      if (e.code !== 'Escape') {
-        return;
-      }
+  document.addEventListener('keydown', onPressEsc, { once: true });
 
-      instance.close();
-    },
-    { once: true }
-  );
+  // Trailer
+  const testBtn = document.querySelector('.film-modal__trailer');
+  testBtn.addEventListener('click', onShowTrailer);
+  //
 
   filmList.addEventListener('click', onShowFilmModal);
+
+  function onPressEsc(e) {
+    if (e.code !== 'Escape') {
+      return;
+    }
+
+    instance.close();
+  }
 }
 
 function onShowPrevPage(e) {
@@ -191,7 +193,7 @@ function onShowPrevPage(e) {
   renderMarkup();
 
   currentPage.innerHTML = page;
-  filmsList.scrollIntoView({ behavior: 'smooth' });
+  filmList.scrollIntoView({ behavior: 'smooth' });
 }
 
 function onShowNextPage(e) {
@@ -211,7 +213,7 @@ function onShowNextPage(e) {
   renderMarkup();
 
   currentPage.innerHTML = page;
-  filmsList.scrollIntoView({ behavior: 'smooth' });
+  filmList.scrollIntoView({ behavior: 'smooth' });
 }
 
 // renderMarkup
