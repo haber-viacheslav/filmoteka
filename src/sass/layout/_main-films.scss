@@ -123,10 +123,20 @@
 }
 
 // Modal
+.test-btn {
+  background-color: red;
+  width: 200px;
+  height: 100px;
+}
+
+.basicLightbox {
+  overflow-y: scroll;
+  align-items: flex-start;
+  padding: 60px 0;
+}
 
 .film__modal {
   position: relative;
-  overflow: auto;
 
   padding: 46px 20px 40px;
   width: 280px;
@@ -286,6 +296,27 @@
   text-transform: uppercase;
 }
 
+.film-modal__trailer {
+  display: block;
+  width: 100px;
+  height: 40px;
+  margin-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
+
+  background-color: #e7e7e7;
+  color: black;
+  text-align: center;
+  border-radius: 10px;
+  border: 2px solid #e7e7e7;
+
+  transition-duration: 0.4s;
+
+  &:hover {
+    background-color: $white;
+  }
+}
+
 .film-modal__about-film-title {
   margin-bottom: 8px;
 
@@ -350,5 +381,49 @@
   &:focus {
     background-color: #000000;
     color: $white;
+  }
+}
+
+.film-modal__iframe {
+  width: 280px;
+  height: 155px;
+
+  @media screen and (min-width: 500px) {
+    width: 380px;
+    height: 210px;
+  }
+
+  @media screen and (min-width: $tablet) {
+    width: 480px;
+    height: 270px;
+  }
+
+  @media screen and (min-width: $desktop) {
+    width: 600px;
+    height: 340px;
+  }
+}
+
+.empty {
+  display: flex;
+  align-items: center;
+  text-align: center;
+
+  background-color: $white;
+  width: 280px;
+  height: 150px;
+  padding: 20px;
+  border-radius: 15px;
+
+  @media screen and (min-width: $desktop) {
+    width: 380px;
+  }
+}
+
+.empty__text {
+  font-size: 20px;
+
+  @media screen and (min-width: $desktop) {
+    font-size: 24px;
   }
 }
