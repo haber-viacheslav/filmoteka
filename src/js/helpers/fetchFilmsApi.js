@@ -1,11 +1,10 @@
 import axios from 'axios';
 
 class FetchFilmsApi {
-  #API_KEY;
-  constructor(config = { baseURL: 'https://api.themoviedb.org/3/' }) {
+  constructor(config) {
     this.query = '';
     this.config = config;
-    this.#API_KEY = 'api_key=76cbb606f190fc237086ec33f1fd98a3';
+    this.API_KEY = 'api_key=76cbb606f190fc237086ec33f1fd98a3';
     this.page = 1;
   }
   async fetchWithAllFilmsData({
@@ -14,11 +13,12 @@ class FetchFilmsApi {
     timeWindow = 'week',
   }) {
     const resp = await axios.get(
-      `${typeFetch}/${mediaType}/${timeWindow}&${this.#API_KEY} `,
+      `${typeFetch}/${mediaType}/${timeWindow}?${this.API_KEY}`,
       this.config
     );
     return resp;
   }
+  // https://api.themoviedb.org/3/search/movie?api_key=76cbb606f190fc237086ec33f1fd98a3&language=en-US&query=lord%20of%20the%20rings&page=1&include_adult=false
   async fetchWithSearchFilmData({
     typeFetch = 'search',
     mediaType = 'movie',
@@ -26,12 +26,14 @@ class FetchFilmsApi {
     page = 1,
     include_adult = false,
   }) {
+    console.log(
+      `${this.config.baseURL}${typeFetch}/${mediaType}?${this.API_KEY}&language=${lang}&${this.query}&page=${page}&include_adult=${include_adult}`
+    );
     const resp = await axios.get(
-      `${typeFetch}/${mediaType}&${this.#API_KEY}&language=${lang}&${
-        this.query
-      }&page=${page}&include_adult=${include_adult}`,
+      `${typeFetch}/${mediaType}?${this.API_KEY}&language=${lang}&query=${this.query}&page=${page}&include_adult=${include_adult}`,
       this.config
     );
+
     return resp;
   }
   incrementPage({ step = 1 }) {

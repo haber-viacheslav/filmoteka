@@ -1,12 +1,87 @@
-// import FetchFilmsApi from './js/helpers/fetchFilmsApi';
-// import SpinneroOnLoadingApi from './js/helpers/spinnerApi';
-// import refsApiServ from './js/helpers/refsApiServ';
-// import RenderApi from './js/helpers/renderFuncApi';
-
+import FetchFilmsApi from './js/helpers/fetchFilmsApi';
+import SpinneroOnLoadingApi from './js/helpers/spinnerApi';
+import refsApiServ from './js/helpers/refsApiServ';
+import RenderApi from './js/helpers/renderFuncApi';
+// import { initializeApp } from 'firebase/app';
 import axios from 'axios';
-import { addData } from './js/backend/fetchDataWithSDK';
-// // 76cbb606f190fc237086ec33f1fd98a3
+// import { getDatabase, ref, onValue } from 'firebase/database';
+// import { getDatabase, ref, child, get } from 'firebase/database';
 
+const searchApi = new FetchFilmsApi({
+  baseURL: 'https://api.themoviedb.org/3/',
+});
+
+searchApi.actualQuery = 'lord+of+the+rings';
+async function foo() {
+  try {
+    const resp = await searchApi.fetchWithSearchFilmData({});
+
+    return resp;
+  } catch (error) {
+    console.log(error);
+  }
+}
+foo().then(resp => console.log(resp));
+
+// const foo = async () => {
+//   const resp = await ;
+//   const data =;
+//   return data;
+// };
+// console.log(foo());
+// console.log(
+//   searchApi.fetchWithSearchFilmData({
+//     typeFetch: 'search',
+//     mediaType: 'movie',
+//     lang: 'en-US',
+//     page: 1,
+//     include_adult: false,
+//   })
+// );
+
+// // 76cbb606f190fc237086ec33f1fd98a3
+// Import the functions you need from the SDKs you need
+
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// const firebaseConfig = {
+//   apiKey: 'AIzaSyDCS785MOsoRKmsKbFXdEPMEMT59FGR_kY',
+//   authDomain: 'test-l-8ab59.firebaseapp.com',
+//   projectId: 'test-l-8ab59',
+//   storageBucket: 'test-l-8ab59.appspot.com',
+//   messagingSenderId: '971014908371',
+//   appId: '1:971014908371:web:b6f5b02d29505fd1b6e726',
+// };
+// const app = initializeApp(firebaseConfig);
+// const dbRef = ref(getDatabase());
+// get(child(dbRef, `users/vladislav`))
+//   .then(snapshot => {
+//     if (snapshot.exists()) {
+//       console.log(snapshot.val());
+//     } else {
+//       console.log('No data available');
+//     }
+//   })
+//   .catch(error => {
+//     console.error(error);
+//   });
+// Initialize Firebase
+
+// const db = getDatabase();
+// const starCountRef = ref(db, '/user');
+// onValue(starCountRef, snapshot => {
+//   const data = snapshot.val();
+//   console.log(data);
+// });
+
+// const db = getDatabase();
+// const starCountRef = ref(db, 'posts/' + postId + '/starCount');
+// onValue(starCountRef, snapshot => {
+//   const data = snapshot.val();
+//   updateStarCount(postElement, data);
+// });
 const BASE_URL = 'https://api.themoviedb.org/3';
 const API_KEY = '76cbb606f190fc237086ec33f1fd98a3';
 const filmList = document.querySelector('.films__list');
