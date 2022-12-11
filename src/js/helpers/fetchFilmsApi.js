@@ -8,16 +8,27 @@ class FetchFilmsApi {
     this.#API_KEY = '76cbb606f190fc237086ec33f1fd98a3';
     this.page = 1;
   }
-  async fetchWithAllFilmsData({
-    typeFetch = 'trending',
-    mediaType = 'movie',
-    timeWindow = 'week',
-  }) {
+  async fetchWithAllFilmsData({ mediaType, timeWindow }) {
     const resp = await axios.get(
-      `${typeFetch}/${mediaType}/${timeWindow}?api_key=${this.#API_KEY} `,
+      `trending/${mediaType}/${timeWindow}?api_key=${this.#API_KEY} `,
       this.config
     );
+
     return resp;
+  }
+  async getAllFilmsData({ mediaType = 'movie', timeWindow = 'week' }) {
+    try {
+      const resp = await this.fetchWithAllFilmsData({
+        mediaType,
+        timeWindow,
+      });
+      console.log(resp.data, 'WTF????!!');
+      //
+      //
+      return resp;
+    } catch (err) {
+      console.log(err);
+    }
   }
   async fetchWithSearchFilmData({
     typeFetch = 'search',

@@ -1,14 +1,42 @@
-// import FetchFilmsApi from './js/helpers/fetchFilmsApi';
+import FetchFilmsApi from './js/helpers/fetchFilmsApi';
 import SpinneroOnLoadingApi from './js/helpers/spinnerApi';
 // import refsApiServ from './js/helpers/refsApiServ';
 // import RenderApi from './js/helpers/renderFuncApi';
-
 import './js/helpers/modals';
 import { BASE_URL, API_KEY } from './js/baseConsts';
 import onShowTrailer from './js/showTrailer';
 import axios from 'axios';
 import * as basicLightbox from 'basiclightbox';
 
+//
+//
+//
+
+//
+//
+//
+//
+//
+const fetchApi = new FetchFilmsApi();
+
+async function getData() {
+  const resp = await fetchApi.getAllFilmsData({
+    mediaType: 'movie',
+    timeWindow: 'week',
+  });
+
+  return resp;
+}
+
+console.log(getData());
+//
+
+//
+//
+//
+//
+
+//
 const spinnerOnMain = new SpinneroOnLoadingApi({
   options: { backgroundColor: '#000000', svgColor: '#FF6B08' },
 });
@@ -231,7 +259,7 @@ async function renderMarkup() {
 
   const films = await axios.get(`${BASE_URL}/trending/movie/day`, { params });
   totalPages = films.data.total_pages;
-  console.log(films.data.results);
+  // console.log(films.data.results);
 
   const markup = films.data.results
     .map(({ poster_path, title, genre_ids, release_date, id }) => {
