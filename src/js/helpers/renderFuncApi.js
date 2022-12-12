@@ -32,6 +32,11 @@ class RenderApi {
       )
       .join('');
   }
+  //1 - Enter your selector like: ".films-list",
+  //2 - Enter true or false to activate innerHtml before insertAdjacentHTML
+  //3- Enter innerHtml value for default use -  ''
+  //4 - Enter insertAdjecentHtml type for default use - 'beforeend'
+  //5 - Enter createMarkup function that already has been created and put into parameters data as you need! like: { createMarkypFunc:  createMoreFi lmDetails(fetchToFilmsData()) }
   renderMarkup({
     selector,
     innerHtml = false,
