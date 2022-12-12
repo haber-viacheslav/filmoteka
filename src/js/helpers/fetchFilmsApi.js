@@ -22,7 +22,6 @@ class FetchFilmsApi {
         mediaType,
         timeWindow,
       });
-      console.log(resp.data, 'WTF????!!');
       //
       //
       return resp;
@@ -30,21 +29,35 @@ class FetchFilmsApi {
       console.log(err);
     }
   }
-  async fetchWithSearchFilmData({
-    typeFetch = 'search',
-    mediaType = 'movie',
-    lang = 'en-US',
-    page = 1,
-    include_adult = false,
-  }) {
+  async fetchWithSearchFilmData({ mediaType, lang, page, include_adult }) {
     const resp = await axios.get(
-      `${typeFetch}/${mediaType}?api_key=${this.#API_KEY}&language=${lang}&${
+      `search/${mediaType}?api_key=${this.#API_KEY}&language=${lang}&${
         this.query
       }&page=${page}&include_adult=${include_adult}`,
       this.config
     );
     return resp;
   }
+
+  async getSearchFilmsData({
+    mediaType = 'movie',
+    lang = 'en-US',
+    page = 1,
+    include_adult = false,
+  }) {
+    try {
+      const resp = await this.fetchWithSearchFilmData({
+        mediaType,
+        lang,
+        page,
+        include_adult,
+      });
+      return resp;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   incrementPage({ step = 1 }) {
     this.page += step;
   }
