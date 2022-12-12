@@ -28,7 +28,6 @@ async function getData() {
   return resp;
 }
 
-console.log(getData());
 //
 
 //
@@ -257,9 +256,10 @@ async function renderMarkup() {
   const genresObj = await axios.get(`${BASE_URL}/genre/movie/list`, { params });
   const genres = genresObj.data.genres;
 
-  const films = await axios.get(`${BASE_URL}/trending/movie/day`, { params });
+  const films = await fetchApi.getAllFilmsData({});
+
   totalPages = films.data.total_pages;
-  // console.log(films.data.results);
+  console.log(films.data.results);
 
   const markup = films.data.results
     .map(({ poster_path, title, genre_ids, release_date, id }) => {

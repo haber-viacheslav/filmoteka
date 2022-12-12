@@ -16,7 +16,7 @@ class FetchFilmsApi {
 
     return resp;
   }
-  async getAllFilmsData({ mediaType = 'movie', timeWindow = 'week' }) {
+  async getAllFilmsData({ mediaType = 'movie', timeWindow = 'day' }) {
     try {
       const resp = await this.fetchWithAllFilmsData({
         mediaType,
