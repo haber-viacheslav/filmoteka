@@ -2,12 +2,13 @@ import axios from 'axios';
 
 class FetchFilmsApi {
   #API_KEY;
+  #totalPages;
   constructor(config = { baseURL: 'https://api.themoviedb.org/3/' }) {
     this.query = '';
     this.config = config;
     this.#API_KEY = '76cbb606f190fc237086ec33f1fd98a3';
     this.page = 1;
-    this;
+    this.#totalPages = null;
   }
   async fetchWithAllFilmsData({ mediaType, timeWindow }) {
     const resp = await axios.get(
@@ -44,7 +45,7 @@ class FetchFilmsApi {
   //
   async fetchGenresList({ mediaType, genreType, page }) {
     const resp = await axios.get(
-      `genres/${mediaType}/${genreType}?api_key=${this.#API_KEY}&${page}`,
+      `genre/${mediaType}/${genreType}?api_key=${this.#API_KEY}&page=${page}`,
       this.config
     );
     return resp;
@@ -93,6 +94,12 @@ class FetchFilmsApi {
   }
   set actualQuery(newQuery) {
     return (this.query = newQuery.trim());
+  }
+  get totalPages() {
+    return this.#totalPages;
+  }
+  set totalPages(newValue) {
+    this.#totalPages = newValue;
   }
 }
 // const api = new FetchFilmsApi();

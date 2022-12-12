@@ -1,46 +1,20 @@
-import FetchFilmsApi from './js/helpers/fetchFilmsApi';
 import SpinneroOnLoadingApi from './js/helpers/spinnerApi';
 // import refsApiServ from './js/helpers/refsApiServ';
-// import RenderApi from './js/helpers/renderFuncApi';
-import './js/helpers/modals';
+import './js/modals/modals';
 import { BASE_URL, API_KEY } from './js/baseConsts';
 import onShowTrailer from './js/showTrailer';
 import axios from 'axios';
 import * as basicLightbox from 'basiclightbox';
 
-//
-//
-//
+import { renderMarkup } from './js/main/renderMainMarkup';
 
-//
-//
-//
-//
-//
-const fetchApi = new FetchFilmsApi();
-
-async function getData() {
-  const resp = await fetchApi.getAllFilmsData({
-    mediaType: 'movie',
-    timeWindow: 'week',
-  });
-
-  return resp;
-}
-
-//
-
-//
-//
-//
-//
-
-//
 const spinnerOnMain = new SpinneroOnLoadingApi({
   options: { backgroundColor: '#000000', svgColor: '#FF6B08' },
 });
 const spinnerOnList = new SpinneroOnLoadingApi({});
 spinnerOnMain.enabled({ timeDelay: 12, delayAfterStop: 400 });
+
+renderMarkup();
 
 // Pagination
 const prevPage = document.querySelector('#prev');
@@ -244,62 +218,6 @@ function onShowNextPage(e) {
 }
 
 // renderMarkup
-
-renderMarkup();
-
-async function renderMarkup() {
-  const params = {
-    api_key: API_KEY,
-    page,
-  };
-
-  const genresObj = await axios.get(`${BASE_URL}/genre/movie/list`, { params });
-  const genres = genresObj.data.genres;
-
-  const films = await fetchApi.getAllFilmsData({});
-
-  totalPages = films.data.total_pages;
-  console.log(films.data.results);
-
-  const markup = films.data.results
-    .map(({ poster_path, title, genre_ids, release_date, id }) => {
-      let genreIsMany = null;
-      let maxGenreIds = genre_ids;
-
-      if (genre_ids.length > 2) {
-        genreIsMany = true;
-        maxGenreIds = genre_ids.slice(0, 2);
-      } else {
-        genreIsMany = false;
-      }
-
-      const ArrayGenresOfCurrentFilm = maxGenreIds.map(genre_id => {
-        return genres.find(oneGenre => oneGenre.id === genre_id);
-      });
-      let genresOfCurrentFilm = ArrayGenresOfCurrentFilm.map(
-        oneGenre => oneGenre.name
-      ).join(', ');
-
-      if (genreIsMany) {
-        genresOfCurrentFilm += ', Other';
-      }
-
-      const date = release_date.slice(0, 4);
-
-      return ` <li class="film">
-        <div class="film__thumb">
-          <img data-id='${id}' class="film__img" src="https://image.tmdb.org/t/p/w500/${poster_path}" alt="${title}" />
-        </div>
-        <div class="film__wrap">
-          <h2 class="film__title">${title}</h2>
-          <p class="film__genres">${genresOfCurrentFilm} | ${date}</p>
-        </div>
-      </li>`;
-    })
-    .join('');
-
-  filmList.innerHTML = markup;
-}
 
 //
 /**
