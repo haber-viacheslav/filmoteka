@@ -1,20 +1,17 @@
 import axios from 'axios';
 import * as basicLightbox from 'basiclightbox';
-import { BASE_URL, API_KEY } from './baseConsts';
+import RenderApi from './helpers/renderFuncApi';
+import FetchFilmsApi from './helpers/fetchFilmsApi';
+
+const fetchApi = new FetchFilmsApi();
+const renderApi = new RenderApi();
 
 export default async function onShowTrailer(e) {
   const idTrailer = e.currentTarget.dataset.id;
 
-  const params = {
-    api_key: API_KEY,
-  };
-
-  const showTrailersRequest = await axios.get(
-    `${BASE_URL}/movie/${idTrailer}/videos`,
-    {
-      params,
-    }
-  );
+  const showTrailersRequest = await fetchApi.getFilmTrailerById({
+    id: idTrailer,
+  });
 
   const showTrailers = showTrailersRequest.data.results;
 
@@ -41,9 +38,9 @@ export default async function onShowTrailer(e) {
 
   const trailer = findTrailer === undefined ? showTrailers[0] : findTrailer;
 
-  const instance = basicLightbox.create(`
-    <iframe class='film-modal__iframe' src="https://www.youtube.com/embed/${trailer.key}" frameborder="0"></iframe>
-`);
+  const instance = basicLightbox.create(
+    renderApi.createModalFilmTrailer(trailer.key)
+  );
 
   instance.show();
 

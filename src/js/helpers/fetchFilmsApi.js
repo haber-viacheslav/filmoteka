@@ -31,6 +31,48 @@ class FetchFilmsApi {
       console.log(err);
     }
   }
+  async fetchWithCurrentFilm({ mediaType, id }) {
+    const resp = await axios.get(
+      `${mediaType}/${id}?api_key=${this.#API_KEY} `,
+      this.config
+    );
+
+    return resp;
+  }
+  async getCurrentFilm({ mediaType = 'movie', id }) {
+    try {
+      const resp = await this.fetchWithCurrentFilm({
+        mediaType,
+        id,
+      });
+      //
+      //
+      return resp;
+    } catch (err) {
+      console.log(err);
+    }
+  }
+  async fetchFilmTrailerById({ mediaType, id }) {
+    const resp = await axios.get(
+      `${mediaType}/${id}/videos?api_key=${this.#API_KEY} `,
+      this.config
+    );
+
+    return resp;
+  }
+  async getFilmTrailerById({ mediaType = 'movie', id }) {
+    try {
+      const resp = await this.fetchFilmTrailerById({
+        mediaType,
+        id,
+      });
+      //
+      //
+      return resp;
+    } catch (err) {
+      console.log(err);
+    }
+  }
   async fetchWithSearchFilmData({ mediaType, lang, page, include_adult }) {
     const resp = await axios.get(
       `search/${mediaType}?api_key=${this.#API_KEY}&language=${lang}&${
