@@ -7,6 +7,7 @@ class FetchFilmsApi {
     this.config = config;
     this.#API_KEY = '76cbb606f190fc237086ec33f1fd98a3';
     this.page = 1;
+    this;
   }
   async fetchWithAllFilmsData({ mediaType, timeWindow }) {
     const resp = await axios.get(
@@ -38,6 +39,26 @@ class FetchFilmsApi {
     );
     return resp;
   }
+
+  //
+  //
+  async fetchGenresList({ mediaType, genreType, page }) {
+    const resp = await axios.get(
+      `genres/${mediaType}/${genreType}?api_key=${this.#API_KEY}&${page}`,
+      this.config
+    );
+    return resp;
+  }
+  //
+  async getGenresList({ mediaType = 'movie', genreType = 'list', page = '1' }) {
+    try {
+      const resp = await this.fetchGenresList({ mediaType, genreType, page });
+      return resp;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  //
 
   async getSearchFilmsData({
     mediaType = 'movie',
