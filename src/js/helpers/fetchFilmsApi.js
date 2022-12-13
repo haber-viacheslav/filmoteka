@@ -12,7 +12,9 @@ class FetchFilmsApi {
   }
   async fetchWithAllFilmsData({ mediaType, timeWindow }) {
     const resp = await axios.get(
-      `trending/${mediaType}/${timeWindow}?api_key=${this.#API_KEY} `,
+      `trending/${mediaType}/${timeWindow}?api_key=${this.#API_KEY}&page=${
+        this.page
+      }`,
       this.config
     );
 

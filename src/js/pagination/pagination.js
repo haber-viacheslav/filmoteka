@@ -21,12 +21,9 @@
 // https://www.cssscript.com/pagination-component-tui/
 // https://nhn.github.io/tui.pagination/latest/Pagination#getCurrentPage
 
-import { fetchApi } from '../..';
-import { renderApi } from '../..';
+import { fetchApi } from '../main';
 import { renderMarkup } from '../main/renderMainMarkup';
-
-let page = 1;
-let totalPages = null;
+import { spinnerOnList } from '../spinner/spinner';
 
 export function onShowPrevPage(e) {
   if (fetchApi.actualPage === 1) {
@@ -51,7 +48,7 @@ export function onShowPrevPage(e) {
 
   renderMarkup();
 
-  currentPage.innerHTML = page;
+  currentPage.innerHTML = fetchApi.actualPage;
   filmList.scrollIntoView({ behavior: 'smooth' });
 }
 
@@ -72,9 +69,9 @@ export function onShowNextPage(e) {
   }
 
   fetchApi.actualPage += 1;
-  // spinnerOnList.enabled({ timeDelay: 5, delayAfterStop: 200 });
+  spinnerOnList.enabled({ timeDelay: 5, delayAfterStop: 200 });
   renderMarkup();
 
-  currentPage.innerHTML = page;
+  currentPage.innerHTML = fetchApi.actualPage;
   filmList.scrollIntoView({ behavior: 'smooth' });
 }

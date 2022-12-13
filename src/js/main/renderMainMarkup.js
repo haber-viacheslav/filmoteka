@@ -1,5 +1,5 @@
-import { fetchApi } from '../..';
-import { renderApi } from '../..';
+import { fetchApi } from '../main';
+import { renderApi } from '../main';
 
 export async function renderMarkup() {
   const genresObj = await fetchApi.getGenresList({});
