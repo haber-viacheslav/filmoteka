@@ -2,26 +2,73 @@ import axios from 'axios';
 
 class FetchFilmsApi {
   #API_KEY;
+  #totalPages;
   constructor(config = { baseURL: 'https://api.themoviedb.org/3/' }) {
     this.query = '';
     this.config = config;
     this.#API_KEY = '76cbb606f190fc237086ec33f1fd98a3';
     this.page = 1;
-    this;
+    this.#totalPages = null;
   }
   async fetchWithAllFilmsData({ mediaType, timeWindow }) {
     const resp = await axios.get(
-      `trending/${mediaType}/${timeWindow}?api_key=${this.#API_KEY} `,
+      `trending/${mediaType}/${timeWindow}?api_key=${this.#API_KEY}&page=${
+        this.page
+      }`,
       this.config
     );
 
     return resp;
   }
-  async getAllFilmsData({ mediaType = 'movie', timeWindow = 'week' }) {
+  async getAllFilmsData({ mediaType = 'movie', timeWindow = 'day' }) {
     try {
       const resp = await this.fetchWithAllFilmsData({
         mediaType,
         timeWindow,
+      });
+
+      this.#totalPages = resp.data.total_pages;
+      //
+      //
+      return resp;
+    } catch (err) {
+      console.log(err);
+    }
+  }
+  async fetchWithCurrentFilm({ mediaType, id }) {
+    const resp = await axios.get(
+      `${mediaType}/${id}?api_key=${this.#API_KEY} `,
+      this.config
+    );
+
+    return resp;
+  }
+  async getCurrentFilm({ mediaType = 'movie', id }) {
+    try {
+      const resp = await this.fetchWithCurrentFilm({
+        mediaType,
+        id,
+      });
+      //
+      //
+      return resp;
+    } catch (err) {
+      console.log(err);
+    }
+  }
+  async fetchFilmTrailerById({ mediaType, id }) {
+    const resp = await axios.get(
+      `${mediaType}/${id}/videos?api_key=${this.#API_KEY} `,
+      this.config
+    );
+
+    return resp;
+  }
+  async getFilmTrailerById({ mediaType = 'movie', id }) {
+    try {
+      const resp = await this.fetchFilmTrailerById({
+        mediaType,
+        id,
       });
       //
       //
@@ -44,7 +91,7 @@ class FetchFilmsApi {
   //
   async fetchGenresList({ mediaType, genreType, page }) {
     const resp = await axios.get(
-      `genres/${mediaType}/${genreType}?api_key=${this.#API_KEY}&${page}`,
+      `genre/${mediaType}/${genreType}?api_key=${this.#API_KEY}&page=${page}`,
       this.config
     );
     return resp;
@@ -93,6 +140,12 @@ class FetchFilmsApi {
   }
   set actualQuery(newQuery) {
     return (this.query = newQuery.trim());
+  }
+  get totalPages() {
+    return this.#totalPages;
+  }
+  set totalPages(newValue) {
+    this.#totalPages = newValue;
   }
 }
 // const api = new FetchFilmsApi();
