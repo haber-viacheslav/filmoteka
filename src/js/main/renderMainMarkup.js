@@ -7,9 +7,6 @@ export async function renderMarkup() {
 
   const films = await fetchApi.getAllFilmsData({});
 
-  totalPages = films.data.total_pages;
-  console.log(films.data.results);
-
   const markup = renderApi.createFilmCardsMarkup(films.data.results, genres);
 
   renderApi.renderMarkup({
