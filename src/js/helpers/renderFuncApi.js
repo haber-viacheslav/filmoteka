@@ -119,6 +119,10 @@ class RenderApi {
     <iframe class='film-modal__iframe' src="https://www.youtube.com/embed/${key}" frameborder="0"></iframe>
 `;
   }
+  createModalWithoutFilmTrailer() {
+    return `<div class="empty"><p class='empty__text'>Sorry, but this film don't have trailer :(</p></div>
+    `;
+  }
   //1 - Enter your selector like: ".films-list",
   //2 - Enter true or false to activate innerHtml before insertAdjacentHTML
   //3- Enter innerHtml value for default use -  ''

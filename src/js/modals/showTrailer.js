@@ -1,7 +1,7 @@
-import axios from 'axios';
 import * as basicLightbox from 'basiclightbox';
-import RenderApi from './helpers/renderFuncApi';
-import FetchFilmsApi from './helpers/fetchFilmsApi';
+import RenderApi from '../helpers/renderFuncApi';
+import FetchFilmsApi from '../helpers/fetchFilmsApi';
+import { checkFilmTrailer } from '../checkers/filmTrailerChecker';
 
 const fetchApi = new FetchFilmsApi();
 const renderApi = new RenderApi();
@@ -16,9 +16,9 @@ export default async function onShowTrailer(e) {
   const showTrailers = showTrailersRequest.data.results;
 
   if (showTrailers.length === 0) {
-    const instance =
-      basicLightbox.create(`<div class="empty"><p class='empty__text'>Sorry, but this film don't have trailer :(</p></div>
-`);
+    const instance = basicLightbox.create(
+      renderApi.createModalWithoutFilmTrailer()
+    );
 
     instance.show();
 
@@ -31,12 +31,11 @@ export default async function onShowTrailer(e) {
 
       instance.close();
     }
+
     return;
   }
 
-  const findTrailer = showTrailers.find(video => video.type === 'Trailer');
-
-  const trailer = findTrailer === undefined ? showTrailers[0] : findTrailer;
+  const trailer = checkFilmTrailer(showTrailers);
 
   const instance = basicLightbox.create(
     renderApi.createModalFilmTrailer(trailer.key)

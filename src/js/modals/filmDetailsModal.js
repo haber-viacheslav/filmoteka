@@ -1,7 +1,7 @@
 import RenderApi from '../helpers/renderFuncApi';
 import FetchFilmsApi from '../helpers/fetchFilmsApi';
 import * as basicLightbox from 'basiclightbox';
-import onShowTrailer from '../showTrailer';
+import onShowTrailer from './showTrailer';
 import { checkFilmDetailes } from '../checkers/filmDetailesChecker';
 
 const fetchApi = new FetchFilmsApi();

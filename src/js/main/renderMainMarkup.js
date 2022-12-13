@@ -1,8 +1,5 @@
-import RenderApi from '../helpers/renderFuncApi';
-import FetchFilmsApi from '../helpers/fetchFilmsApi';
-
-const fetchApi = new FetchFilmsApi();
-const renderApi = new RenderApi();
+import { fetchApi } from '../..';
+import { renderApi } from '../..';
 
 export async function renderMarkup() {
   const genresObj = await fetchApi.getGenresList({});

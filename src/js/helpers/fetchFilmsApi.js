@@ -24,6 +24,8 @@ class FetchFilmsApi {
         mediaType,
         timeWindow,
       });
+
+      this.#totalPages = resp.data.total_pages;
       //
       //
       return resp;
