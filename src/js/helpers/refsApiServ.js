@@ -4,7 +4,6 @@ export const refs = {
   btnCloseRef: document.querySelector('[data-team-modal-close]'),
   body: document.querySelector('body'),
   teamModal: document.querySelector('[data-team-modal]'),
-  teamLinks: document.querySelectorAll('.team-modal__link'),
   // enter refs of elements you want
   // like this ---> inputEl: document.querySelector('.header__search-form')  (EXAMPLE!!!)
 };

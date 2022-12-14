@@ -19,9 +19,3 @@ function onModalKeydown(event) {
     onBtnToggle();
   }
 }
-for (const link of refs.teamLinks) {
-  link.addEventListener('click', onCancelTeamLink);
-}
-function onCancelTeamLink(e) {
-  e.preventDefault();
-}
