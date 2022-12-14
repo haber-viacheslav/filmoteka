@@ -79,7 +79,7 @@ class FetchFilmsApi {
   }
   async fetchWithSearchFilmData({ mediaType, lang, page, include_adult }) {
     const resp = await axios.get(
-      `search/${mediaType}?api_key=${this.#API_KEY}&language=${lang}&${
+      `search/${mediaType}?api_key=${this.#API_KEY}&language=${lang}&query=${
         this.query
       }&page=${page}&include_adult=${include_adult}`,
       this.config
