@@ -1,4 +1,4 @@
-import { refs } from '../helpers/refsApiServ';
+import { refs } from './refsApiServ';
 
 refs.btnOpenRef.addEventListener('click', onBtnToggle);
 refs.btnCloseRef.addEventListener('click', onBtnToggle);
