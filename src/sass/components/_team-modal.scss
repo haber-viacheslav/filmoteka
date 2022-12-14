@@ -1,0 +1,224 @@
+/* Backdrop */
+
+.backdrop {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: $backdrop;
+  opacity: 1;
+  transition: opacity $time-cubic visibility $time-cubic;
+  z-index: 100;
+  visibility: visible;
+  @media screen and (max-width: ($tablet - 0.02px)) {
+    overflow-y: scroll;
+    padding: 93px 15px;
+  }
+}
+
+.is-hidden {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.is-hidden .team-modal {
+  transform: translate(-50%, -50%) scale(0.1);
+  opacity: 0;
+}
+
+/* Modal */
+
+.team-modal {
+  position: absolute;
+  top: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 40px 20px;
+  transition: transform $time-cubic, opacity $time-cubic;
+  background: rgb(8, 13, 85);
+  border-radius: 15px;
+  box-shadow: $shadow-team-modal;
+  overflow: hidden;
+
+  @media screen and (min-width: $mobile) {
+    width: 90vw;
+    max-width: 400px;
+  }
+
+  @media screen and (min-width: $tablet) {
+    max-width: 740px;
+    width: 740px;
+    transform: translateX(-50%) scale(1);
+    padding: 20px 40px;
+  }
+
+  @media screen and (min-width: $desktop) {
+    width: 1024px;
+    max-width: 1024px;
+    padding: 20px 80px;
+  }
+}
+
+.team-modal__close-icon {
+  stroke: currentColor;
+}
+
+.team-modal__close-btn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  display: flex;
+  width: 32px;
+  height: 32px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  color: $black;
+  background-color: $white;
+  box-shadow: $shadow-team-modal;
+  transition: color $time-cubic, outline-color $time-cubic,
+    box-shadow $time-cubic, transform $time-cubic;
+  cursor: pointer;
+  outline-color: transparent;
+
+  &:hover,
+  &:focus {
+    color: $orange-button;
+    transform: scale(1.1);
+    box-shadow: rgba(226, 78, 15, 0.53) 0px 10px 20px,
+      rgba(255, 81, 0, 0.804) 0px 6px 6px;
+  }
+}
+
+.team-modal__header {
+  font-family: $team-font;
+  font-weight: 500;
+  font-size: 48px;
+  line-height: 1.23;
+  text-align: center;
+  color: #ff6b08;
+}
+
+.team-modal__list {
+  @extend %list;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  @media screen and (min-width: $tablet) {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
+
+// .team-modal__link {
+//   @extend %link;
+// }
+
+.team-modal__item {
+  @include flex-calc($indent, $elements: 1);
+  text-align: center;
+  transition: box-shadow $time-cubic;
+  background-color: $white;
+  border-radius: 0px 0px 4px 4px;
+  box-shadow: 0px 1px 3px rgba(255, 107, 1, 0.6),
+    0px 1px 1px rgba(255, 107, 8, 0.37), 0px 2px 1px rgba(255, 107, 1, 0.6);
+
+  @media screen and (min-width: $tablet) {
+    @include flex-calc($indent, $elements: 4);
+    width: 126px;
+  }
+
+  @media screen and (min-width: $desktop) {
+    max-width: 160px;
+  }
+}
+
+.team-modal__content-wrp {
+  display: flex;
+  flex-direction: column;
+  min-height: 100px;
+  gap: 6px;
+  align-items: center;
+  padding: 10px 20px 10px;
+
+  @media screen and (min-width: $tablet) {
+    padding: 4px 18px 10px 18px;
+  }
+}
+
+.team-modal__title {
+  margin-bottom: 12px;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.18;
+  text-align: center;
+  letter-spacing: 0.03em;
+  color: #212121;
+  @media screen and (min-width: $tablet) {
+    font-size: 14px;
+    margin-bottom: 0;
+    max-width: 82px;
+  }
+}
+
+.team-modal__descr {
+  margin-bottom: 12px;
+  flex-grow: 1;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.14;
+  text-align: center;
+  color: #545454;
+
+  @media screen and (min-width: $tablet) {
+    font-size: 10px;
+    margin-bottom: 0;
+  }
+}
+
+.social__items {
+  @extend %list;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  @media screen and (min-width: $tablet) {
+    gap: 8px;
+  }
+}
+
+.social__link {
+  @extend %link;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: $grey-social;
+  color: $grey;
+  transition: $transition color, $transition background-color,
+    $transition box-shadow;
+  @media screen and (min-width: $tablet) {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.social__icon {
+  fill: currentColor;
+  @media screen and (min-width: $tablet) {
+    width: 10px;
+    height: 10px;
+  }
+}
+
+.social__link:hover,
+.social__link:focus {
+  color: $white;
+  background-color: #ff6b01;
+  box-shadow: 0px 4px 4px rgba(255, 107, 1, 0.6);
+}

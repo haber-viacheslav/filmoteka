@@ -1,0 +1,39 @@
+.user-page {
+    background-size: cover;
+    // background: rgba(0, 0, 0, 0.56);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url('../images/background/sm/header-my-lib-sm@1x.jpg');
+
+    @media (min-device-pixel-ratio: 2),
+    (-webkit-min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+        background-image: url('../images/background/sm/header-my-lib-sm@2x.jpg');
+    }
+
+    @media screen and (min-width: $tablet) and (max-width: 1279px) {
+        height: 219px;
+        padding-top: 45px;
+        background-image: url('../images/background/md/header-my-lib-md@1x.jpg');
+
+        @media (min-device-pixel-ratio: 2),
+        (-webkit-min-device-pixel-ratio: 2),
+        (min-resolution: 192dpi),
+        (min-resolution: 2dppx) {
+            background-image: url('../images/background/md/header-my-lib-md@2x.jpg');
+        }
+    }
+
+    @media screen and (min-width:$desktop) {
+        height: 216px;
+        background-image: url('../images/background/lg/header-my-lib-lg@1x.jpg');
+
+        @media (min-device-pixel-ratio: 2),
+        (-webkit-min-device-pixel-ratio: 2),
+        (min-resolution: 192dpi),
+        (min-resolution: 2dppx) {
+            background-image: url('../images/background/lg/header-my-lib-lg@2x.jpg');
+        }
+    }
+}
