@@ -1,9 +1,9 @@
 export const refs = {
   btnOpenRef: document.querySelector('[data-modal-open]'),
   btnOpenUserRef: document.querySelector('[data-modal-open-user]'),
-  btnCloseRef: document.querySelector('[data-modal-close]'),
+  btnCloseRef: document.querySelector('[data-team-modal-close]'),
   body: document.querySelector('body'),
-  teamModal: document.querySelector('[data-modal]'),
+  teamModal: document.querySelector('[data-team-modal]'),
   teamLinks: document.querySelectorAll('.team-modal__link'),
   form: document.querySelector('.form'),
   searchError: document.querySelector('.form__text-error'),
