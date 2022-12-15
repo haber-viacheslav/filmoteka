@@ -102,6 +102,8 @@
 .pagination {
   margin: 10px 30px;
   user-select: none;
+
+  gap: 10px;
 }
 
 .page {
@@ -120,6 +122,23 @@
   border: 5px solid orange;
   font-size: 20px;
   font-weight: 600;
+}
+
+.numb,
+.dots {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: aquamarine;
+}
+
+.before-cur-page,
+.after-cur-page {
+  display: flex;
+  gap: 10px;
 }
 
 // Modal

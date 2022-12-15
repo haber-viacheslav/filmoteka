@@ -2,12 +2,28 @@
   <div class="container">
     <h1 class="films__title">Film list</h1>
 
-    <ul class="films__list flex"></ul>
-
     <div class="pagination flex">
-      <div class="page disabled" id="prev">Previous page</div>
+      <div class="page disabled" id="prev" data-id="prev">Previous page</div>
+
+      <div class="before-cur-page">
+        <!-- <div class="numb" id="first-page">1</div>
+        <div class="dots">...</div>
+        <div class="numb">3</div>
+        <div class="numb">4</div> -->
+      </div>
+
       <div class="current" id="curr">1</div>
-      <div class="page" id="next">Next page</div>
+
+      <div class="after-cur-page">
+        <!-- <div class="numb">6</div>
+        <div class="numb">7</div>
+        <div class="dots">...</div>
+        <div class="numb" id="last-page">9</div> -->
+      </div>
+
+      <div class="page" id="next" data-id="next">Next page</div>
     </div>
+
+    <ul class="films__list flex"></ul>
   </div>
 </section>

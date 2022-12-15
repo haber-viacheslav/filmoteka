@@ -7,6 +7,14 @@ export const refs = {
   teamLinks: document.querySelectorAll('.team-modal__link'),
   form: document.querySelector('.form'),
   searchError: document.querySelector('.form__text-error'),
+  pagRef: document.querySelector('.pagination'),
+  currentPage: document.querySelector('#curr'),
+  nextPage: document.querySelector('#next'),
+  prevPage: document.querySelector('#prev'),
+  firstPage: document.querySelector('#first-page'),
+  lastPage: document.querySelector('#last-page'),
+  beforeCurPageContainer: document.querySelector('.before-cur-page'),
+  afterCurPageContainer: document.querySelector('.after-cur-page'),
   // enter refs of elements you want
   // like this ---> inputEl: document.querySelector('.header__search-form')  (EXAMPLE!!!)
 };
