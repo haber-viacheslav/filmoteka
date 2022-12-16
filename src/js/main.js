@@ -1,7 +1,7 @@
+import './backend'
 import FetchFilmsApi from './helpers/fetchFilmsApi';
 import RenderApi from './helpers/renderFuncApi';
 import searchMovie from './main/searchMovie';
-
 import { spinnerOnMain } from './spinner/spinner';
 import { onShowPrevPage } from './pagination/pagination';
 import { onShowNextPage } from './pagination/pagination';
