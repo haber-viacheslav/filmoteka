@@ -99,36 +99,128 @@
   }
 }
 
+// Pagination
 .pagination {
-  margin: 10px 30px;
   user-select: none;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @media screen and (min-width: $tablet) {
+    max-width: 450px;
+    margin: 0 auto;
+  }
 }
 
 .page {
-  padding: 20px;
-  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 2px solid $grey-social;
+  background: $grey-social;
+  border-radius: 5px;
+  transition-duration: 0.4s;
+
+  &:hover,
+  &:focus,
+  &:active {
+    cursor: pointer;
+    background-color: $white;
+  }
 }
 
 .page.disabled {
-  cursor: not-allowed;
   color: grey;
+
+  &:hover,
+  &:focus,
+  &:active {
+    cursor: not-allowed;
+    background-color: $grey-social;
+  }
 }
 
 .current {
-  padding: 10px 20px;
-  border-radius: 50px;
-  border: 5px solid orange;
-  font-size: 20px;
-  font-weight: 600;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: $orange;
+  border-radius: 5px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+
+  color: $white;
+}
+
+.numb {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 8px;
+
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+
+  &--first-page,
+  &--last-page {
+    @media screen and (max-width: 767px) {
+      display: none;
+    }
+  }
+
+  &:hover,
+  &:focus,
+  &:active {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+
+  &--blank:hover,
+  &--blank:focus,
+  &--blank:active {
+    cursor: default;
+    text-decoration: none;
+  }
+}
+
+.dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 8px;
+
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
+}
+
+.before-cur-page,
+.after-cur-page {
+  display: flex;
+  justify-content: center;
+
+  min-width: 46px;
+
+  @media screen and (min-width: $tablet) {
+    min-width: 152px;
+  }
 }
 
 // Modal
-.test-btn {
-  background-color: red;
-  width: 200px;
-  height: 100px;
-}
-
 .basicLightbox {
   overflow-y: scroll;
   align-items: flex-start;
