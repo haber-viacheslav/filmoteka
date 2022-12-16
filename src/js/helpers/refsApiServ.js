@@ -7,6 +7,9 @@ export const refs = {
   teamLinks: document.querySelectorAll('.team-modal__link'),
   form: document.querySelector('.form'),
   searchError: document.querySelector('.form__text-error'),
+  themeBtnRef: document.querySelector('.theme-btn'),
+  lightIconRef: document.querySelector('.theme-light'),
+  darkIconRef: document.querySelector('.theme-dark'),
   // enter refs of elements you want
   // like this ---> inputEl: document.querySelector('.header__search-form')  (EXAMPLE!!!)
 };
