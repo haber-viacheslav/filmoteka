@@ -263,3 +263,193 @@
   background-color: #ff6b01;
   box-shadow: 0px 4px 4px rgba(255, 107, 1, 0.6);
 }
+
+$quantity: 15;
+
+.firefly {
+  position: fixed;
+  top: 1%;
+  left: 50%;
+  width: 0.4vw;
+  height: 0.4vw;
+  margin: -0.2vw 0 0 9.8vw;
+  animation: drift ease 5000s alternate infinite;
+  pointer-events: none;
+
+  @media screen and (min-width: 768px) {
+    top: 50%;
+  }
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    transform-origin: -100vw;
+  }
+
+  &::before {
+    background: blueviolet;
+    opacity: 0.4;
+    animation: drift ease alternate infinite, pulsing 500ms infinite,
+      flash ease infinite;
+  }
+
+  &::after {
+    background: white;
+    opacity: 0;
+    box-shadow: 0 0 0vw 0vw yellow;
+    animation: drift ease alternate infinite, pulsing 500ms infinite,
+      flash ease infinite;
+  }
+}
+// Randomize Fireflies Motion
+@for $i from 1 through $quantity {
+  $steps: random(10) + 4;
+  $rotationSpeed: random(15) + 10s;
+
+  .firefly:nth-child(#{$i}) {
+    animation-name: move#{$i};
+
+    &::before {
+      animation-duration: #{$rotationSpeed};
+    }
+
+    &::after {
+      animation-duration: #{$rotationSpeed}, random(6000) + 5000ms;
+      animation-delay: 0ms, random(8000) + 5000ms;
+    }
+  }
+
+  @keyframes move#{$i} {
+    @for $step from 0 through $steps {
+      0% {
+        transform: translateX(random(100) - 50)
+          translateY(random(100) - 50)
+          scale(calc(random(75) / 100 + 0.25));
+      }
+      10% {
+        transform: translateX(random(100) - 50)
+          translateY(random(100) - 50)
+          scale(calc(random(75) / 100 + 0.25));
+      }
+      15% {
+        transform: translateX(random(100) - 50)
+          translateY(random(100) - 50)
+          scale(calc(random(75) / 100 + 0.25));
+      }
+      20% {
+        transform: translateX(random(100) - 50)
+          translateY(random(100) - 50)
+          scale(calc(random(75) / 100 + 0.25));
+      }
+      30% {
+        transform: translateX(random(100) - 50)
+          translateY(random(100) - 50)
+          scale(calc(random(75) / 100 + 0.25));
+      }
+      40% {
+        transform: translateX(random(100) - 50)
+          translateY(random(100) - 50)
+          scale(calc(random(75) / 100 + 0.25));
+      }
+      50% {
+        transform: translateX(random(100) - 50)
+          translateY(random(100) - 50)
+          scale(calc(random(75) / 100 + 0.25));
+      }
+      55% {
+        transform: translateX(random(100) - 50)
+          translateY(random(100) - 50)
+          scale(calc(random(75) / 100 + 0.25));
+      }
+      60% {
+        transform: translateX(random(100) - 50)
+          translateY(random(100) - 50)
+          scale(calc(random(75) / 100 + 0.25));
+      }
+      65% {
+        transform: translateX(random(100) - 50)
+          translateY(random(100) - 50)
+          scale(calc(random(75) / 100 + 0.25));
+      }
+      70% {
+        transform: translateX(random(100) - 50)
+          translateY(random(100) - 50)
+          scale(calc(random(75) / 100 + 0.25));
+      }
+      75% {
+        transform: translateX(random(100) - 50)
+          translateY(random(100) - 50)
+          scale(calc(random(75) / 100 + 0.25));
+      }
+      80% {
+        transform: translateX(random(100) - 50)
+          translateY(random(100) - 50)
+          scale(calc(random(75) / 100 + 0.25));
+      }
+      85% {
+        transform: translateX(random(100) - 50)
+          translateY(random(100) - 50)
+          scale(calc(random(75) / 100 + 0.25));
+      }
+      90% {
+        transform: translateX(random(100) - 50)
+          translateY(random(100) - 50)
+          scale(calc(random(75) / 100 + 0.25));
+      }
+      95% {
+        transform: translateX(random(100) - 50)
+          translateY(random(100) - 50)
+          scale(calc(random(75) / 100 + 0.25));
+      }
+      100% {
+        transform: translateX(random(100) - 50)
+          translateY(random(100) - 50)
+          scale(calc(random(75) / 100 + 0.25));
+      }
+    }
+  }
+}
+
+@keyframes pulsing {
+  0% {
+    -webkit-transform: scale(0.5, 0.5);
+    transform: scale(0.5, 0.5);
+  }
+  50% {
+    -webkit-transform: scale(1, 1);
+    transform: scale(1, 1);
+  }
+  100% {
+    -webkit-transform: scale(0.5, 0.5);
+    transform: scale(0.5, 0.5);
+  }
+}
+
+@keyframes drift {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes flash {
+  0%,
+  30%,
+  100% {
+    opacity: 0;
+    box-shadow: 0 0 0vw 0vw $yellow;
+  }
+
+  5%,
+  85% {
+    opacity: 1;
+    box-shadow: 0 0 2vw 0.4vw $yellow;
+  }
+}
