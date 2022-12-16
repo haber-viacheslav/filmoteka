@@ -8,7 +8,7 @@
   width: 100vw;
   background-color: $backdrop;
   opacity: 1;
-  transition: opacity $time-cubic visibility $time-cubic;
+
   z-index: 100;
   visibility: visible;
   @media screen and (max-width: ($tablet - 0.02px)) {
@@ -18,12 +18,14 @@
 }
 
 .is-hidden {
+  transition: transform $time-cubic, opacity $time-cubic;
   visibility: hidden;
   opacity: 0;
   pointer-events: none;
 }
 
 .is-hidden .team-modal {
+  transition: opacity $time-cubic, transform $time-cubic;
   transform: translate(-50%, -50%) scale(0.1);
   opacity: 0;
 }
@@ -32,9 +34,9 @@
 
 .team-modal {
   position: absolute;
-  top: 60px;
+  top: 20px;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-50%) scale(1);
   padding: 40px 20px;
   transition: transform $time-cubic, opacity $time-cubic;
   background: rgb(8, 13, 85);
@@ -50,7 +52,7 @@
   @media screen and (min-width: $tablet) {
     max-width: 740px;
     width: 740px;
-    transform: translateX(-50%) scale(1);
+
     padding: 20px 40px;
   }
 
@@ -113,15 +115,13 @@
   }
 }
 
-// .team-modal__link {
-//   @extend %link;
-// }
-
 .team-modal__item {
+  position: relative;
+  overflow: hidden;
   @include flex-calc($indent, $elements: 1);
   text-align: center;
   transition: box-shadow $time-cubic;
-  background-color: $white;
+
   border-radius: 0px 0px 4px 4px;
   box-shadow: 0px 1px 3px rgba(255, 107, 1, 0.6),
     0px 1px 1px rgba(255, 107, 8, 0.37), 0px 2px 1px rgba(255, 107, 1, 0.6);
@@ -136,43 +136,84 @@
   }
 }
 
+.team-modal__link {
+  @extend %link;
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow 300ms;
+  &:hover,
+  &:focus {
+    // filter: brightness(0.75) saturate(1.2) contrast(0.85);
+    box-shadow: $shadow-team-member;
+  }
+}
+
+// .team-modal__img {
+
+// }
+
 .team-modal__content-wrp {
+  background-color: rgba(255, 94, 41, 0.82);
+  position: absolute;
+  width: 100%;
+  height: 60%;
+  opacity: 0;
+
+  transform: translateY(0);
   display: flex;
   flex-direction: column;
-  min-height: 100px;
-  gap: 6px;
+  min-height: 88px;
+  gap: 2px;
   align-items: center;
   padding: 10px 20px 10px;
+
+  transition: opacity 500ms, transform 500ms;
 
   @media screen and (min-width: $tablet) {
     padding: 4px 18px 10px 18px;
   }
+  .team-modal__link:hover + &,
+  .team-modal__link:hover + & {
+    transform: translateY(-100%);
+    opacity: 1;
+  }
+  &:hover,
+  &:focus {
+    transform: translateY(-100%);
+    opacity: 1;
+  }
 }
 
 .team-modal__title {
+  font-family: $team-font;
   margin-bottom: 12px;
   font-weight: 500;
   font-size: 20px;
   line-height: 1.18;
   text-align: center;
   letter-spacing: 0.03em;
-  color: #212121;
+  color: $white;
   @media screen and (min-width: $tablet) {
     font-size: 14px;
     margin-bottom: 0;
     max-width: 82px;
   }
 }
+.team-modal__title.small-title {
+  @media screen and (min-width: $tablet) {
+    max-width: 68px;
+  }
+}
 
 .team-modal__descr {
+  font-family: $team-font;
   margin-bottom: 12px;
   flex-grow: 1;
   font-weight: 500;
   font-size: 16px;
   line-height: 1.14;
   text-align: center;
-  color: #545454;
-
+  color: $grey-footer-background;
   @media screen and (min-width: $tablet) {
     font-size: 10px;
     margin-bottom: 0;
