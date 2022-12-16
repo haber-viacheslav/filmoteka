@@ -1,17 +1,53 @@
-// @keyframes pulsing {
-//   0% {
-//     -webkit-transform: scale(0.5, 0.5);
-//     transform: scale(0.5, 0.5)
-//   }
-//   50% {
-//     -webkit-transform: scale(1.0, 1.0);
-//     transform: scale(1.0, 1.0);
-//   }
-//   100% {
-//     -webkit-transform: scale(0.5, 0.5);
-//     transform: scale(0.5, 0.5);
-//   }
-// }
+@keyframes pulsing {
+  0% {
+    -webkit-transform: scale(0.5, 0.5);
+    transform: scale(0.5, 0.5);
+  }
+  50% {
+    -webkit-transform: scale(1, 1);
+    transform: scale(1, 1);
+  }
+  100% {
+    -webkit-transform: scale(0.5, 0.5);
+    transform: scale(0.5, 0.5);
+  }
+}
+
+@keyframes cloud {
+  0% {
+    background-position: 0 0, 80px 10px, -26px -70px;
+  }
+  20% {
+    background-position: 200px 0, 80px 10px, -26px -70px;
+  }
+  40% {
+    background-position: 400px 0, 80px 10px, -26px -70px;
+  }
+  60% {
+    background-position: 600px 0, 80px 10px, -26px -70px;
+  }
+  100% {
+    background-position: 800px 0, 80px 10px, -26px -70px;
+  }
+}
+
+@keyframes witch {
+  0% {
+    background-position: 0 0, 80px 10px, -26px -70px;
+  }
+  20% {
+    background-position: 200px 0, 80px 40px, -26px -70px;
+  }
+  40% {
+    background-position: 400px 0, 80px 20px, -26px -70px;
+  }
+  60% {
+    background-position: 600px 0, 80px 40px, -26px -70px;
+  }
+  100% {
+    background-position: 800px 0, 80px 10px, -26px -70px;
+  }
+}
 
 // @keyframes drift {
 //   0% {

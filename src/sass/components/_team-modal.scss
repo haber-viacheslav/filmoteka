@@ -34,12 +34,14 @@
 
 .team-modal {
   background-color: rgb(8, 13, 85);
-  background-image: url('../images/background/modal/moon@1x.webp'),
-    url('../images/background/modal/cloud@1x.webp'),
-    url('../images/background/modal/witch@1x.webp');
-  background-size: 153px 153px, 381px 240px, 72px 47px;
-  background-position: 0 -15, 0 0, 0 0;
-  background-repeat: no-repeat, repeat-x, no-repeat;
+  background-image: url('../images/background/modal/cloud@1x.webp'),
+    url('../images/background/modal/witch@1x.webp'),
+    url('../images/background/modal/moon@1x.webp');
+  background-size: 381px 240px, 72px 47px, 200px 200x;
+  background-position: 0 -15, 0 0, 50px 50px;
+  background-repeat: repeat-x, no-repeat, no-repeat;
+  background-attachment: scroll;
+  animation: cloud 80s infinite linear, witch 30s infinite linear;
   position: absolute;
   top: 20px;
   left: 50%;
@@ -52,9 +54,9 @@
   @media (min-device-pixel-ratio: 2),
     (min-resolution: 192dpi),
     (min-resolution: 2dppx) {
-    background-image: url(../images/background/modal/moon@2x.webp),
-      url(../images/background/modal/cloud@2x.webp),
-      url(../images/background/modal/witch@2x.webp);
+    background-image: url(../images/background/modal/cloud@2x.webp),
+      url(../images/background/modal/witch@2x.webp),
+      url(../images/background/modal/moon@2x.webp);
   }
 
   @media screen and (min-width: $tablet) {
