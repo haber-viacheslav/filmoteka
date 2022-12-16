@@ -9,14 +9,23 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 60px;
-  height: 60px;
+  width: 40px;
+  height: 40px;
   opacity: 1;
   transition: $transition opacity;
 
   &--hidden {
     opacity: 0;
     transition: $transition;
+  }
+  @media screen and (min-width: $tablet) {
+    width: 50px;
+    height: 50px;
+  }
+
+  @media screen and (min-width: $desktop) {
+    width: 60px;
+    margin-top: 60px;
   }
 }
 
@@ -28,7 +37,7 @@
   height: 60px;
   fill: $grey;
   &:hover {
-    fill: $black;
+    fill: $orange;
     transition: $transition fill;
   }
 }
