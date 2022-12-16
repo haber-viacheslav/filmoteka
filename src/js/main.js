@@ -3,8 +3,6 @@ import RenderApi from './helpers/renderFuncApi';
 import searchMovie from './main/searchMovie';
 
 import { spinnerOnMain } from './spinner/spinner';
-// import { onShowPrevPage } from './pagination/pagination';
-// import { onShowNextPage } from './pagination/pagination';
 import { renderMarkup } from './main/renderMainMarkup';
 import { onShowFilmModal } from './modals/filmDetailsModal';
 import { refs } from './helpers/refsApiServ';
@@ -15,7 +13,7 @@ export const fetchApi = new FetchFilmsApi();
 export const renderApi = new RenderApi();
 
 // First render
-// spinnerOnMain.enabled({ timeDelay: 12, delayAfterStop: 400 });
+spinnerOnMain.enabled({ timeDelay: 12, delayAfterStop: 400 });
 renderMarkup();
 
 // Modal film
@@ -24,8 +22,3 @@ filmList.addEventListener('click', onShowFilmModal);
 
 // Pagination
 refs.pagRef.addEventListener('click', onCreatePagination);
-// const prevPage = document.querySelector('#prev');
-// const nextPage = document.querySelector('#next');
-
-// prevPage.addEventListener('click', onShowPrevPage);
-// nextPage.addEventListener('click', onShowNextPage);
