@@ -1,5 +1,6 @@
 import { fetchApi } from '../main';
 import { renderApi } from '../main';
+import { createPages } from '../pagination/createPages';
 
 export async function renderMarkup() {
   const genresObj = await fetchApi.getGenresList({});
@@ -14,4 +15,6 @@ export async function renderMarkup() {
     innerHtml: true,
     createMarkypFunc: markup,
   });
+
+  createPages(fetchApi.actualPage, fetchApi.totalPages);
 }

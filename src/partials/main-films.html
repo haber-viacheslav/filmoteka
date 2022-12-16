@@ -2,12 +2,24 @@
   <div class="container">
     <h1 class="films__title">Film list</h1>
 
-    <ul class="films__list flex"></ul>
+    <ul class="films__list flex">
+      <!-- Дані приходять з js -->
+    </ul>
 
-    <div class="pagination flex">
-      <div class="page disabled" id="prev">Previous page</div>
+    <div class="pagination">
+      <div class="page disabled" id="prev" data-id="prev">Prev</div>
+
+      <div class="before-cur-page">
+        <!-- Дані приходять з js -->
+      </div>
+
       <div class="current" id="curr">1</div>
-      <div class="page" id="next">Next page</div>
+
+      <div class="after-cur-page">
+        <!-- Дані приходять з js -->
+      </div>
+
+      <div class="page" id="next" data-id="next">Next</div>
     </div>
   </div>
 </section>
