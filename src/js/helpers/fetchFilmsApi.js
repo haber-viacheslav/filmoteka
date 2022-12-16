@@ -1,12 +1,14 @@
 import axios from 'axios';
 
 class FetchFilmsApi {
+
   #API_KEY;
   #totalPages;
   constructor(config = { baseURL: 'https://api.themoviedb.org/3/' }) {
     this.query = '';
     this.config = config;
     this.#API_KEY = '76cbb606f190fc237086ec33f1fd98a3';
+
     this.page = 1;
     this.#totalPages = null;
   }
@@ -20,6 +22,7 @@ class FetchFilmsApi {
 
     return resp;
   }
+
   async getAllFilmsData({ mediaType = 'movie', timeWindow = 'day' }) {
     try {
       const resp = await this.fetchWithAllFilmsData({
@@ -84,6 +87,7 @@ class FetchFilmsApi {
       }&page=${page}&include_adult=${include_adult}`,
       this.config
     );
+
     return resp;
   }
 

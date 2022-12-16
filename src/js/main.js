@@ -1,13 +1,14 @@
+import './backend'
 import FetchFilmsApi from './helpers/fetchFilmsApi';
 import RenderApi from './helpers/renderFuncApi';
 import searchMovie from './main/searchMovie';
-
 import { spinnerOnMain } from './spinner/spinner';
-import { onShowPrevPage } from './pagination/pagination';
-import { onShowNextPage } from './pagination/pagination';
 import { renderMarkup } from './main/renderMainMarkup';
 import { onShowFilmModal } from './modals/filmDetailsModal';
+import { refs } from './helpers/refsApiServ';
+import { onCreatePagination } from './pagination/pagination';
 import {onScroll, onScrollToTopBtn, onScrollToDownBtn} from './helpers/btnScroll'
+import { themeChange } from './helpers/changeTheme';
 // Class
 export const fetchApi = new FetchFilmsApi();
 export const renderApi = new RenderApi();
@@ -17,17 +18,8 @@ spinnerOnMain.enabled({ timeDelay: 12, delayAfterStop: 400 });
 renderMarkup();
 
 // Modal film
-const filmList = document.querySelector('.films__list');
-filmList.addEventListener('click', onShowFilmModal);
+refs.filmList.addEventListener('click', onShowFilmModal);
 
 // Pagination
-const prevPage = document.querySelector('#prev');
-const nextPage = document.querySelector('#next');
+refs.pagRef.addEventListener('click', onCreatePagination);
 
-prevPage.addEventListener('click', onShowPrevPage);
-nextPage.addEventListener('click', onShowNextPage);
-
-// Scroll btn
-onScroll()
-onScrollToTopBtn()
-onScrollToDownBtn()
