@@ -8,6 +8,7 @@ import { onShowFilmModal } from './modals/filmDetailsModal';
 import { refs } from './helpers/refsApiServ';
 import { onCreatePagination } from './pagination/pagination';
 
+import { themeChange } from './helpers/changeTheme';
 // Class
 export const fetchApi = new FetchFilmsApi();
 export const renderApi = new RenderApi();
@@ -17,8 +18,7 @@ spinnerOnMain.enabled({ timeDelay: 12, delayAfterStop: 400 });
 renderMarkup();
 
 // Modal film
-const filmList = document.querySelector('.films__list');
-filmList.addEventListener('click', onShowFilmModal);
+refs.filmList.addEventListener('click', onShowFilmModal);
 
 // Pagination
 refs.pagRef.addEventListener('click', onCreatePagination);

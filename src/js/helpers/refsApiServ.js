@@ -15,6 +15,10 @@ export const refs = {
   lastPage: document.querySelector('#last-page'),
   beforeCurPageContainer: document.querySelector('.before-cur-page'),
   afterCurPageContainer: document.querySelector('.after-cur-page'),
+  themeBtnRef: document.querySelector('.theme-btn'),
+  lightIconRef: document.querySelector('.theme-light'),
+  darkIconRef: document.querySelector('.theme-dark'),
+  filmList: document.querySelector('.films__list'),
   // enter refs of elements you want
   // like this ---> inputEl: document.querySelector('.header__search-form')  (EXAMPLE!!!)
 };
