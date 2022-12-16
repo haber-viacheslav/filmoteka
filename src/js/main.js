@@ -7,6 +7,7 @@ import { onShowPrevPage } from './pagination/pagination';
 import { onShowNextPage } from './pagination/pagination';
 import { renderMarkup } from './main/renderMainMarkup';
 import { onShowFilmModal } from './modals/filmDetailsModal';
+import { themeChange } from './helpers/changeTheme';
 // Class
 export const fetchApi = new FetchFilmsApi();
 export const renderApi = new RenderApi();
