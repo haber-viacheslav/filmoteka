@@ -129,6 +129,33 @@
   }
 }
 
+.team-modal__close-btn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  display: flex;
+  width: 32px;
+  height: 32px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  color: $black;
+  background-color: $white;
+  box-shadow: $shadow-team-modal;
+  transition: color $time-cubic, outline-color $time-cubic,
+    box-shadow $time-cubic, transform $time-cubic;
+  cursor: pointer;
+  outline-color: transparent;
+
+  &:hover,
+  &:focus {
+    color: $orange-button;
+    transform: scale(1.1);
+    box-shadow: rgba(226, 78, 15, 0.53) 0px 10px 20px,
+      rgba(255, 81, 0, 0.804) 0px 6px 6px;
+  }
+}
+
 .team-modal__header {
   font-family: $team-font;
   font-weight: 500;
