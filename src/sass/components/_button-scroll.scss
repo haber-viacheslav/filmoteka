@@ -1,0 +1,34 @@
+.btn__up,
+.btn__down {
+  position: fixed;
+  right: 20px;
+  bottom: 80px;
+  border-radius: 8px;
+  border-top-right-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  opacity: 1;
+  transition: $transition opacity;
+
+  &--hidden {
+    opacity: 0;
+    transition: $transition;
+  }
+}
+
+.btn__down {
+  bottom: 20px;
+}
+
+.icon__arrow {
+  height: 60px;
+  fill: $grey;
+  &:hover {
+    fill: $black;
+    transition: $transition fill;
+  }
+}

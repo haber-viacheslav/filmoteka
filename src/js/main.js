@@ -7,6 +7,7 @@ import { onShowPrevPage } from './pagination/pagination';
 import { onShowNextPage } from './pagination/pagination';
 import { renderMarkup } from './main/renderMainMarkup';
 import { onShowFilmModal } from './modals/filmDetailsModal';
+import {onScroll, onScrollToTopBtn, onScrollToDownBtn} from './helpers/btnScroll'
 // Class
 export const fetchApi = new FetchFilmsApi();
 export const renderApi = new RenderApi();
@@ -25,3 +26,8 @@ const nextPage = document.querySelector('#next');
 
 prevPage.addEventListener('click', onShowPrevPage);
 nextPage.addEventListener('click', onShowNextPage);
+
+// Scroll btn
+onScroll()
+onScrollToTopBtn()
+onScrollToDownBtn()
