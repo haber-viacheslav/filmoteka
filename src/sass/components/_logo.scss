@@ -1,17 +1,65 @@
-
-.logo{
-    @extend %link;
-    width: 175px;
-    height: 35px;
+.logo {
+  @extend %link;
+  width: 175px;
+  height: 35px;
 }
 
-.logo__title{
-    color: $white;
-    font-size: 30px;
-    font-weight: 500;
-    line-height: 1.16;
-    margin-left: 10px;
-    @media screen and (max-width: 767px) {
+.logo__title {
+  color: $white;
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 1.16;
+  margin-left: 10px;
+  &:hover,
+  &:focus {
+    color: $red;
+    transition: 250ms cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  }
+  @media screen and (max-width: 767px) {
     display: none;
-    }
+  }
+}
+
+.logo__icon {
+  width: 25px;
+  height: 25px;
+  &:hover {
+    transition: 250ms cubic-bezier(0.455, 0.03, 0.515, 0.955);
+
+    transform: rotate(180deg) scale(150%);
+  }
+}
+.waviy {
+  position: relative;
+  -webkit-box-reflect: below -30px linear-gradient(transparent, rgba(0, 0, 0, 0.092));
+  font-size: 0px;
+}
+.waviy span {
+  font-size: 30px;
+
+  position: relative;
+  display: inline-block;
+  color: rgb(255, 255, 255);
+  animation: waviy 1s backwards;
+  animation-delay: calc(0.1s * var(--i));
+  transition: transform 200ms ease-in-out;
+
+  &:hover,
+  &:focus {
+    color: $red;
+    -webkit-transform: rotateZ(10deg);
+    -ms-transform: rotateZ(10deg);
+    transform: rotateZ(10deg);
+    scale: 1.1;
+  }
+}
+@keyframes waviy {
+  0%,
+  40%,
+  50% {
+    transform: translateY(0);
+  }
+  20% {
+    transform: translateY(-25px);
+  }
 }
