@@ -19,6 +19,10 @@ export const refs = {
   lightIconRef: document.querySelector('.theme-light'),
   darkIconRef: document.querySelector('.theme-dark'),
   filmList: document.querySelector('.films__list'),
+  btnScrollTopRef: document.querySelector('.btn__up'),
+  btnScrollDownRef: document.querySelector('.btn__down'),
+  footerRef: document.querySelector('.footer'),
+
   // enter refs of elements you want
   // like this ---> inputEl: document.querySelector('.header__search-form')  (EXAMPLE!!!)
 };
