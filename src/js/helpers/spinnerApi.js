@@ -17,6 +17,7 @@ class SpinneroOnLoadingApi {
     this.percentageLoading(timeDelay, delayAfterStop);
   }
   disabled(delayAfterStop) {
+    Loading.change('Ready!');
     clearInterval(this.intervalId);
     Loading.remove(delayAfterStop);
   }

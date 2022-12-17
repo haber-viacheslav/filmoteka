@@ -1,9 +1,9 @@
 import { spinnerOnMain } from '../spinner/spinner';
 
-export function checkLoadPageStatus() {
-  spinnerOnMain.enabled({ timeDelay: 20, delayAfterStop: 400 });
-  document.addEventListener('DOMContentLoaded', () =>
-    spinnerOnMain.disabled(400)
-  );
+export function checkLoadPageStatus({ delayAfterStop = 400 }) {
+  document.addEventListener('DOMContentLoaded', () => {
+    console.log('ready');
+    spinnerOnMain.disabled(delayAfterStop);
+  });
   return;
 }
