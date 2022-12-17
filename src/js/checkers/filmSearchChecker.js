@@ -13,7 +13,10 @@ export default function getFilmSearchCheck(value) {
 
 export function getErrMessage({ addMessage }) {
   if (!addMessage) {
-    return refs.searchError.classList.add('is-hidden');
+    const clearMessage = () => {
+      refs.searchError.classList.add('is-hidden');
+    };
+    return setTimeout(clearMessage, 3000);
   }
   return refs.searchError.classList.remove('is-hidden');
 }
