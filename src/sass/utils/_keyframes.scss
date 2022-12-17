@@ -13,39 +13,44 @@
   }
 }
 
-@keyframes cloud {
+@keyframes view-port-320 {
   0% {
-    background-position: 0 0, 80px 10px, -26px -70px;
+    background-position: 0 0, -120px 60px, 200px -60px;
   }
-  20% {
-    background-position: 200px 0, 80px 10px, -26px -70px;
-  }
-  40% {
-    background-position: 400px 0, 80px 10px, -26px -70px;
+  30% {
+    background-position: 200px 0, 0px 10px, 100px -60px;
   }
   60% {
-    background-position: 600px 0, 80px 10px, -26px -70px;
+    background-position: 300px 0, 100px 10px, 0px -60px;
+  }
+  80% {
+    background-position: 400px 0, 250px -60px, -100px -60px;
   }
   100% {
-    background-position: 800px 0, 80px 10px, -26px -70px;
+    background-position: 600px 0, 400px -60px, -200px -60px;
   }
 }
 
-@keyframes witch {
+@keyframes view-port-768 {
   0% {
-    background-position: 0 0, 80px 10px, -26px -70px;
+    background-position: 600px 34px, 0 80px, 0 40px, 480px -40px, bottom,
+      -10px 240px, center;
   }
   20% {
-    background-position: 200px 0, 80px 40px, -26px -70px;
+    background-position: 600px 34px, 0 80px, 0 40px, 480px -40px, bottom,
+      -10px 240px, center;
   }
   40% {
-    background-position: 400px 0, 80px 20px, -26px -70px;
+    background-position: 600px 34px, 0 80px, 0 40px, 480px -40px, bottom,
+      -10px 240px, center;
   }
   60% {
-    background-position: 600px 0, 80px 40px, -26px -70px;
+    background-position: 600px 34px, 0 80px, 0 40px, 480px -40px, bottom,
+      -10px 240px, center;
   }
   100% {
-    background-position: 800px 0, 80px 10px, -26px -70px;
+    background-position: 600px 34px, 0 80px, 0 40px, 480px -40px, bottom,
+      -10px 240px, center;
   }
 }
 

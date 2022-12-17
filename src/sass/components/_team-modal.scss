@@ -33,15 +33,16 @@
 /* Modal */
 
 .team-modal {
+  background-attachment: fixed;
   background-color: rgb(8, 13, 85);
   background-image: url('../images/background/modal/cloud@1x.webp'),
     url('../images/background/modal/witch@1x.webp'),
     url('../images/background/modal/moon@1x.webp');
-  background-size: 381px 240px, 72px 47px, 200px 200x;
+  background-size: 381px 240px, 112px 67px, 300px 300px;
   background-position: 0 -15, 0 0, 50px 50px;
   background-repeat: repeat-x, no-repeat, no-repeat;
-  background-attachment: scroll;
-  animation: cloud 80s infinite linear, witch 30s infinite linear;
+
+  animation: view-port-320 30s infinite linear;
   position: absolute;
   top: 20px;
   left: 50%;
@@ -73,7 +74,7 @@
       796px 162px, 153px 230px, cover;
     background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, repeat-x,
       no-repeat, no-repeat;
-
+    animation: view-port-768 50s infinite linear;
     @media (min-device-pixel-ratio: 2),
       (min-resolution: 192dpi),
       (min-resolution: 2dppx) {
@@ -169,6 +170,10 @@
   line-height: 1.23;
   text-align: center;
   color: #ff6b08;
+  margin-bottom: 30px;
+  @media screen and (min-width: $tablet) {
+    margin-bottom: 0;
+  }
 }
 
 .team-modal__list {
