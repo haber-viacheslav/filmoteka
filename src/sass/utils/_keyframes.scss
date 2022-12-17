@@ -54,21 +54,21 @@
 
 @keyframes view-port-1280 {
   0% {
-    background-position: -200px 600px, -400px 60px, 700px -40px, 0px 400px,
+    background-position: -400px 60px, -200px 600px, 700px -40px, 0px 400px,
       -30px 285px, center;
-    background-size: 132px 80px, 381px 240px, 350px 350px, 2989px 235px,
+    background-size: 381px 240px, 132px 80px, 350px 350px, 2989px 235px,
       200px 277px, cover;
   }
   50% {
-    background-position: 600px 250px, 300px 60px, 700px -40px, 1500px 400px,
+    background-position: 300px 60px, 600px 250px, 700px -40px, 1500px 400px,
       -30px 285px, center;
-    background-size: 132px890px, 381px 240px, 350px 350px, 2989px 235px,
+    background-size: 381px 240px, 132px 80px, 350px 350px, 2989px 235px,
       200px 277px, cover;
   }
   100% {
-    background-position: 1000px 100px, 1000px 60px, 700px -40px, 3000px 400px,
+    background-position: 1000px 60px, 1000px 100px, 700px -40px, 3000px 400px,
       -30px 285px, center;
-    background-size: 132px 80px, 381px 240px, 350px 350px, 2989px 235px,
+    background-size: 381px 240px, 132px 80px, 350px 350px, 2989px 235px,
       200px 277px, cover;
   }
 }

@@ -87,15 +87,15 @@
   }
 
   @media screen and (min-width: $desktop) {
-    background-image: url(../images/background/modal/witch@1x.webp),
-      url(../images/background/modal/cloud@1x.webp),
+    background-image: url(../images/background/modal/cloud@1x.webp),
+      url(../images/background/modal/witch@1x.webp),
       url(../images/background/modal/moon@1x.webp),
       url(../images/background/modal/fog@1x.webp),
       url(../images/background/modal/castle@1x.webp),
       url(../images/background/modal/night@1x.webp);
-    background-position: 870px 100px, 680px 60px, 700px -40px, bottom center,
+    background-position: 680px 60px, 870px 100px, 700px -40px, bottom center,
       -10px 340px, center;
-    background-size: 132px 80px, 381px 240px, 350px 350px, 796px 162px,
+    background-size: 381px 240px, 132px 80px, 350px 350px, 796px 162px,
       153px 230px, cover;
     background-repeat: no-repeat, no-repeat, no-repeat, repeat-x, no-repeat,
       no-repeat;
@@ -104,8 +104,8 @@
     @media (min-device-pixel-ratio: 2),
       (min-resolution: 192dpi),
       (min-resolution: 2dppx) {
-      background-image: url(../images/background/modal/witch@1x.webp),
-        url(../images/background/modal/cloud@1x.webp),
+      background-image: url(../images/background/modal/cloud@1x.webp),
+        url(../images/background/modal/witch@1x.webp),
         url(../images/background/modal/moon@1x.webp),
         url(../images/background/modal/fog@1x.webp),
         url(../images/background/modal/castle@1x.webp),
