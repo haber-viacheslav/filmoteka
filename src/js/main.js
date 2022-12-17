@@ -7,7 +7,7 @@ import { renderMarkup } from './main/renderMainMarkup';
 import { onShowFilmModal } from './modals/filmDetailsModal';
 import { refs } from './helpers/refsApiServ';
 import { onCreatePagination } from './pagination/pagination';
-
+import {onScroll, onScrollToTopBtn, onScrollToDownBtn} from './helpers/btnScroll'
 import { themeChange } from './helpers/changeTheme';
 // Class
 export const fetchApi = new FetchFilmsApi();
@@ -22,3 +22,4 @@ refs.filmList.addEventListener('click', onShowFilmModal);
 
 // Pagination
 refs.pagRef.addEventListener('click', onCreatePagination);
+
