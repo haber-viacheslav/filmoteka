@@ -61,28 +61,26 @@
   }
 
   @media screen and (min-width: $tablet) {
-    background-image: url(../images/background/modal/witch@1x.webp),
-      url(../images/background/modal/ravens@1x.webp),
-      url(../images/background/modal/cloud@1x.webp),
-      url(../images/background/modal/moon@1x.webp),
+    background-image: url(../images/background/modal/cloud@1x.webp),
       url(../images/background/modal/fog@1x.webp),
+      url(../images/background/modal/witch@1x.webp),
+      url(../images/background/modal/moon@1x.webp),
       url(../images/background/modal/castle@1x.webp),
       url(../images/background/modal/night@1x.webp);
-    background-position: 600px 34px, 0 80px, 0 40px, 480px -40px, bottom,
-      -10px 240px, center;
-    background-size: 72px 47px, 136px 181px, 381px 240px, 350px 350px,
-      796px 162px, 153px 230px, cover;
-    background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, repeat-x,
-      no-repeat, no-repeat;
+    background-position: 600px 34px, 0 40px, bottom, 480px -40px, -10px 240px,
+      center;
+    background-size: 72px 47px, 381px 240px, 2989px 235px, 350px 350px,
+      153px 230px, cover;
+    background-repeat: no-repeat, repeat-x, no-repeat, no-repeat, no-repeat,
+      no-repeat;
     animation: view-port-768 50s infinite linear;
     @media (min-device-pixel-ratio: 2),
       (min-resolution: 192dpi),
       (min-resolution: 2dppx) {
-      background-image: url(../images/background/modal/witch@2x.webp),
-        url(../images/background/modal/ravens@2x.webp),
-        url(../images/background/modal/cloud@2x.webp),
-        url(../images/background/modal/moon@2x.webp),
+      background-image: url(../images/background/modal/cloud@2x.webp),
         url(../images/background/modal/fog@2x.webp),
+        url(../images/background/modal/witch@2x.webp),
+        url(../images/background/modal/moon@2x.webp),
         url(../images/background/modal/castle@2x.webp),
         url(../images/background/modal/night@2x.webp);
     }
@@ -90,27 +88,28 @@
 
   @media screen and (min-width: $desktop) {
     background-image: url(../images/background/modal/witch@1x.webp),
-      url(../images/background/modal/ravens@1x.webp),
       url(../images/background/modal/cloud@1x.webp),
       url(../images/background/modal/moon@1x.webp),
       url(../images/background/modal/fog@1x.webp),
       url(../images/background/modal/castle@1x.webp),
       url(../images/background/modal/night@1x.webp);
-    background-position: 870px 100px, 0 80px, 680px 60px, 700px -40px,
-      bottom center, -10px 340px, center;
-    background-size: 72px 47px, 199px 265px, 381px 240px, 350px 350px,
-      796px 162px, 153px 230px, cover;
-    background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, repeat-x,
-      no-repeat, no-repeat;
+    background-position: 870px 100px, 680px 60px, 700px -40px, bottom center,
+      -10px 340px, center;
+    background-size: 132px 80px, 381px 240px, 350px 350px, 796px 162px,
+      153px 230px, cover;
+    background-repeat: no-repeat, no-repeat, no-repeat, repeat-x, no-repeat,
+      no-repeat;
+    animation: view-port-1280 50s infinite linear;
 
     @media (min-device-pixel-ratio: 2),
       (min-resolution: 192dpi),
       (min-resolution: 2dppx) {
-      background-image: url(../images/background/modal/night@2x.webp),
-        url(../images/background/modal/castle@2x.webp),
-        url(../images/background/modal/moon@2x.webp),
-        url(../images/background/modal/cloud@2x.webp),
-        url(../images/background/modal/witch@2x.webp);
+      background-image: url(../images/background/modal/witch@1x.webp),
+        url(../images/background/modal/cloud@1x.webp),
+        url(../images/background/modal/moon@1x.webp),
+        url(../images/background/modal/fog@1x.webp),
+        url(../images/background/modal/castle@1x.webp),
+        url(../images/background/modal/night@1x.webp);
     }
   }
   @media screen and (min-width: $mobile) {
