@@ -99,7 +99,7 @@ class RenderApi {
           <p class="film-modal__about-film-text"> ${overview}
           </p>
     
-          <button class="film-modal__trailer" data-id="${filmId}">Show trailer</button>
+          <button class="film-modal__trailer" data-id="${filmId} aria-lable="youtube"><span class="film-modal__sumbol">&#9658;</span></button>
     
           <div class="film-modal__wrap-btn flex">
             <button class="film-modal__btn film-modal__btn--watched">
