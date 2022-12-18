@@ -114,6 +114,7 @@
 }
 
 .page {
+  color: #000000;
   width: 40px;
   height: 40px;
   display: flex;
@@ -229,6 +230,8 @@
 
 .film__modal {
   position: relative;
+
+  color: $black;
 
   padding: 46px 20px 40px;
   width: 280px;

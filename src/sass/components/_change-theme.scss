@@ -4,11 +4,12 @@
 }
 
 .theme-btn {
-    width: 60px;
-    height: 60px;
-    display: block;
-    margin-left: auto;
-    margin-top: 10px;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
     background-color: rgba(118, 83, 154, 0.34);
     border-radius: 50%;
     padding: 0;
@@ -20,8 +21,13 @@
 
 .theme-light {
     fill: #fff;
+    padding-top: 5px;
 }
 
 .is-hidden {
     display: none;
+}
+
+.dark{
+    background-color: #221e32;
 }
