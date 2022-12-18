@@ -1,5 +1,11 @@
 <header class="header index-page">
   <div class="container">
+    <button type="button" class="theme-btn" data-current="false">
+      <svg class="theme-icon" width="20" height="20">
+        <use class="theme-light is-hidden" href="./images/icons.svg#icon-sun"></use>
+        <use class="theme-dark" href="./images/icons.svg#icon-IcoMoon"></use>
+      </svg>
+    </button>
     <div class="header__container flex">
       <div class="header__logo">
         <a class="logo" href="./index.html" lang="en">
@@ -39,12 +45,6 @@
           </li>
         </ul>
       </nav>
-      <button type="button" class="theme-btn" data-current="false">
-        <svg class="theme-icon" width="20" height="20">
-          <use class="theme-light is-hidden" href="./images/icons.svg#icon-sun"></use>
-          <use class="theme-dark" href="./images/icons.svg#icon-IcoMoon"></use>
-        </svg>
-      </button>
     </div>
     <form class="form" name="search-form" autocomplete="on" novalidate>
       <div class="form__box flex">

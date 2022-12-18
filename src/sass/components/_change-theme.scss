@@ -4,16 +4,19 @@
 }
 
 .theme-btn {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
     width: 30px;
     height: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-left: 10px;
-    background-color: rgba(118, 83, 154, 0.34);
+    // background-color: rgba(118, 83, 154, 0.34);
     border-radius: 50%;
     padding: 0;
-    // background-color: rgba(0, 0, 0, 0);
+    background-color: rgba(0, 0, 0, 0);
     border: none;
     z-index: 50;
     cursor: pointer;
