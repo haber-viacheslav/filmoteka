@@ -39,10 +39,31 @@ async function onSignIn() {
       const credential = GoogleAuthProvider.credentialFromResult(result);
       const token = credential.accessToken;
       // The signed-in user info.
+      console.log(token);
 
       const user = result.user;
+      console.log(user);
       if (user) {
-        window.location.href = './user-page.html';
+        const navMenu = document.querySelector('.menu__list');
+        console.log(navMenu);
+        const createHtml = `<li class="menu__item">
+            <a
+              href="./index.html"
+              target="_self"
+              class="menu__link menu__link--current"
+              >HOME</a
+            >
+          </li>
+          <li class="menu__item">
+            <a href="./user-page.html" target="_self" class="menu__link"
+              >MY LIBRARY</a
+            >
+          </li>
+          <li class="menu__item">
+            <a  href="" target="_self" class="menu__link menu__logout">LOG OUT</a>
+          </li>`;
+
+        navMenu.innerHTML = createHtml;
         alert('You are in!');
       }
       // ...
@@ -64,20 +85,21 @@ async function onSignIn() {
     });
 }
 
-// SIGN OUT
-
-const logOut = document.querySelector('.menu__logout');
-console.log(logOut);
-logOut.addEventListener('click', onlogOut);
-function onlogOut() {
-  const auth = getAuth();
-  signOut(auth)
-    .then(() => {
-      // Sign-out successful.
-      alert('You loged out!');
-    })
-    .catch(error => {
-      // An error happened.
-      console.error(error);
-    });
+// // LOG OUT
+async function logOut() {
+  const logOut = document.querySelector('.menu__logout');
+  console.log(logOut);
+  logOut.addEventListener('click', onlogOut);
+  function onlogOut() {
+    const auth = getAuth();
+    signOut(auth)
+      .then(() => {
+        // Sign-out successful.
+        alert('You loged out!');
+      })
+      .catch(error => {
+        // An error happened.
+        console.error(error);
+      });
+  }
 }
