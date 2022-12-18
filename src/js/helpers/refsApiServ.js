@@ -1,10 +1,11 @@
 export const refs = {
   btnOpenRef: document.querySelector('[data-modal-open]'),
   btnOpenUserRef: document.querySelector('[data-modal-open-user]'),
-  btnCloseRef: document.querySelector('[data-team-modal-close]'),
+  btnCloseRef: document.querySelector('[data-main-modal-close]'),
+  btnCloseUserRef: document.querySelector('[data-user-modal-close]'),
   body: document.querySelector('body'),
   teamModal: document.querySelector('[data-team-modal]'),
-  teamLinks: document.querySelectorAll('.team-modal__link'),
+  headerUserLink: document.querySelector('.menu__link-js'),
   form: document.querySelector('.form'),
   searchError: document.querySelector('.form__text-error'),
   pagRef: document.querySelector('.pagination'),
