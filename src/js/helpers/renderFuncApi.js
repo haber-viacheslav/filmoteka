@@ -48,7 +48,7 @@ class RenderApi {
     return `
         <div class="film__modal">
         
-      <button class="film-modal__close">X</button>
+      <button class="film-modal__close"><span class="film-modal__btn-text">✖</span></button>
     
           <div class="film-modal__thumb">
           <img

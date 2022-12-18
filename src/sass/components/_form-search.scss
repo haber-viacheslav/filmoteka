@@ -9,6 +9,7 @@
   margin-right: auto;
   width: 280px;
   border-bottom: 0.5px solid $white;
+  position: relative;
 
   @media screen and (min-width: $tablet) {
     width: 336px;
@@ -25,8 +26,25 @@
   height: 20px;
   margin-right: 0;
   border: none;
+  outline: none;
   background: rgba(0, 0, 0, 0);
   color: $white;
+
+  animation-name: input;
+  animation: input 2s ease 0s 1 normal none;
+
+  @keyframes input {
+    0% {
+      letter-spacing: 1em;
+      filter: blur(12px);
+      opacity: 0;
+    }
+
+    100% {
+      filter: blur(0);
+      opacity: 1;
+    }
+  }
 
   &::placeholder {
     color: $white;
@@ -34,6 +52,12 @@
     line-height: 1.14;
     font-weight: 400;
   }
+
+  &:hover,
+  &:focus {
+    box-shadow: 0px 5px 5px -3px rgb(252, 251, 251);
+  }
+
 }
 .form__text-error {
   font-weight: 400;
@@ -50,8 +74,18 @@
 .form__btn {
   height: 20px;
   width: 20px;
-}
+  position: absolute;
+  top: 0;
+  right: 0;
 
+ }
+.form__icon {
+  &:hover,
+  &:focus {
+    transform: scale(2);
+    transition: transform 0.25s;
+  }
+}
 .is-hidden {
   display: none;
 }
