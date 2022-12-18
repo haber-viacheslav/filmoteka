@@ -1,0 +1,92 @@
+@keyframes pulsing {
+  0% {
+    -webkit-transform: scale(0.5, 0.5);
+    transform: scale(0.5, 0.5);
+  }
+  50% {
+    -webkit-transform: scale(1, 1);
+    transform: scale(1, 1);
+  }
+  100% {
+    -webkit-transform: scale(0.5, 0.5);
+    transform: scale(0.5, 0.5);
+  }
+}
+
+@keyframes view-port-320 {
+  0% {
+    background-position: 0 0, -100px 60px, 200px -60px, -150px 100px,
+      400px bottom;
+  }
+
+  100% {
+    background-position: 600px 0, 400px -120px, -200px -60px, 450px 100px,
+      -400px bottom;
+  }
+}
+
+@keyframes view-port-768 {
+  0% {
+    background-position: -400px 0, 0px 420px, -200px 400px, 440px -40px,
+      -20px 250px, center;
+    background-size: 381px 240px, 796px 162px, 72px 47px, 350px 350px,
+      153px 230px, cover;
+  }
+  50% {
+    background-position: 200px 0, 400px 420px, 400px 30px, 420px -20px,
+      -20px 250px, center;
+    background-size: 381px 240px, 796px 162px, 72px 47px, 400px 400px,
+      153px 230px, cover;
+  }
+  100% {
+    background-position: 800px 0, 796px 420px, 1000px 50px, 440px -40px,
+      -20px 250px, center;
+    background-size: 381px 240px, 796px 162px, 72px 47px, 350px 350px,
+      153px 230px, cover;
+  }
+}
+
+@keyframes view-port-1280 {
+  0% {
+    background-position: -400px 60px, 0px 400px, -200px 500px, 700px -40px,
+      -30px 285px, center;
+    background-size: 381px 240px, 2989px 235px, 132px 80px, 350px 350px,
+      200px 277px, cover;
+  }
+  50% {
+    background-position: 300px 60px, 1500px 400px, 600px 170px, 700px -40px,
+      -30px 285px, center;
+    background-size: 381px 240px, 2989px 235px, 132px 80px, 350px 350px,
+      200px 277px, cover;
+  }
+  100% {
+    background-position: 1000px 60px, 3000px 400px, 1300px -100px, 700px -40px,
+      -30px 285px, center;
+    background-size: 381px 240px, 2989px 235px, 132px 80px, 350px 350px,
+      200px 277px, cover;
+  }
+}
+
+// @keyframes drift {
+//   0% {
+//     transform: rotate(0deg);
+//   }
+
+//   100% {
+//     transform: rotate(360deg);
+//   }
+// }
+
+// @keyframes flash {
+//   0%,
+//   30%,
+//   100% {
+//     opacity: 0;
+//     box-shadow: 0 0 0vw 0vw $yellow;
+//   }
+
+//   5% {
+//     opacity: 1;
+//     box-shadow: 0 0 2vw 0.4vw $yellow;
+//   }
+// }

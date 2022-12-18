@@ -14,6 +14,8 @@ import {
 } from './helpers/btnScroll';
 import { themeChange } from './helpers/changeTheme';
 import { checkLoadPageStatus } from './checkers/pageOnLoadCheker';
+import './modals/modals';
+import './helpers/pageChange';
 // Class
 export const fetchApi = new FetchFilmsApi();
 export const renderApi = new RenderApi();
