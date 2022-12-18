@@ -1,9 +1,8 @@
 import { refs } from '../helpers/refsApiServ';
-
+import { teamGallery } from '../helpers/simpleLightBox';
 refs.btnOpenRef.addEventListener('click', onBtnToggle);
 refs.btnCloseRef.addEventListener('click', onBtnToggle);
 refs.body.addEventListener('keydown', onModalKeydown);
-refs.teamModal.addEventListener('click', onBackdropClose);
 
 function onToggle() {
   refs.teamModal.classList.toggle('is-hidden');
@@ -12,6 +11,7 @@ function onToggle() {
 
 function onBtnToggle() {
   onToggle();
+  refs.teamModal.addEventListener('click', onBackdropClose);
 }
 
 function onBackdropClose(e) {

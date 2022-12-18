@@ -4,7 +4,7 @@ export const refs = {
   btnCloseRef: document.querySelector('[data-team-modal-close]'),
   body: document.querySelector('body'),
   teamModal: document.querySelector('[data-team-modal]'),
-  teamLinks: document.querySelectorAll('.team-modal__link'),
+  teamList: document.querySelectorAll('.team-modal__list'),
   form: document.querySelector('.form'),
   searchError: document.querySelector('.form__text-error'),
   pagRef: document.querySelector('.pagination'),
