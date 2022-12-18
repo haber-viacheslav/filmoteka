@@ -1,8 +1,7 @@
-.form{
+.form {
   display: grid;
   position: relative;
   margin: 0 auto;
-  
 }
 .form__box {
   margin-top: 54px;
@@ -10,17 +9,16 @@
   margin-right: auto;
   width: 280px;
   border-bottom: 0.5px solid $white;
- 
+
   @media screen and (min-width: $tablet) {
-      width: 336px;
-      margin-top: 40px;
-    }
-  
+    width: 336px;
+    margin-top: 40px;
+  }
+
   @media screen and (min-width: $desktop) {
-      width: 394px;
-      margin-top: 41px;
-    }
-  
+    width: 394px;
+    margin-top: 41px;
+  }
 }
 .form__input {
   width: 100%;
@@ -29,25 +27,24 @@
   border: none;
   background: rgba(0, 0, 0, 0);
   color: $white;
-  
+
   &::placeholder {
     color: $white;
     font-size: 14px;
     line-height: 1.14;
     font-weight: 400;
   }
- 
 }
 .form__text-error {
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 1.14;
-    color: $red;
-    margin-top: 16px;
-    text-align: left;
-    @media screen and (min-width: $tablet) {
-        margin-top: 20px;
-        text-align: center;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.14;
+  color: $red;
+  margin-top: 16px;
+  text-align: left;
+  @media screen and (min-width: $tablet) {
+    margin-top: 20px;
+    text-align: center;
   }
 }
 .form__btn {
@@ -55,6 +52,6 @@
   width: 20px;
 }
 
-.is-hidden{
+.is-hidden {
   display: none;
 }

@@ -45,6 +45,17 @@
   overflow: hidden;
   border-radius: 5px;
 
+  &:active,
+  &:hover,
+  &:focus {
+    transform: scale(1.1);
+    opacity: 0.7;
+    cursor: pointer;
+   transition-duration: 0.5s;
+
+       background-color: $orange-button;
+  }
+
   @media screen and (min-width: $tablet) {
     height: 504px;
   }
@@ -53,6 +64,7 @@
     height: 438px;
   }
 }
+
 
 .film__img {
   height: 100%;
@@ -265,6 +277,15 @@
 
   overflow: hidden;
   border-radius: 5px;
+   &:active,
+  &:hover,
+  &:focus {
+    transform: scale(1.1);
+    transition-duration: 0.5s;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 5px 10px,
+      rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    background-color: $orange-button;
+  }
 
   @media screen and (max-width: 767px) {
     margin-bottom: 20px;
@@ -393,14 +414,13 @@
 
 .film-modal__trailer {
   display: block;
-  width: 100px;
-  height: 40px;
+  width: 90px;
+  height: 44px;
   margin-bottom: 20px;
   margin-left: auto;
   margin-right: auto;
 
-  background-color: #e7e7e7;
-  color: black;
+  background-color: $orange-button;
   text-align: center;
   border-radius: 10px;
   border: 2px solid #e7e7e7;
@@ -408,8 +428,14 @@
   transition-duration: 0.4s;
 
   &:hover {
-    background-color: $white;
+    background-color: $red;
+    box-shadow: 0px 3px 5px $box-shadow-color;
   }
+}
+.film-modal__sumbol{
+  color: $white;
+  font-size: 20px;
+
 }
 
 .film-modal__about-film-title {
