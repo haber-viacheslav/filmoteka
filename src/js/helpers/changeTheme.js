@@ -9,6 +9,8 @@ export function themeChange() {
   refs.themeBtnRef.setAttribute('data-current', !isLight);
 
   localStorage.setItem('light', JSON.stringify(isLight));
+
+  
   
 
   let localTems = localStorage.getItem('light')    
@@ -16,11 +18,13 @@ export function themeChange() {
   if (localTems === 'false') {
       document.body.classList.add('dark-theme');
       refs.lightIconRef.classList.remove('is-hidden'); 
-      refs.darkIconRef.classList.add('is-hidden');
+    refs.darkIconRef.classList.add('is-hidden');
+    
   } else {
       document.body.classList.remove('dark-theme');
       refs.darkIconRef.classList.remove('is-hidden');
-      refs.lightIconRef.classList.add('is-hidden'); 
+    refs.lightIconRef.classList.add('is-hidden'); 
+    
   }
 }
 
