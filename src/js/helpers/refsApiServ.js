@@ -23,7 +23,7 @@ export const refs = {
   btnScrollTopRef: document.querySelector('.btn__up'),
   btnScrollDownRef: document.querySelector('.btn__down'),
   footerRef: document.querySelector('.footer'),
-
+  btnWatch: document.querySelector('.btn__watched'),
   // enter refs of elements you want
   // like this ---> inputEl: document.querySelector('.header__search-form')  (EXAMPLE!!!)
 };
