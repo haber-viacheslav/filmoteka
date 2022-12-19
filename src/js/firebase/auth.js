@@ -32,7 +32,7 @@ async function onSignIn() {
   const provider = new GoogleAuthProvider();
 
   const auth = getAuth();
-  await signInWithPopup(auth, provider)
+  signInWithPopup(auth, provider)
     .then(result => {
       // This gives you a Google Access Token. You can use it to access the Google API.
 
@@ -60,11 +60,12 @@ async function onSignIn() {
             >
           </li>
           <li class="menu__item">
-            <a  href="" target="_self" class="menu__link menu__logout">LOG OUT</a>
+            <a target="_self" class="menu__link menu__logout">LOG OUT</a>
           </li>`;
 
         navMenu.innerHTML = createHtml;
         alert('You are in!');
+        logOut();
       }
       // ...
     })
@@ -85,8 +86,8 @@ async function onSignIn() {
     });
 }
 
-// // LOG OUT
-async function logOut() {
+// LOG OUT
+function logOut() {
   const logOut = document.querySelector('.menu__logout');
   console.log(logOut);
   logOut.addEventListener('click', onlogOut);
@@ -96,6 +97,7 @@ async function logOut() {
       .then(() => {
         // Sign-out successful.
         alert('You loged out!');
+        location.reload();
       })
       .catch(error => {
         // An error happened.
