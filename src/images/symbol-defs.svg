@@ -14,7 +14,7 @@
         d="M26.427 2.667H5.574a2.907 2.907 0 0 0-2.907 2.907v20.853a2.907 2.907 0 0 0 2.907 2.907h20.853a2.907 2.907 0 0 0 2.907-2.907V5.574a2.907 2.907 0 0 0-2.907-2.907zM9.333 2.667v26.667M22.667 2.667v26.667M2.667 16h26.667M2.667 9.333h6.667M2.667 22.667h6.667M22.667 22.667h6.667M22.667 9.333h6.667" />
     </symbol>
     <symbol id="icon-search-2-2-1" viewBox="0 0 32 32">
-      <path fill="#black" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.667" d="M14.667 25.333c5.891 0 10.667-4.776 10.667-10.667S20.558 3.999 14.667 3.999 4 8.775 4 14.666s4.776 10.667 10.667 10.667zM28 28.001l-5.8-5.8" style="stroke:var(--color1, #fff)"/>
+      <path fill="#black" stroke="#black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.667" d="M14.667 25.333c5.891 0 10.667-4.776 10.667-10.667S20.558 3.999 14.667 3.999 4 8.775 4 14.666s4.776 10.667 10.667 10.667zM28 28.001l-5.8-5.8" style="stroke:var(--color1, #fff)"/>
     </symbol>
     <symbol id="icon-favorite" viewBox="0 0 34 32">
       <path fill="#ff6b08" style="fill:var(--color2, #ff6b08)"

@@ -92,9 +92,9 @@
 .form__icon {
  
 
-  &:hover,
-  &:focus{
-    transform: scale(1.5);
+  .form__box:hover &,
+  .form__box:focus &{
+    transform: scale(1.6);
     animation: transition 1s ease-out;
     fill: #ff6b08;
         
