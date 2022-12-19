@@ -1,9 +1,9 @@
 import { refs } from '../helpers/refsApiServ';
-
+import { teamGallery, teamSocial } from '../helpers/simpleLightBox';
 refs.btnOpenRef.addEventListener('click', onBtnToggle);
 refs.btnCloseRef.addEventListener('click', onBtnToggle);
-refs.body.addEventListener('keydown', onModalKeydown);
-refs.teamModal.addEventListener('click', onBackdropClose);
+refs.btnOpenUserRef.addEventListener('click', onBtnToggle);
+refs.btnCloseUserRef.addEventListener('click', onBtnToggle);
 
 function onToggle() {
   refs.teamModal.classList.toggle('is-hidden');
@@ -12,6 +12,8 @@ function onToggle() {
 
 function onBtnToggle() {
   onToggle();
+  refs.teamModal.addEventListener('click', onBackdropClose);
+  refs.body.addEventListener('keydown', onModalKeydown);
 }
 
 function onBackdropClose(e) {
@@ -19,6 +21,8 @@ function onBackdropClose(e) {
     return;
   }
   onToggle();
+  refs.body.removeEventListener('keydown', onModalKeydown);
+  refs.teamModal.removeEventListener('click', onBackdropClose);
 }
 
 function onModalKeydown(e) {
@@ -27,7 +31,7 @@ function onModalKeydown(e) {
   }
   if (e.code === 'Escape') {
     onToggle();
+    refs.body.removeEventListener('keydown', onModalKeydown);
+    refs.teamModal.removeEventListener('click', onBackdropClose);
   }
-
-  refs.teamModal.removeEventListener('click', onBackdropClose);
 }
