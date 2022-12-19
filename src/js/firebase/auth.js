@@ -1,4 +1,8 @@
 import { app } from './initFirebase';
+import {
+  notifySuccessMessage,
+  notifyInfoMessage,
+} from '../helpers/notifyMessages';
 
 import { postUserIntoDatebase, getUserDataById } from './postUserIntoDb';
 // Initialize Firebase
@@ -59,7 +63,7 @@ async function onSignIn() {
           </li>`;
 
         navMenu.innerHTML = createHtml;
-        alert('You are in!');
+        notifySuccessMessage('You are in!');
         logOut();
       }
       // ...
@@ -91,7 +95,7 @@ function logOut() {
     signOut(auth)
       .then(() => {
         // Sign-out successful.
-        alert('You loged out!');
+        notifyInfoMessage('You loged out!');
         location.reload();
       })
       .catch(error => {
