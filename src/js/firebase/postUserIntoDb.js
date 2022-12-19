@@ -1,7 +1,7 @@
 import { getDatabase, ref, set } from 'firebase/database';
 import { getDatabase, ref, onValue } from 'firebase/database';
 import { refs } from '../helpers/refsApiServ';
-import { app } from './init';
+import { app } from './initFirebase';
 app;
 const db = getDatabase();
 function postUserIntoDatebase({ uid: userId, email, displayName }) {
