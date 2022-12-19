@@ -51,9 +51,9 @@
     transform: scale(1.1);
     opacity: 0.7;
     cursor: pointer;
-   transition-duration: 0.5s;
+    transition-duration: 0.5s;
 
-       background-color: $orange-button;
+    background-color: $orange-button;
   }
 
   @media screen and (min-width: $tablet) {
@@ -64,7 +64,6 @@
     height: 438px;
   }
 }
-
 
 .film__img {
   height: 100%;
@@ -275,7 +274,7 @@
   background-color: $white;
   box-shadow: $shadow-team-modal;
   transition: color $time-cubic, outline-color $time-cubic,
-  box-shadow $time-cubic, transform $time-cubic;
+    box-shadow $time-cubic, transform $time-cubic;
   cursor: pointer;
   outline-color: transparent;
 
@@ -296,16 +295,15 @@
   }
 }
 
-.film-modal__btn-text{
+.film-modal__btn-text {
   color: currentColor;
-  
 }
 .film-modal__thumb {
   height: 357px;
 
   overflow: hidden;
   border-radius: 5px;
-   &:active,
+  &:active,
   &:hover,
   &:focus {
     transform: scale(1.1);
@@ -460,10 +458,9 @@
     box-shadow: 0px 3px 5px $box-shadow-color;
   }
 }
-.film-modal__sumbol{
+.film-modal__sumbol {
   color: $white;
   font-size: 20px;
-
 }
 
 .film-modal__about-film-title {
