@@ -22,7 +22,7 @@ import {
 
 // // SIGN IN
 
-const signInLinck = document.querySelector('.menu__signin');
+const signInLinck = document.querySelector('.menu__link-js');
 // console.log(signIn.href);
 signInLinck.addEventListener('click', onSignIn);
 
