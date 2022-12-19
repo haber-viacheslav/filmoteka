@@ -1,4 +1,4 @@
-import { app } from './init';
+import { app } from './initFirebase';
 
 import { postUserIntoDatebase, getUserDataById } from './postUserIntoDb';
 // Initialize Firebase
