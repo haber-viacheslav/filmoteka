@@ -1,4 +1,5 @@
-import './backend';
+import './firebase/backend';
+import './firebase/auth';
 import FetchFilmsApi from './helpers/fetchFilmsApi';
 import RenderApi from './helpers/renderFuncApi';
 import searchMovie from './main/searchMovie';
@@ -16,6 +17,7 @@ import { themeChange } from './helpers/changeTheme';
 import { checkLoadPageStatus } from './checkers/pageOnLoadCheker';
 import './modals/modals';
 import './helpers/pageChange';
+import './helpers/simpleLightBox';
 // Class
 export const fetchApi = new FetchFilmsApi();
 export const renderApi = new RenderApi();
