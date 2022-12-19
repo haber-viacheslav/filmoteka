@@ -54,6 +54,10 @@
   width: 20px;
   position: absolute;
   transform: translateX(130px);
+  
+  @media screen and (min-width: $tablet) {
+  transform: translateX(158px);
+  }
 }
 
 .is-hidden {
