@@ -28,8 +28,9 @@
   background: rgba(0, 0, 0, 0);
   color: $white;
   outline: none;
-  position: relative;
   border-bottom: 0.5px solid $white;
+  position: relative;
+  
   
   &::placeholder {
     color: $white;
