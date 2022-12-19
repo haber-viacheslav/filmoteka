@@ -1,5 +1,29 @@
 <section class="user-films">
-    <div class="container">
-
+  <div class="container">
+    <ul class="films__list flex is-hidden">
+      <!-- Дані приходять з js -->
+    </ul>
+    <div class="btn__up">
+      <svg class="icon__arrow">
+        <use href="./images/symbol-defs.svg#uparrow"></use>
+      </svg>
     </div>
+    <div class="btn__down">
+      <svg class="icon__arrow">
+        <use href="./images/symbol-defs.svg#downarrow"></use>
+      </svg>
+    </div>
+  </div>
+  <div id="tui-pagination-container" class="tui-pagination is-hidden">    <div class="pagination is-hidden">
+      <div class="page disabled" id="prev" data-id="prev">Prev</div>
+
+      <div class="before-cur-page">
+        <!-- Дані приходять з js -->
+      </div>
+
+      <div class="current" id="curr">1</div>
+
+      <div class="after-cur-page">
+        <!-- Дані приходять з js -->
+      </div></div>
 </section>
