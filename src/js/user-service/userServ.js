@@ -1,25 +1,28 @@
 import { async } from '@firebase/util';
-import {
-  getAuth,
-  signInWithPopup,
-  GoogleAuthProvider,
-  signOut,
-} from 'firebase/auth';
+import { getAuth } from 'firebase/auth';
 import { app } from '../firebase/initFirebase';
 import { currentFilmId } from '../modals/filmDetailsModal';
-import { getUserDataById, postFilmToDatabase } from './postUserIntoDb';
+import {
+  currentFilmKey,
+  getUserDataById,
+  postFilmToDatabase,
+  getFilmDataById,
+} from './dataDatebaseFunc';
 
 function addFilmToQueque(e) {
   e.preventDefault();
   const userId = getCurrentUser().uid;
-  console.log(userId);
-  postFilmToDatabase({ id: userId, currentFilmId, reference: 'userQueue' });
+  const filmKey = postFilmToDatabase({
+    id: userId,
+    currentFilmId,
+  });
+  getFilmDataById(userId, 'userQueue', filmKey);
 }
 function addFilmToWatched(e) {
   const userId = getCurrentUser().uid;
 
   e.preventDefault();
-  postFilmToDatabase({ id: userId, currentFilmId, reference: 'userWatched' });
+  postFilmToDatabase({ id: userId, currentFilmId, reference: 'watched' });
 }
 function getCurrentUser() {
   const auth = getAuth(app);
