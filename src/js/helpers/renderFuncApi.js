@@ -25,16 +25,25 @@ class RenderApi {
       })
       .join('');
   }
-  // createLibraryFilmCardsMarkup(data) {
-  //   return data
-  //     .map(
-  //       ({}) =>
-  //         `
+  createAuthorizatedUserHeaderMarkup() {
+    return `<li class="menu__item">
+            <a
+              href="./index.html"
+              target="_self"
+              class="menu__link menu__link--current"
+              >HOME</a
+            >
+          </li>
+          <li class="menu__item">
+            <a href="./user-page.html" target="_self" class="menu__link "
+              >MY LIBRARY</a
+            >
+          </li>
+          <li class="menu__item">
+            <a target="_self" class="menu__link menu__logout">LOG OUT</a>
+          </li>`;
+  }
 
-  //   `
-  //     )
-  //     .join('');
-  // }
   createModalFilmDetails(
     {
       poster_path,
