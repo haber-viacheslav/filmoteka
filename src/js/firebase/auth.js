@@ -1,6 +1,13 @@
+import {
+  postUserIntoDatebase,
+  getUserDataById,
+} from '../user-service/postUserIntoDb';
 import { app } from './initFirebase';
+import {
+  notifySuccessMessage,
+  notifyInfoMessage,
+} from '../helpers/notifyMessages';
 
-import { postUserIntoDatebase, getUserDataById } from './postUserIntoDb';
 // Initialize Firebase
 import {
   getAuth,
@@ -8,9 +15,9 @@ import {
   GoogleAuthProvider,
   signOut,
 } from 'firebase/auth';
-app;
+import { async } from '@firebase/util';
 // // SIGN IN
-
+const auth = getAuth();
 const signInLinck = document.querySelector('.menu__link-js');
 // console.log(signIn.href);
 // if ((window.location.href = 'user-page')) {
@@ -23,7 +30,6 @@ async function onSignIn() {
 
   const provider = new GoogleAuthProvider();
 
-  const auth = getAuth();
   signInWithPopup(auth, provider)
     .then(result => {
       // This gives you a Google Access Token. You can use it to access the Google API.
@@ -36,7 +42,7 @@ async function onSignIn() {
       const user = result.user;
       console.log(user);
       postUserIntoDatebase(user);
-      getUserDataById(user.uid, 'userData');
+      // getUserDataById(user.uid, 'userData');
 
       if (user) {
         const navMenu = document.querySelector('.menu__list');
@@ -59,9 +65,10 @@ async function onSignIn() {
           </li>`;
 
         navMenu.innerHTML = createHtml;
-        alert('You are in!');
+        notifySuccessMessage('You are in!');
         logOut();
       }
+
       // ...
     })
     .catch(error => {
@@ -91,7 +98,7 @@ function logOut() {
     signOut(auth)
       .then(() => {
         // Sign-out successful.
-        alert('You loged out!');
+        notifyInfoMessage('You loged out!');
         location.reload();
       })
       .catch(error => {

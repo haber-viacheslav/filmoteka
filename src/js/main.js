@@ -29,6 +29,5 @@ renderMarkup();
 
 // Modal film
 refs.filmList.addEventListener('click', onShowFilmModal);
-
 // Pagination
 refs.pagRef.addEventListener('click', onCreatePagination);
