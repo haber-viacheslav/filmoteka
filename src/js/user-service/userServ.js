@@ -1,3 +1,4 @@
+import { async } from '@firebase/util';
 import {
   getAuth,
   signInWithPopup,
@@ -6,7 +7,7 @@ import {
 } from 'firebase/auth';
 import { app } from '../firebase/initFirebase';
 import { currentFilmId } from '../modals/filmDetailsModal';
-import { postFilmToDatabase } from './postUserIntoDb';
+import { getUserDataById, postFilmToDatabase } from './postUserIntoDb';
 
 function addFilmToQueque(e) {
   e.preventDefault();
@@ -28,7 +29,14 @@ function getCurrentUser() {
     console.log(user);
     return user;
   }
-  return;
+  console.log('no user');
 }
+// getCurrentUser();
+// console.log(getCurrentUser());
+function getUserFilmsData(reference) {
+  const userId = getCurrentUser().uid;
+  getUserDataById(userId, reference);
+}
+// getUserFilmsData();
 
-export { addFilmToQueque, addFilmToWatched };
+export { addFilmToQueque, addFilmToWatched, getUserFilmsData };

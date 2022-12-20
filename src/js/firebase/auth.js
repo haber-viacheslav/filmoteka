@@ -42,7 +42,7 @@ async function onSignIn() {
       const user = result.user;
       console.log(user);
       postUserIntoDatebase(user);
-      getUserDataById(user.uid, 'userData');
+      // getUserDataById(user.uid, 'userData');
 
       if (user) {
         const navMenu = document.querySelector('.menu__list');

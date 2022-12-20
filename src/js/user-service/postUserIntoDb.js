@@ -27,14 +27,14 @@ function postFilmToDatabase({ id, currentFilmId, reference }) {
     currentFilmId,
   });
 }
-// function deleteDataWithDb({ id, currentFilmId, reference }) {
-//   remove(`users/${id}/${reference}`);
-// }
+function deleteDataWithDb({ id, currentFilmId, reference }) {
+  remove(`users/${id}/${reference}`);
+}
 function getUserDataById(id, refLink) {
   const resp = ref(db, `users/${id}/${refLink}`);
   onValue(resp, data => {
     const userData = data.val();
-    console.log(id);
+    console.log(userData);
   });
 }
 
