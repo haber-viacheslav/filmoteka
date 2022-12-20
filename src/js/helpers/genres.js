@@ -1,5 +1,4 @@
-// export let genres [
-
+// export const genres [ 
 //     { id: 28, name: "Action" },
 
 //     { id: 12, name: "Adventure" },
@@ -36,5 +35,6 @@
 
 //     {id: 10752, name: "War"},
 
-//     { id: 37, name: "Western" },
+//     { id: 37, name: "Western" }
 // ]
+
