@@ -44,16 +44,14 @@
 
   overflow: hidden;
   border-radius: 5px;
-
+  transition-duration: 0.5s;
   &:active,
   &:hover,
-   &:focus {
+  &:focus {
     transform: scale(1.1);
     opacity: 0.8;
     cursor: pointer;
-  //  transition-duration: 0.5s;
-
-       background-color: $orange-button;
+    background-color: $orange-button;
   }
 
   @media screen and (min-width: $tablet) {

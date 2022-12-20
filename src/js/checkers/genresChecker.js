@@ -1,7 +1,10 @@
+// import genres from "../helpers/genres";
+
 export function checkGenreList(genre_ids, genres, release_date) {
   let genreIsMany = null;
   let maxGenreIds = genre_ids;
-
+  
+  // console.log(maxGenreIds)
   if (genre_ids.length > 2) {
     genreIsMany = true;
     maxGenreIds = genre_ids.slice(0, 2);
