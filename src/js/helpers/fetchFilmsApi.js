@@ -22,14 +22,14 @@ class FetchFilmsApi {
 
     return resp;
   }
-
   async getAllFilmsData({ mediaType = 'movie', timeWindow = 'day' }) {
     try {
       const resp = await this.fetchWithAllFilmsData({
+        
         mediaType,
         timeWindow,
       });
-
+    // console.log('day', resp);
       this.#totalPages = resp.data.total_pages;
       //
       //
@@ -98,18 +98,22 @@ class FetchFilmsApi {
       `genre/${mediaType}/${genreType}?api_key=${this.#API_KEY}&page=${page}`,
       this.config
     );
+    // console.log('fetchGenreslist', resp)
     return resp;
   }
-  //
+  // // //
   async getGenresList({ mediaType = 'movie', genreType = 'list', page = '1' }) {
     try {
       const resp = await this.fetchGenresList({ mediaType, genreType, page });
+      // console.log('genreType', resp);
       return resp;
+      
     } catch (error) {
       console.log(error);
     }
   }
-  //
+  
+  // //
 
   async getSearchFilmsData({
     mediaType = 'movie',
