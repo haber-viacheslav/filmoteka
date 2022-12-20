@@ -1,6 +1,6 @@
 import refsApiServ from './refsApiServ';
 import { checkGenreList } from '../checkers/genresChecker';
-import { genres } from './genres'
+// import { genres } from './genres'
 
 class RenderApi {
   constructor() {}
