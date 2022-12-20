@@ -18,7 +18,6 @@ import { checkLoadPageStatus } from './checkers/pageOnLoadCheker';
 import './modals/modals';
 import './helpers/pageChange';
 import './helpers/simpleLightBox';
-import { addListenerToBtn } from './user-service/userServ';
 // Class
 export const fetchApi = new FetchFilmsApi();
 export const renderApi = new RenderApi();
@@ -30,6 +29,5 @@ renderMarkup();
 
 // Modal film
 refs.filmList.addEventListener('click', onShowFilmModal);
-refs.filmList.addEventListener('click', addListenerToBtn);
 // Pagination
 refs.pagRef.addEventListener('click', onCreatePagination);
