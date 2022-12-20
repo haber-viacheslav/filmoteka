@@ -1,6 +1,7 @@
-import { app } from './initFirebase';
-
-import { postUserIntoDatebase, getUserDataById } from './postUserIntoDb';
+import {
+  postUserIntoDatebase,
+  getUserDataById,
+} from '../user-service/postUserIntoDb';
 // Initialize Firebase
 import {
   getAuth,
@@ -8,9 +9,9 @@ import {
   GoogleAuthProvider,
   signOut,
 } from 'firebase/auth';
-app;
+import { async } from '@firebase/util';
 // // SIGN IN
-
+const auth = getAuth();
 const signInLinck = document.querySelector('.menu__link-js');
 // console.log(signIn.href);
 // if ((window.location.href = 'user-page')) {
@@ -23,7 +24,6 @@ async function onSignIn() {
 
   const provider = new GoogleAuthProvider();
 
-  const auth = getAuth();
   signInWithPopup(auth, provider)
     .then(result => {
       // This gives you a Google Access Token. You can use it to access the Google API.
@@ -62,6 +62,7 @@ async function onSignIn() {
         alert('You are in!');
         logOut();
       }
+
       // ...
     })
     .catch(error => {
