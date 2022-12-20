@@ -26,10 +26,11 @@ class FetchFilmsApi {
   async getAllFilmsData({ mediaType = 'movie', timeWindow = 'day' }) {
     try {
       const resp = await this.fetchWithAllFilmsData({
+        
         mediaType,
         timeWindow,
       });
-
+    console.log(resp);
       this.#totalPages = resp.data.total_pages;
       //
       //
@@ -104,11 +105,14 @@ class FetchFilmsApi {
   async getGenresList({ mediaType = 'movie', genreType = 'list', page = '1' }) {
     try {
       const resp = await this.fetchGenresList({ mediaType, genreType, page });
+      console.log('88', resp);
       return resp;
+      
     } catch (error) {
       console.log(error);
     }
   }
+  
   //
 
   async getSearchFilmsData({
