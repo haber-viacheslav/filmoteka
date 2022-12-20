@@ -52,10 +52,10 @@ async function onSignIn() {
         renderUserHeader.renderMarkup({
           selector: '.menu__list',
           innerHtml: true,
-          createMarkypFunc: renderUserHeader.createAuthorizatedUserMarkup(),
+          createMarkypFunc:
+            renderUserHeader.createAuthorizatedUserHeaderMarkup(),
         });
         notifySuccessMessage('You are in!');
-        logOut();
       }
 
       // ...

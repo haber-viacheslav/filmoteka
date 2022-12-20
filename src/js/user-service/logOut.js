@@ -13,7 +13,8 @@ function onlogOut(e) {
     .then(() => {
       // Sign-out successful.
       notifyInfoMessage('You loged out!');
-      location.reload();
+      location = 'http://localhost:1234/index.html';
+      //   window.open();
     })
     .catch(error => {
       // An error happened.
