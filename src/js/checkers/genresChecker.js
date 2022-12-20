@@ -1,4 +1,4 @@
-// import genres from "../helpers/genres";
+// 
 
 export function checkGenreList(genre_ids, genres, release_date) {
   let genreIsMany = null;
