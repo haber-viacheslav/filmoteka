@@ -24,7 +24,7 @@ function postFilmToDatabase({ id, currentFilmId, reference }) {
   const postListRef = ref(db, `users/${id}/${reference}`);
   const newPostRef = push(postListRef);
   set(newPostRef, {
-    currentFilmId,
+    [currentFilmId]: 'film',
   });
 }
 function deleteDataWithDb({ id, currentFilmId, reference }) {
@@ -32,10 +32,13 @@ function deleteDataWithDb({ id, currentFilmId, reference }) {
 }
 function getUserDataById(id, refLink) {
   const resp = ref(db, `users/${id}/${refLink}`);
+  let userData = {};
+
   onValue(resp, data => {
-    const userData = data.val();
-    console.log(userData);
+    userData = data.val();
   });
+  console.log('getUserFunc', userData);
+  return userData;
 }
 
 export { postUserIntoDatebase, getUserDataById, postFilmToDatabase };
