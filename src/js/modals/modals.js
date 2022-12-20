@@ -24,8 +24,6 @@ function onBackdropClose(e) {
 }
 
 function onModalKeydown(e) {
-  console.log('keys');
-
   if (teamGallery.on('shown.simplelightbox', onRemoveListners)) {
     teamGallery.on('closed.simplelightbox', onAddListeners);
   }
