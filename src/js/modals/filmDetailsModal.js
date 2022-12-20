@@ -3,7 +3,11 @@ import FetchFilmsApi from '../helpers/fetchFilmsApi';
 import * as basicLightbox from 'basiclightbox';
 import onShowTrailer from './showTrailer';
 import { checkFilmDetailes } from '../checkers/filmDetailesChecker';
-import { addFilmToQueque, addFilmToWatched } from '../user-service/userServ';
+import {
+  addFilmToQueque,
+  addFilmToWatched,
+  getUserFilmsData,
+} from '../user-service/userServ';
 
 const fetchApi = new FetchFilmsApi();
 const renderApi = new RenderApi();
@@ -52,6 +56,7 @@ export async function onShowFilmModal(event) {
   addToQueue.addEventListener('click', addFilmToQueque);
   addToWatch.addEventListener('click', addFilmToWatched);
   //
+  getUserFilmsData('userQueue');
   //
   //
   document.addEventListener('keydown', onPressEsc, { once: true });
