@@ -11,6 +11,10 @@ import {
 
 function addFilmToQueque(e) {
   e.preventDefault();
+  const removeToQueue = document.querySelector('.film-modal__btn--queue-js ');
+  const addToQueue = document.querySelector('.film-modal__btn--queue');
+  addToQueue.classList.add('is-hidden');
+  removeToQueue.classList.remove('is-hidden');
   const userId = getCurrentUser().uid;
   const filmKey = postFilmToDatabase({
     id: userId,
@@ -21,7 +25,10 @@ function addFilmToQueque(e) {
 }
 function addFilmToWatched(e) {
   const userId = getCurrentUser().uid;
-
+  const removeToWatch = document.querySelector('.film-modal__btn--watched-js');
+  const addToWatch = document.querySelector('.film-modal__btn--watched');
+  addToWatch.classList.add('is-hidden');
+  removeToWatch.classList.remove('is-hidden');
   e.preventDefault();
   postFilmToDatabase({ id: userId, currentFilmId, reference: 'userWatched' });
 }
