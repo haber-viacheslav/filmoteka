@@ -17,7 +17,7 @@ if (!window.location.href.includes('user-page')) {
 
 export default function onSearchBtnClick(e) {
   e.preventDefault();
-
+  
   const value = e.currentTarget.elements.search_user.value.trim();
 
   apiSearch.actualQuery = value;
@@ -28,6 +28,7 @@ export default function onSearchBtnClick(e) {
 
 export async function getSearchedFilm() {
   const films = await apiSearch.getSearchFilmsData({});
+  
   const genresObj = await apiSearch.getGenresList({});
   const genres = genresObj.data.genres;
   const filmsArrLength = films.data.results.length;

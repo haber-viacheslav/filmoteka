@@ -53,6 +53,7 @@ export async function onShowFilmModal(event) {
   const addToQueue = document.querySelector('.film-modal__btn--queue');
   const addToWatch = document.querySelector('.film-modal__btn--watched');
   currentFilmId = filmId;
+  
   addToQueue.addEventListener('click', addFilmToQueque);
   addToWatch.addEventListener('click', addFilmToWatched);
   //
