@@ -43,12 +43,10 @@ function onBtnQueueClick(e) {
             const data = snapshot.val();
 
             const keys = Object.keys(data);
-            console.log(keys);
             const resp = [];
             for (const key of keys) {
               resp.push(key);
             }
-            console.log(resp);
             return resp;
           }
         })
@@ -93,7 +91,6 @@ function onBtnWatchedClick(e) {
         .then(snapshot => {
           if (snapshot.exists()) {
             const data = snapshot.val();
-            console.log(data);
             const keys = Object.keys(data);
             const resp = [];
             for (const key of keys) {
