@@ -1,7 +1,7 @@
 import {
   postUserIntoDatebase,
   getUserDataById,
-} from '../user-service/postUserIntoDb';
+} from '../user-service/dataDatebaseFunc';
 import { app } from './initFirebase';
 import {
   notifySuccessMessage,

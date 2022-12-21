@@ -23,25 +23,10 @@ export const refs = {
   btnScrollTopRef: document.querySelector('.btn__up'),
   btnScrollDownRef: document.querySelector('.btn__down'),
   footerRef: document.querySelector('.footer'),
-  btnWatch: document.querySelector('.btn__watched'),
+  btnWatched: document.querySelector('.btn__watched'),
   btnQueue: document.querySelector('.btn__queue'),
   // stub: document.querySelector('.stub__container'),
 
   // enter refs of elements you want
   // like this ---> inputEl: document.querySelector('.header__search-form')  (EXAMPLE!!!)
 };
-
-// DONT TOUCH below
-// -----------------------------------
-// class refsApiServ {
-//   constructor() {
-//     this.el = {};
-//   }
-//   addRefs(refName, link) {
-//     this.el = { [refName]: link };
-//   }
-// }
-// const refs = new refsApiServ();
-// refs.addRefs('inputEl', document.querySelector('.film-list'));
-// console.log(refs.refs.inputEl);
-// -----------------------------------
