@@ -1,5 +1,6 @@
 import refsApiServ from './refsApiServ';
 import { checkGenreList } from '../checkers/genresChecker';
+import { checkUserGenreList } from '../checkers/genresUserChecker';
 // import { genres } from './genres'
 
 class RenderApi {
@@ -11,6 +12,25 @@ class RenderApi {
       .map(({ poster_path, title, genre_ids, release_date, id }) => {
         const filmGengres = checkGenreList(genre_ids, genres, release_date);
 
+        const { date, genresOfCurrentFilm } = filmGengres;
+
+        return ` <li class="film">
+        <div class="film__thumb">
+          <img data-id='${id}' class="film__img" src="https://image.tmdb.org/t/p/w500/${poster_path}" alt="${title}" />
+        </div>
+        <div class="film__wrap">
+          <h2 class="film__title">${title}</h2>
+          <p class="film__genres">${genresOfCurrentFilm} | ${date}</p>
+        </div>
+      </li>`;
+      })
+      .join('');
+  }
+  createFilmUserCardsMarkup(data) {
+    console.log('tapihpn', data);
+    return data
+      .map(({ data: { poster_path, title, release_date, id, genres } }) => {
+        const filmGengres = checkUserGenreList(genres, release_date);
         const { date, genresOfCurrentFilm } = filmGengres;
 
         return ` <li class="film">
