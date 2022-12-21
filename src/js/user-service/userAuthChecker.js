@@ -11,14 +11,9 @@ export function checkUserAuth(auth, renderApiCopy, render) {
         createMarkypFunc: renderApiCopy.createAuthorizatedUserHeaderMarkup(),
       });
       const uid = user.uid;
-      // ...
     } else {
       // User is signed out
-      // ...
-
       notifyInfoMessage('You are not Sign In');
-      console.log('not authorizate');
-      //   location.reload();
     }
   });
 }
