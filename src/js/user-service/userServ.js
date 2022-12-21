@@ -15,6 +15,7 @@ function addFilmToQueque(e) {
   const filmKey = postFilmToDatabase({
     id: userId,
     currentFilmId,
+    reference: 'userQueue',
   });
   getFilmDataById(userId, 'userQueue', filmKey);
 }
@@ -22,7 +23,7 @@ function addFilmToWatched(e) {
   const userId = getCurrentUser().uid;
 
   e.preventDefault();
-  postFilmToDatabase({ id: userId, currentFilmId, reference: 'watched' });
+  postFilmToDatabase({ id: userId, currentFilmId, reference: 'userWatched' });
 }
 function getCurrentUser() {
   const auth = getAuth(app);

@@ -6,11 +6,7 @@ import { onAuthStateChanged } from 'firebase/auth';
 import { getDatabase, ref, get } from 'firebase/database';
 import { app } from '../firebase/initFirebase';
 import { checkFilmDetailes } from '../checkers/filmDetailesChecker';
-import {
-  addFilmToQueque,
-  addFilmToWatched,
-  getUserFilmsData,
-} from '../user-service/userServ';
+import { addFilmToQueque, addFilmToWatched } from '../user-service/userServ';
 const db = getDatabase(app);
 const fetchApi = new FetchFilmsApi();
 const renderApi = new RenderApi();
@@ -84,40 +80,7 @@ export async function onShowFilmModal(event) {
   // end 'change textContent btn'
 
   //
-  // onAuthStateChanged(auth, user => {
-  //   if (user) {
-  //     const libDataWatched = `users/${user.uid}/lib/watched/`;
-  //     const libDataQueue = `users/${user.uid}/lib/queue/`;
 
-  //     get(ref(db, libDataWatched))
-  //       .then(snapshot => {
-  //         if (snapshot.exists()) {
-  //           const ids = Object.keys(snapshot.val());
-  //           if (ids.includes(filmId)) {
-  //             addToQueue.textContent = 'Remove';
-  //           }
-  //         }
-  //       })
-  //       .catch(console.error);
-
-  //     get(ref(db, libDataQueue))
-  //       .then(snapshot => {
-  //         if (snapshot.exists()) {
-  //           const ids = Object.keys(snapshot.val());
-  //           if (ids.includes(filmId)) {
-  //             addToWatch.textContent = 'Remove';
-  //           }
-  //         }
-  //       })
-  //       .catch(console.error);
-  //   }
-  // });
-
-  // getUserFilmsData('userQueue');
-  // const obj = getUserFilmsData('userQueue');
-  // console.log(`obj = ${obj}`);
-
-  //
   //
   document.addEventListener('keydown', onPressEsc, { once: true });
 

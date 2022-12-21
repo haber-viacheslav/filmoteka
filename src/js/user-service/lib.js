@@ -1,3 +1,4 @@
+import { async } from '@firebase/util';
 import { onAuthStateChanged, getAuth } from 'firebase/auth';
 import {
   getDatabase,
@@ -12,7 +13,13 @@ import {
 } from 'firebase/database';
 import { app } from '../firebase/initFirebase';
 import { refs } from '../helpers/refsApiServ';
-import { fetchApi, renderApi } from '../main';
+import { genres } from '../helpers/genres';
+
+import RenderApi from '../helpers/renderFuncApi';
+import FetchFilmsApi from '../helpers/fetchFilmsApi';
+import { notifyFailureMessage } from '../helpers/notifyMessages';
+const libFetchApi = new FetchFilmsApi();
+const libRender = new RenderApi();
 
 refs.btnQueue.addEventListener('click', onBtnQueueClick);
 refs.btnWatched.addEventListener('click', onBtnWatchedClick);
@@ -37,30 +44,88 @@ function onBtnQueueClick(e) {
             }
             //   const baseValues = Object
             console.log(resp);
-            // return base;
+            return resp;
           }
         })
         .then(resp => {
-          // fetchApi.getCurrentFilm();
-          // const markup = renderApi.createFilmCardsMarkup(
-          //   films.data.results,
-          //   genres
-          // );
-          // renderApi.renderMarkup({
-          //   selector: '.films__list',
-          //   innerHtml: true,
-          //   createMarkypFunc: markup,
-          // });
+          console.log(resp);
+          const promiseArr = [];
+
+          for (const filmId of resp) {
+            const films = libFetchApi.getCurrentFilm({ id: filmId });
+            promiseArr.push(films);
+          }
+          Promise.all(promiseArr).then(value => {
+            // for (const filmObj of value) {
+            //   // console.log();
+
+            // }
+            libRender.renderMarkup({
+              selector: '.films__list--user',
+              innerHtml: true,
+              createMarkypFunc: libRender.createFilmUserCardsMarkup(
+                value,
+                genres
+              ),
+            });
+          });
         })
         .catch(err => console.error(err));
       // ...
     } else {
-      // User is signed out
-      // ...
-
-      console.log('not authorizate');
-      //   location.reload();
+      notifyFailureMessage('Please Log In!');
     }
   });
 }
-function onBtnWatchedClick(e) {}
+function onBtnWatchedClick(e) {
+  onAuthStateChanged(auth, user => {
+    if (user) {
+      // User is signed in, see docs for a list of available properties
+      // https://firebase.google.com/docs/reference/js/firebase.User
+
+      const uid = user.uid;
+      get(child(ref(db), `users/${uid}/userWatched`))
+        .then(snapshot => {
+          if (snapshot.exists()) {
+            const data = snapshot.val();
+            console.log(data);
+            const keys = Object.keys(data);
+            const resp = [];
+            for (const key of keys) {
+              resp.push(key);
+            }
+            //   const baseValues = Object
+            console.log(resp);
+            return resp;
+          }
+        })
+        .then(resp => {
+          console.log(resp);
+          const promiseArr = [];
+
+          for (const filmId of resp) {
+            const films = libFetchApi.getCurrentFilm({ id: filmId });
+            promiseArr.push(films);
+          }
+          Promise.all(promiseArr).then(value => {
+            // for (const filmObj of value) {
+            //   // console.log();
+
+            // }
+            libRender.renderMarkup({
+              selector: '.films__list--user',
+              innerHtml: true,
+              createMarkypFunc: libRender.createFilmUserCardsMarkup(
+                value,
+                genres
+              ),
+            });
+          });
+        })
+        .catch(err => console.error(err));
+      // ...
+    } else {
+      notifyFailureMessage('Please Log In!');
+    }
+  });
+}

@@ -24,28 +24,15 @@ function postUserIntoDatebase({ uid: userId, email, displayName }) {
 
 //
 
-function postFilmToDatabase({ id, currentFilmId }) {
-  // const postListRef = ref(db, `users/${id}/lib/${reference}`);
-  // const newPostRef = push(postListRef);
-  // console.log('queue key:' + newPostRef.key);
-  // set(newPostRef, {
-  //   [currentFilmId]: currentFilmId,
-  // });
-
+function postFilmToDatabase({ id, currentFilmId, reference }) {
   // A post entry.
   const postData = {
     film: currentFilmId,
   };
-
-  // Get a key for a new Post.
-  // const newQueueKey = push(child(ref(db), `users/${id}/userQueue`)).key;
-  // console.log(newQueueKey);
-  // Write the new post's data simultaneously in the posts list and the user's post list.
   const updates = {};
-  updates[`users/${id}/userQueue/${currentFilmId}`] = postData;
-  //  updates['/user-posts/' + id + '/' + newPostKey] = postData;
+  updates[`users/${id}/${reference}/${currentFilmId}`] = postData;
   update(ref(db), updates);
-  return; //newQueueKey;
+  return;
 }
 
 //
