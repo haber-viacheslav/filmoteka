@@ -4,15 +4,20 @@
 }
 
 .theme-btn {
-    width: 60px;
-    height: 60px;
-    display: block;
-    margin-left: auto;
-    margin-top: 10px;
-    background-color: rgba(118, 83, 154, 0.34);
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+    fill: rgb(236, 233, 21);
+    // background-color: rgba(118, 83, 154, 0.34);
     border-radius: 50%;
     padding: 0;
-    // background-color: rgba(0, 0, 0, 0);
+    background-color: rgba(0, 0, 0, 0);
     border: none;
     z-index: 50;
     cursor: pointer;
@@ -20,8 +25,13 @@
 
 .theme-light {
     fill: #fff;
+    padding-top: 5px;
 }
 
 .is-hidden {
     display: none;
+}
+
+.dark{
+    background-color: #221e32;
 }

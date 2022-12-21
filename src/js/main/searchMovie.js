@@ -8,8 +8,12 @@ const renderApi = new RenderApi();
 const apiSearch = new FetchFilmsApi({
   baseURL: 'https://api.themoviedb.org/3/',
 });
-
-refs.form.addEventListener('submit', onSearchBtnClick);
+console.log();
+if (!window.location.href.includes('user-page')) {
+  refs.form.addEventListener('submit', onSearchBtnClick);
+} else {
+  refs.form.removeEventListener('submit', onSearchBtnClick);
+}
 
 export default function onSearchBtnClick(e) {
   e.preventDefault();

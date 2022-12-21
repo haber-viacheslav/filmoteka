@@ -3,9 +3,15 @@ import FetchFilmsApi from '../helpers/fetchFilmsApi';
 import * as basicLightbox from 'basiclightbox';
 import onShowTrailer from './showTrailer';
 import { checkFilmDetailes } from '../checkers/filmDetailesChecker';
+import {
+  addFilmToQueque,
+  addFilmToWatched,
+  getUserFilmsData,
+} from '../user-service/userServ';
 
 const fetchApi = new FetchFilmsApi();
 const renderApi = new RenderApi();
+export let currentFilmId = '';
 
 export async function onShowFilmModal(event) {
   if (!event.target.classList.contains('film__img')) {
@@ -40,7 +46,27 @@ export async function onShowFilmModal(event) {
   );
 
   instance.show();
+  //
+  //
+  //
 
+  const addToQueue = document.querySelector('.film-modal__btn--queue');
+  const addToWatch = document.querySelector('.film-modal__btn--watched');
+  currentFilmId = filmId;
+  addToQueue.addEventListener('click', addFilmToQueque);
+  addToWatch.addEventListener('click', addFilmToWatched);
+  //
+  // getUserFilmsData('userQueue');
+  const obj = getUserFilmsData('userQueue');
+  console.log(`obj = ${obj}`);
+  if (!obj) {
+    return;
+  } else {
+    const value = Object.values(obj);
+    console.log(value);
+  }
+  //
+  //
   document.addEventListener('keydown', onPressEsc, { once: true });
 
   function onPressEsc(e) {

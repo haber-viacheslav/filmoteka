@@ -1,19 +1,18 @@
 import { refs } from '../helpers/refsApiServ';
-import { teamGallery, teamSocial } from '../helpers/simpleLightBox';
-refs.btnOpenRef.addEventListener('click', onBtnToggle);
-refs.btnCloseRef.addEventListener('click', onBtnToggle);
-refs.btnOpenUserRef.addEventListener('click', onBtnToggle);
-refs.btnCloseUserRef.addEventListener('click', onBtnToggle);
+import { teamGallery } from '../helpers/simpleLightBox';
+refs.btnOpenRef.addEventListener('click', onOpenBtn);
+refs.btnCloseRef.addEventListener('click', onCloseBtn);
+// refs.btnOpenUserRef.addEventListener('click', onOpenBtn);
+// refs.btnCloseUserRef.addEventListener('click', onCloseBtn);
 
-function onToggle() {
-  refs.teamModal.classList.toggle('is-hidden');
-  refs.body.classList.toggle('no-scroll');
-}
-
-function onBtnToggle() {
+function onCloseBtn() {
   onToggle();
-  refs.teamModal.addEventListener('click', onBackdropClose);
-  refs.body.addEventListener('keydown', onModalKeydown);
+
+  onRemoveListners();
+}
+function onOpenBtn() {
+  onToggle();
+  onAddListeners();
 }
 
 function onBackdropClose(e) {
@@ -21,17 +20,32 @@ function onBackdropClose(e) {
     return;
   }
   onToggle();
-  refs.body.removeEventListener('keydown', onModalKeydown);
-  refs.teamModal.removeEventListener('click', onBackdropClose);
+  onRemoveListners();
 }
 
 function onModalKeydown(e) {
-  if (refs.teamModal.classList.contains('is-hidden')) {
-    return;
+  if (teamGallery.on('shown.simplelightbox', onRemoveListners)) {
+    teamGallery.on('closed.simplelightbox', onAddListeners);
   }
   if (e.code === 'Escape') {
     onToggle();
-    refs.body.removeEventListener('keydown', onModalKeydown);
-    refs.teamModal.removeEventListener('click', onBackdropClose);
+    onRemoveListners();
   }
+}
+// Toggle modal classes
+function onToggle() {
+  refs.teamModal.classList.toggle('is-hidden');
+  refs.body.classList.toggle('no-scroll');
+}
+
+// addEventListeners
+function onAddListeners() {
+  refs.teamModal.addEventListener('click', onBackdropClose);
+  refs.body.addEventListener('keydown', onModalKeydown);
+}
+
+// removeEventListeners
+function onRemoveListners() {
+  refs.body.removeEventListener('keydown', onModalKeydown);
+  refs.teamModal.removeEventListener('click', onBackdropClose);
 }
