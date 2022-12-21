@@ -6,7 +6,12 @@ import { onAuthStateChanged } from 'firebase/auth';
 import { getDatabase, ref, get } from 'firebase/database';
 import { app } from '../firebase/initFirebase';
 import { checkFilmDetailes } from '../checkers/filmDetailesChecker';
-import { addFilmToQueque, addFilmToWatched } from '../user-service/userServ';
+import {
+  addFilmToQueque,
+  addFilmToWatched,
+  deleteFilmFromQueue,
+  deleteFilmFromWatched,
+} from '../user-service/userServ';
 import { refs } from '../helpers/refsApiServ';
 const db = getDatabase(app);
 const fetchApi = new FetchFilmsApi();
@@ -50,8 +55,12 @@ export async function onShowFilmModal(event) {
   //
   const addToQueue = document.querySelector('.film-modal__btn--queue');
   const addToWatch = document.querySelector('.film-modal__btn--watched');
-  const removeToQueue = document.querySelector('.film-modal__btn--queue-js ');
-
+  const removeToQueue = document.querySelector(
+    '.film-modal__btn--queue-remove-js '
+  );
+  const removeToWatch = document.querySelector(
+    '.film-modal__btn--watched-remove-js'
+  );
   currentFilmId = filmId;
   addToQueue.addEventListener('click', addFilmToQueque);
   addToWatch.addEventListener('click', addFilmToWatched);
@@ -59,8 +68,6 @@ export async function onShowFilmModal(event) {
   // start 'change textContent btn'
   // console.log(addToQueue)
   // console.log(addToWatch)
-  // addToQueue.addEventListener('click', removeToQueue);
-  // addToWatch.addEventListener('click', removeToWatch);
 
   // end 'change textContent btn'
 

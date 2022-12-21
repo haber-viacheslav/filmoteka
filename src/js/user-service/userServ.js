@@ -7,30 +7,76 @@ import {
   getUserDataById,
   postFilmToDatabase,
   getFilmDataById,
+  deleteDataWithDb,
 } from './dataDatebaseFunc';
 
 function addFilmToQueque(e) {
   e.preventDefault();
-  const removeToQueue = document.querySelector('.film-modal__btn--queue-js ');
   const addToQueue = document.querySelector('.film-modal__btn--queue');
-  addToQueue.classList.add('is-hidden');
-  removeToQueue.classList.remove('is-hidden');
   const userId = getCurrentUser().uid;
-  const filmKey = postFilmToDatabase({
-    id: userId,
-    currentFilmId,
-    reference: 'userQueue',
-  });
-  getFilmDataById(userId, 'userQueue', filmKey);
+  const default_label = 'add to queue';
+  console.log(addToQueue.textContent);
+  if (addToQueue.textContent === default_label) {
+    const filmKey = postFilmToDatabase({
+      id: userId,
+      currentFilmId,
+      reference: 'userQueue',
+    });
+    console.log('before getFilmDatat func');
+    getFilmDataById(userId, 'userQueue', filmKey);
+    addToQueue.disabled = true;
+    setTimeout(() => (addToQueue.disabled = false), 2000);
+    addToQueue.textContent = 'Remove from Queue';
+  } else {
+    deleteFilmFromQueue();
+    addToQueue.textContent = default_label;
+    addToQueue.disabled = true;
+    setTimeout(() => (addToQueue.disabled = false), 2000);
+  }
 }
 function addFilmToWatched(e) {
-  const userId = getCurrentUser().uid;
-  const removeToWatch = document.querySelector('.film-modal__btn--watched-js');
-  const addToWatch = document.querySelector('.film-modal__btn--watched');
-  addToWatch.classList.add('is-hidden');
-  removeToWatch.classList.remove('is-hidden');
   e.preventDefault();
-  postFilmToDatabase({ id: userId, currentFilmId, reference: 'userWatched' });
+  const userId = getCurrentUser().uid;
+
+  const addToWatch = document.querySelector('.film-modal__btn--watched');
+  const default_label = 'add to queue';
+  console.log(addToWatch.textContent);
+  if (addToWatch.textContent === default_label) {
+    const filmKey = postFilmToDatabase({
+      id: userId,
+      currentFilmId,
+      reference: 'userQueue',
+    });
+    console.log('before getFilmDatat func');
+    getFilmDataById(userId, 'userQueue', filmKey);
+    addToWatch.disabled = true;
+    setTimeout(() => (addToWatch.disabled = false), 2000);
+    addToWatch.textContent = 'Remove from Queue';
+  } else {
+    console.log('before deleteFilm func');
+    deleteFilmFromWatched()();
+    addToWatch.textContent = default_label;
+    addToWatch.disabled = true;
+    setTimeout(() => (addToWatch.disabled = false), 2000);
+  }
+}
+/**
+ *
+ * @param {*}
+ * DELETE FROM WATCHED
+ */
+function deleteFilmFromWatched() {
+  const userId = getCurrentUser().uid;
+  deleteDataWithDb({ id: userId, currentFilmId, reference: 'userWatched' });
+}
+/**
+ *
+ * @param {*}
+ * DELETE FROM QUEUE
+ */
+function deleteFilmFromQueue() {
+  const userId = getCurrentUser().uid;
+  deleteDataWithDb({ id: userId, currentFilmId, reference: 'userQueue' });
 }
 function getCurrentUser() {
   const auth = getAuth(app);
@@ -50,4 +96,10 @@ function getUserFilmsData(reference) {
 }
 // getUserFilmsData();
 
-export { addFilmToQueque, addFilmToWatched, getUserFilmsData };
+export {
+  addFilmToQueque,
+  addFilmToWatched,
+  getUserFilmsData,
+  deleteFilmFromWatched,
+  deleteFilmFromQueue,
+};
