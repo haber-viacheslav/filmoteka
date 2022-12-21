@@ -59,7 +59,10 @@ class RenderApi {
           </li>
          `;
   }
-
+  // createStubListMarkup() {
+  //   return `
+  //
+  // }
   createModalFilmDetails(
     {
       poster_path,

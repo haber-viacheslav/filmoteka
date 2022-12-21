@@ -54,6 +54,9 @@ function onBtnQueueClick(e) {
           if (!resp) {
             notifyInfoMessage('You do not have any movies in Queue!');
             document.querySelector('.films__list--user').innerHTML = '';
+            document
+              .querySelector('.stub__container')
+              .classList.remove('is-hidden');
             return;
           }
           const promiseArr = [];
@@ -83,9 +86,6 @@ function onBtnQueueClick(e) {
 function onBtnWatchedClick(e) {
   onAuthStateChanged(auth, user => {
     if (user) {
-      // User is signed in, see docs for a list of available properties
-      // https://firebase.google.com/docs/reference/js/firebase.User
-
       const uid = user.uid;
       get(child(ref(db), `users/${uid}/userWatched`))
         .then(snapshot => {
@@ -103,8 +103,12 @@ function onBtnWatchedClick(e) {
           if (!resp) {
             notifyInfoMessage('You do not have any movies in Watched!');
             document.querySelector('.films__list--user').innerHTML = '';
+            document
+              .querySelector('.stub__container')
+              .classList.remove('is-hidden');
             return;
           }
+          document.querySelector('.stub__container').classList.add('is-hidden');
           const promiseArr = [];
 
           for (const filmId of resp) {

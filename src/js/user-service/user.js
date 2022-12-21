@@ -10,4 +10,4 @@ refs.filmListUser.addEventListener('click', onShowFilmModal);
 const libSpinner = new SpinneroOnLoadingApi({
   options: { backgroundColor: '#000000', svgColor: '#FF6B08' },
 });
-libSpinner.enabled({ timeDelay: 10, delayAfterStop: 350 });
+libSpinner.enabled({ timeDelay: 5, delayAfterStop: 350 });
