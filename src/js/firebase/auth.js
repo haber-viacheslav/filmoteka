@@ -9,21 +9,25 @@ import {
 } from '../helpers/notifyMessages';
 
 // Initialize Firebase
-import {
-  getAuth,
-  signInWithPopup,
-  GoogleAuthProvider,
-  signOut,
-} from 'firebase/auth';
+import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 import { async } from '@firebase/util';
+import { checkUserAuth } from '../user-service/userAuthChecker';
+import RenderApi from '../helpers/renderFuncApi';
 // // SIGN IN
 const auth = getAuth();
 const signInLinck = document.querySelector('.menu__link-js');
+
+const renderUserHeader = new RenderApi();
 // console.log(signIn.href);
 // if ((window.location.href = 'user-page')) {
 //   signInLinck.removeEventListener('click', onSignIn);
 // }
+
+// check auth
+checkUserAuth(auth, renderUserHeader, renderUserHeader.renderMarkup);
+
 signInLinck.addEventListener('click', onSignIn);
+console.log(auth);
 
 async function onSignIn() {
   console.log('working');
@@ -45,28 +49,13 @@ async function onSignIn() {
       // getUserDataById(user.uid, 'userData');
 
       if (user) {
-        const navMenu = document.querySelector('.menu__list');
-        console.log(navMenu);
-        const createHtml = `<li class="menu__item">
-            <a
-              href="./index.html"
-              target="_self"
-              class="menu__link menu__link--current"
-              >HOME</a
-            >
-          </li>
-          <li class="menu__item">
-            <a href="./user-page.html" target="_self" class="menu__link"
-              >MY LIBRARY</a
-            >
-          </li>
-          <li class="menu__item">
-            <a target="_self" class="menu__link menu__logout">LOG OUT</a>
-          </li>`;
-
-        navMenu.innerHTML = createHtml;
+        renderUserHeader.renderMarkup({
+          selector: '.menu__list',
+          innerHtml: true,
+          createMarkypFunc:
+            renderUserHeader.createAuthorizatedUserHeaderMarkup(),
+        });
         notifySuccessMessage('You are in!');
-        logOut();
       }
 
       // ...
@@ -89,21 +78,3 @@ async function onSignIn() {
 }
 
 // LOG OUT
-function logOut() {
-  const logOut = document.querySelector('.menu__logout');
-  console.log(logOut);
-  logOut.addEventListener('click', onlogOut);
-  function onlogOut() {
-    const auth = getAuth();
-    signOut(auth)
-      .then(() => {
-        // Sign-out successful.
-        notifyInfoMessage('You loged out!');
-        location.reload();
-      })
-      .catch(error => {
-        // An error happened.
-        console.error(error);
-      });
-  }
-}

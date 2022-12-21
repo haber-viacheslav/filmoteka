@@ -57,7 +57,15 @@ export async function onShowFilmModal(event) {
   addToQueue.addEventListener('click', addFilmToQueque);
   addToWatch.addEventListener('click', addFilmToWatched);
   //
-  getUserFilmsData('userQueue');
+  // getUserFilmsData('userQueue');
+  const obj = getUserFilmsData('userQueue');
+  console.log(`obj = ${obj}`);
+  if (!obj) {
+    return;
+  } else {
+    const value = Object.values(obj);
+    console.log(value);
+  }
   //
   //
   document.addEventListener('keydown', onPressEsc, { once: true });
