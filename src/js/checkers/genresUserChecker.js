@@ -1,16 +1,3 @@
-//
-
-// [{id: 28, name: 'Action'}
-// 1
-// :
-// {id: 12, name: 'Adventure'}
-// 2
-// :
-// {id: 14, name: 'Fantasy'}
-// 3
-// :
-// { id: 878, name: 'Science Fiction' }]
-//
 export function checkUserGenreList(genres, release_date) {
   let genreIsMany = null;
   let maxGenreIds = genres;
@@ -32,7 +19,6 @@ export function checkUserGenreList(genres, release_date) {
   }
 
   const date = release_date.slice(0, 4);
-  console.log('genres:', date);
 
   return { date, genresOfCurrentFilm };
 }
