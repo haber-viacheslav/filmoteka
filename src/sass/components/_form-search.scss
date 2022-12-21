@@ -2,14 +2,19 @@
   display: grid;
   position: relative;
   margin: 0 auto;
+
+  
 }
 .form__box {
   margin-top: 54px;
   margin-left: auto;
   margin-right: auto;
   width: 280px;
-  
 
+  border-bottom: 0.5px solid $white;
+  position: relative;
+
+  
   @media screen and (min-width: $tablet) {
     width: 336px;
     margin-top: 40px;
@@ -19,26 +24,55 @@
     width: 394px;
     margin-top: 41px;
   }
+
+  &:hover,
+  &:focus{
+    animation: transition 1s ease-out;
+    border-bottom: 0.5px solid #ff6b08;
+        
+  }
+
 }
+
 .form__input {
   width: 100%;
   height: 30px;
   margin-right: 0;
   border: none;
+  outline: none;
   background: rgba(0, 0, 0, 0);
+
+  color: #fff;
+
+  animation-name: input;
+  animation: input 3s ease 0s 1 normal none;
+
+  @keyframes input {
+    0% {
+      letter-spacing: 1em;
+      filter: blur(12px);
+      opacity: 0;
+    }
+
+    100% {
+      filter: blur(0);
+      opacity: 1;
+    }
+  }
+
+
   color: $white;
   outline: none;
   border-bottom: 0.5px solid $white;
   position: relative;
-  
-  
+    
   &::placeholder {
     color: $white;
     font-size: 14px;
     line-height: 1.14;
     font-weight: 400;
   }
- 
+
 }
 .form__text-error {
   font-weight: 400;
@@ -53,6 +87,26 @@
   }
 }
 .form__btn {
+
+  height: 20px;
+  width: 20px;
+  position: absolute;
+  top: 0;
+  right: 0;
+
+ }
+
+.form__icon {
+ 
+
+  .form__box:hover &,
+  .form__box:focus &{
+    transform: scale(1.6);
+    animation: transition 1s ease-out;
+    fill: #ff6b08;
+        
+  }
+
   height: 25px;
   width: 25px;
   padding-top: 10px;
@@ -68,6 +122,7 @@
   @media screen and (min-width: $desktop) {
   transform: translateX(178px);
   }
+
 
 }
 

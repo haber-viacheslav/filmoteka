@@ -59,7 +59,7 @@ class RenderApi {
     return `
         <div class="film__modal">
         
-      <button class="film-modal__close">X</button>
+      <button class="film-modal__close"><span class="film-modal__btn-text">&#10006</span></button>
     
           <div class="film-modal__thumb">
           <img
@@ -110,13 +110,13 @@ class RenderApi {
           <p class="film-modal__about-film-text"> ${overview}
           </p>
     
-          <button class="film-modal__trailer" data-id="${filmId} aria-lable="youtube"><span class="film-modal__sumbol">&#9658;</span></button>
+          <button class="modal-btn film-modal__trailer" data-id="${filmId} aria-lable="youtube"><span class="film-modal__sumbol">&#9658;</span></button>
     
           <div class="film-modal__wrap-btn flex">
-            <button class="film-modal__btn film-modal__btn--watched">
+            <button class="modal-btn film-modal__btn film-modal__btn--watched">
               add to Watched
             </button>
-            <button class="film-modal__btn film-modal__btn--queue">
+            <button class="modal-btn film-modal__btn film-modal__btn--queue">
               add to queue
             </button>
           </div>
