@@ -30,30 +30,27 @@ function onBtnQueueClick(e) {
           if (snapshot.exists()) {
             const data = snapshot.val();
             console.log(data);
-            const keys = Object.values(data);
+            const keys = Object.keys(data);
             const resp = [];
             for (const key of keys) {
               resp.push(key);
             }
             //   const baseValues = Object
-            const base = resp.map(el => el['currentFilmId']);
-            console.log(base);
-            return base;
+            console.log(resp);
+            // return base;
           }
         })
         .then(resp => {
-          fetchApi.getCurrentFilm();
-
-          const markup = renderApi.createFilmCardsMarkup(
-            films.data.results,
-            genres
-          );
-
-          renderApi.renderMarkup({
-            selector: '.films__list',
-            innerHtml: true,
-            createMarkypFunc: markup,
-          });
+          // fetchApi.getCurrentFilm();
+          // const markup = renderApi.createFilmCardsMarkup(
+          //   films.data.results,
+          //   genres
+          // );
+          // renderApi.renderMarkup({
+          //   selector: '.films__list',
+          //   innerHtml: true,
+          //   createMarkypFunc: markup,
+          // });
         })
         .catch(err => console.error(err));
       // ...
