@@ -139,6 +139,15 @@ class RenderApi {
             <button class="modal-btn film-modal__btn film-modal__btn--queue">
               add to queue
             </button>
+
+
+
+             <button class="modal-btn film-modal__btn film-modal__btn--watched-js film-modal__btn-watched-active is-hidden">
+              Remove from Watched
+            </button>
+            <button class="modal-btn film-modal__btn  film-modal__btn--queue-js film-modal__btn-queue-active is-hidden">
+              Remove from Queue
+            </button>
           </div>
          </div>
         </div>
