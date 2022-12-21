@@ -12,7 +12,7 @@ function onlogOut(e) {
     .then(() => {
       // Sign-out successful.
       notifyInfoMessage('You loged out!');
-      location = 'http://localhost:1234/index.html';
+      location = 'https://haber-viacheslav.github.io/filmoteka/index.html';
       //   window.open();
     })
     .catch(error => {
