@@ -33,6 +33,7 @@ export async function getSearchedFilm() {
   const filmsArrLength = films.data.results.length;
 
   if (!filmsArrLength) {
+    refs.filmList.innerHTML = '';
     return getErrMessage({ addMessage: true });
   }
 
