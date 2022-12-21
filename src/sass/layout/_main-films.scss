@@ -523,16 +523,25 @@
     background-color: #ff5601;
   }
 }
-
+.film-modal__btn-watched-active {
+  background-color: $grey;
+}
 .film-modal__btn--queue {
-  border: 1px solid #000000;
+  border: 1px solid $orange;
   transition: background-color $transition, color $transition;
+  color: $grey;
 
   &:hover,
   &:focus {
-    background-color: #000000;
-    color: $white;
+    background-color: #ff5601;
+
   }
+}
+
+.film-modal__btn-queue-active {
+  background-color: $grey;
+  border: none;
+  color: $white;
 }
 
 .film-modal__iframe {
