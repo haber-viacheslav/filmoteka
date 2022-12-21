@@ -1,39 +1,131 @@
 import { async } from '@firebase/util';
 import { getAuth } from 'firebase/auth';
 import { app } from '../firebase/initFirebase';
+import { notifyFailureMessage } from '../helpers/notifyMessages';
 import { currentFilmId } from '../modals/filmDetailsModal';
 import {
   currentFilmKey,
   getUserDataById,
   postFilmToDatabase,
   getFilmDataById,
+  deleteDataWithDb,
 } from './dataDatebaseFunc';
+// const userId = getCurrentUser().uid;
+// if (!userId) {
+//   return notifyFailureMessage(
+//     'Something went wrong! Maybe you are not Sign In'
+//   );
+// } else {
 
+// }
+const auth = getAuth(app);
+// const userId = getCurrentUser().uid;
 function addFilmToQueque(e) {
   e.preventDefault();
-  const removeToQueue = document.querySelector('.film-modal__btn--queue-js ');
   const addToQueue = document.querySelector('.film-modal__btn--queue');
-  addToQueue.classList.add('is-hidden');
-  removeToQueue.classList.remove('is-hidden');
   const userId = getCurrentUser().uid;
-  const filmKey = postFilmToDatabase({
-    id: userId,
-    currentFilmId,
-    reference: 'userQueue',
-  });
-  getFilmDataById(userId, 'userQueue', filmKey);
+
+  if (!userId) {
+    return notifyFailureMessage(
+      'Something went wrong! Maybe you are not Sign In'
+    );
+  } else {
+    const default_label = 'add to queue';
+    console.log(addToQueue.textContent);
+    if (addToQueue.textContent === default_label) {
+      const filmKey = postFilmToDatabase({
+        id: userId,
+        currentFilmId,
+        reference: 'userQueue',
+      });
+      console.log('before getFilmDatat func');
+
+      console.log(getFilmDataById(userId, 'userQueue', filmKey));
+      //
+      //
+
+      //
+      //
+      addToQueue.disabled = true;
+      setTimeout(() => (addToQueue.disabled = false), 2000);
+      addToQueue.textContent = 'Remove from Queue';
+      addToQueue.classList.add('film-modal__btn-queue-active');
+    } else {
+      deleteFilmFromQueue();
+      addToQueue.textContent = default_label;
+      addToQueue.classList.remove('film-modal__btn-queue-active');
+      addToQueue.disabled = true;
+      setTimeout(() => (addToQueue.disabled = false), 2000);
+    }
+  }
 }
 function addFilmToWatched(e) {
-  const userId = getCurrentUser().uid;
-  const removeToWatch = document.querySelector('.film-modal__btn--watched-js');
-  const addToWatch = document.querySelector('.film-modal__btn--watched');
-  addToWatch.classList.add('is-hidden');
-  removeToWatch.classList.remove('is-hidden');
   e.preventDefault();
-  postFilmToDatabase({ id: userId, currentFilmId, reference: 'userWatched' });
+  const userId = getCurrentUser().uid;
+  // if (!userId) {
+  //   return notifyFailureMessage(
+  //     'Something went wrong! Maybe you are not Sign In'
+  //   );
+  if (!userId) {
+    return notifyFailureMessage(
+      'Something went wrong! Maybe you are not Sign In'
+    );
+  } else {
+    const addToWatch = document.querySelector('.film-modal__btn--watched');
+    const default_label = 'add to Watched';
+    console.log(addToWatch.textContent);
+    if (addToWatch.textContent === default_label) {
+      const filmKey = postFilmToDatabase({
+        id: userId,
+        currentFilmId,
+        reference: 'userWatched',
+      });
+
+      getFilmDataById(userId, 'userWatched', filmKey);
+      addToWatch.disabled = true;
+      setTimeout(() => (addToWatch.disabled = false), 2000);
+      addToWatch.textContent = 'Remove from Watched';
+      addToWatch.classList.add('film-modal__btn-watched-active');
+    } else {
+      deleteFilmFromWatched();
+      addToWatch.textContent = default_label;
+      addToWatch.classList.remove('film-modal__btn-watched-active');
+      addToWatch.disabled = true;
+      setTimeout(() => (addToWatch.disabled = false), 2000);
+    }
+  }
+}
+/**
+ *
+ * @param {*}
+ * DELETE FROM WATCHED
+ */
+function deleteFilmFromWatched() {
+  const userId = getCurrentUser().uid;
+  if (!userId) {
+    return notifyFailureMessage(
+      'Something went wrong! Maybe you are not Sign In'
+    );
+  } else {
+    deleteDataWithDb({ id: userId, currentFilmId, reference: 'userWatched' });
+  }
+}
+/**
+ *
+ * @param {*}
+ * DELETE FROM QUEUE
+ */
+function deleteFilmFromQueue() {
+  const userId = getCurrentUser().uid;
+  if (!userId) {
+    return notifyFailureMessage(
+      'Something went wrong! Maybe you are not Sign In'
+    );
+  } else {
+    deleteDataWithDb({ id: userId, currentFilmId, reference: 'userQueue' });
+  }
 }
 function getCurrentUser() {
-  const auth = getAuth(app);
   const user = auth.currentUser;
   if (user !== null) {
     console.log('get user');
@@ -41,6 +133,7 @@ function getCurrentUser() {
     return user;
   }
   console.log('no user');
+  return false;
 }
 // getCurrentUser();
 // console.log(getCurrentUser());
@@ -50,4 +143,10 @@ function getUserFilmsData(reference) {
 }
 // getUserFilmsData();
 
-export { addFilmToQueque, addFilmToWatched, getUserFilmsData };
+export {
+  addFilmToQueque,
+  addFilmToWatched,
+  getUserFilmsData,
+  deleteFilmFromWatched,
+  deleteFilmFromQueue,
+};

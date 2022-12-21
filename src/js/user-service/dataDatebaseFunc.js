@@ -11,6 +11,7 @@ import {
 } from 'firebase/database';
 
 import { app } from '../firebase/initFirebase';
+import { notifySuccessMessage } from '../helpers/notifyMessages';
 const db = getDatabase(app);
 function postUserIntoDatebase({ uid: userId, email, displayName }) {
   set(ref(db, `users/${userId}/userData`), {
@@ -32,13 +33,14 @@ function postFilmToDatabase({ id, currentFilmId, reference }) {
   const updates = {};
   updates[`users/${id}/${reference}/${currentFilmId}`] = postData;
   update(ref(db), updates);
-  return;
+  return notifySuccessMessage('Film has been added');
 }
 
 //
 
 function deleteDataWithDb({ id, currentFilmId, reference }) {
-  remove(`users/${id}/${reference}`);
+  set(ref(db, `users/${id}/${reference}/${currentFilmId}`), null);
+  notifySuccessMessage('Film has been removed');
 }
 
 //
@@ -55,30 +57,9 @@ function getFilmDataById(userId, reference, filmId) {
     .then(snapshot => {
       if (snapshot.exists()) {
         const data = snapshot.val();
-        // console.log(Object.values(data));
-        //   const dataObj = Object.values(data);
-        //   let resp = '';
-        //   for (const el of dataObj) {
-        //     resp = el;
-        //   }
-        //   return resp;
-        // } else {
-        //   console.log('No data available');
       }
     })
-    // .then(value => {
-    //   console.log(value);
 
-    // const data = value.flatMap(elem => Object.values(elem));
-
-    // const res = data.filter((el, idx, arr) => !arr.includes(el));
-    // console.log(res);
-    // for (const el of value) {
-    //   const key = Object.keys(el);
-    //   console.log((objData = [...key]));
-    // }
-    // console.log('this', objData);
-    // })
     .catch(error => {
       console.error(error);
     });
@@ -88,4 +69,5 @@ export {
   getUserDataById,
   postFilmToDatabase,
   getFilmDataById,
+  deleteDataWithDb,
 };

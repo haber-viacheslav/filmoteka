@@ -6,7 +6,12 @@ import { onAuthStateChanged } from 'firebase/auth';
 import { getDatabase, ref, get } from 'firebase/database';
 import { app } from '../firebase/initFirebase';
 import { checkFilmDetailes } from '../checkers/filmDetailesChecker';
-import { addFilmToQueque, addFilmToWatched } from '../user-service/userServ';
+import {
+  addFilmToQueque,
+  addFilmToWatched,
+  deleteFilmFromQueue,
+  deleteFilmFromWatched,
+} from '../user-service/userServ';
 import { refs } from '../helpers/refsApiServ';
 const db = getDatabase(app);
 const fetchApi = new FetchFilmsApi();
@@ -17,6 +22,7 @@ export async function onShowFilmModal(event) {
   if (!event.target.classList.contains('film__img')) {
     return;
   }
+
   document.body.style.overflow = 'hidden';
 
   event.currentTarget.removeEventListener('click', onShowFilmModal);
@@ -48,10 +54,20 @@ export async function onShowFilmModal(event) {
   //
   //
   //
+
   const addToQueue = document.querySelector('.film-modal__btn--queue');
   const addToWatch = document.querySelector('.film-modal__btn--watched');
-  const removeToQueue = document.querySelector('.film-modal__btn--queue-js ');
+  if (
+    location.href === 'http://localhost:1234/user-page.html' ||
+    location.href ===
+      'https://haber-viacheslav.github.io/filmoteka/user-page.html'
+  ) {
+    addToQueue.textContent = 'Remove from Queue';
+    addToQueue.classList.add('film-modal__btn-queue-active');
 
+    addToWatch.textContent = 'Remove from Watched';
+    addToWatch.classList.add('film-modal__btn-watched-active');
+  }
   currentFilmId = filmId;
   addToQueue.addEventListener('click', addFilmToQueque);
   addToWatch.addEventListener('click', addFilmToWatched);
@@ -59,8 +75,6 @@ export async function onShowFilmModal(event) {
   // start 'change textContent btn'
   // console.log(addToQueue)
   // console.log(addToWatch)
-  // addToQueue.addEventListener('click', removeToQueue);
-  // addToWatch.addEventListener('click', removeToWatch);
 
   // end 'change textContent btn'
 

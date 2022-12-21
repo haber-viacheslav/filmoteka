@@ -1,4 +1,5 @@
 import { onAuthStateChanged } from 'firebase/auth';
+import { notifyInfoMessage } from '../helpers/notifyMessages';
 export function checkUserAuth(auth, renderApiCopy, render) {
   onAuthStateChanged(auth, user => {
     if (user) {
@@ -15,6 +16,7 @@ export function checkUserAuth(auth, renderApiCopy, render) {
       // User is signed out
       // ...
 
+      notifyInfoMessage('You are not Sign In');
       console.log('not authorizate');
       //   location.reload();
     }

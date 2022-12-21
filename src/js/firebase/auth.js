@@ -27,11 +27,8 @@ const renderUserHeader = new RenderApi();
 checkUserAuth(auth, renderUserHeader, renderUserHeader.renderMarkup);
 
 signInLinck.addEventListener('click', onSignIn);
-console.log(auth);
 
 async function onSignIn() {
-  console.log('working');
-
   const provider = new GoogleAuthProvider();
 
   signInWithPopup(auth, provider)

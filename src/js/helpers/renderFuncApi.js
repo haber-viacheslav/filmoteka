@@ -7,7 +7,6 @@ class RenderApi {
   constructor() {}
 
   createFilmCardsMarkup(data, genres) {
-    console.log(data, genres);
     return data
       .map(({ poster_path, title, genre_ids, release_date, id }) => {
         const filmGengres = checkGenreList(genre_ids, genres, release_date);
@@ -27,7 +26,6 @@ class RenderApi {
       .join('');
   }
   createFilmUserCardsMarkup(data) {
-    console.log('tapihpn', data);
     return data
       .map(({ data: { poster_path, title, release_date, id, genres } }) => {
         const filmGengres = checkUserGenreList(genres, release_date);
@@ -59,9 +57,7 @@ class RenderApi {
               >MY LIBRARY</a
             >
           </li>
-          <li class="menu__item">
-            <a target="_self" class="menu__link menu__logout">LOG OUT</a>
-          </li>`;
+         `;
   }
 
   createModalFilmDetails(
@@ -133,21 +129,18 @@ class RenderApi {
           <button class="modal-btn film-modal__trailer" data-id="${filmId} aria-lable="youtube"><span class="film-modal__sumbol">&#9658;</span></button>
     
           <div class="film-modal__wrap-btn flex">
-            <button class="modal-btn film-modal__btn film-modal__btn--watched">
-              add to Watched
-            </button>
-            <button class="modal-btn film-modal__btn film-modal__btn--queue">
-              add to queue
-            </button>
+            <button class="modal-btn film-modal__btn film-modal__btn--watched">add to Watched</button>
+            <button class="modal-btn film-modal__btn film-modal__btn--queue">add to queue</button>
 
 
 
-             <button class="modal-btn film-modal__btn film-modal__btn--watched-js film-modal__btn-watched-active is-hidden">
-              Remove from Watched
-            </button>
-            <button class="modal-btn film-modal__btn  film-modal__btn--queue-js film-modal__btn-queue-active is-hidden">
+            <button class="modal-btn film-modal__btn  film-modal__btn--queue-remove-js film-modal__btn-queue-active is-hidden">
               Remove from Queue
             </button>
+             <button class="modal-btn film-modal__btn film-modal__btn--watched-remove-js film-modal__btn-watched-active is-hidden">
+              Remove from Watched
+            </button>
+            
           </div>
          </div>
         </div>

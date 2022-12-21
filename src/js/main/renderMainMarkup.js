@@ -6,7 +6,6 @@ import { genres } from '../helpers/genres';
 export async function renderMarkup() {
   // console.log(genres)
   const films = await fetchApi.getAllFilmsData({});
-  console.log(films);
   const markup = renderApi.createFilmCardsMarkup(films.data.results, genres);
 
   renderApi.renderMarkup({
