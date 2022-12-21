@@ -57,6 +57,32 @@ export async function onShowFilmModal(event) {
   currentFilmId = filmId;
   addToQueue.addEventListener('click', addFilmToQueque);
   addToWatch.addEventListener('click', addFilmToWatched);
+
+
+
+  // start 'change textContent btn'
+  // console.log(addToQueue)
+  // console.log(addToWatch)
+  addToQueue.addEventListener('click', removeToQueue);
+  addToWatch.addEventListener('click', removeToWatch);
+
+  function removeToQueue(e) {
+    addToQueue.textContent = 'DELETE FROM QUEUE';
+    addToQueue.classList.add('film-modal__btn-queue-active');
+    // if (!addToQueue.textContent === 'ADD FROM QUEUE') {
+    //   addToQueue.textContent = 'ADD FROM QUEUE'
+    // }
+  }
+
+  function removeToWatch(e) {
+    addToWatch.textContent = 'DELETE FROM WATCHED';
+    addToWatch.classList.add('film-modal__btn-watched-active');
+    // if (addToWatch.textContent === 'DELETE FROM WATCHED') {
+    //   addToWatch.textContent = 'ADD FROM WATCHED'
+    // }
+  }
+  // end 'change textContent btn'
+
   //
   // onAuthStateChanged(auth, user => {
   //   if (user) {
