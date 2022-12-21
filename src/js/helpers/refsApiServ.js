@@ -20,6 +20,7 @@ export const refs = {
   lightIconRef: document.querySelector('.theme-light'),
   darkIconRef: document.querySelector('.theme-dark'),
   filmList: document.querySelector('.films__list'),
+  filmListUser: document.querySelector('.films__list--user'),
   btnScrollTopRef: document.querySelector('.btn__up'),
   btnScrollDownRef: document.querySelector('.btn__down'),
   footerRef: document.querySelector('.footer'),

@@ -6,7 +6,7 @@ class RenderApi {
   constructor() {}
 
   createFilmCardsMarkup(data, genres) {
-    // console.log(data, genres)
+    console.log(data, genres);
     return data
       .map(({ poster_path, title, genre_ids, release_date, id }) => {
         const filmGengres = checkGenreList(genre_ids, genres, release_date);
@@ -156,6 +156,3 @@ class RenderApi {
 }
 
 export default RenderApi;
-//  <div class="example">
-//
-// </div>;

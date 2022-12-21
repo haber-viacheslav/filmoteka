@@ -1,3 +1,4 @@
+import { async } from '@firebase/util';
 import { onAuthStateChanged, getAuth } from 'firebase/auth';
 import {
   getDatabase,
@@ -12,7 +13,12 @@ import {
 } from 'firebase/database';
 import { app } from '../firebase/initFirebase';
 import { refs } from '../helpers/refsApiServ';
-import { fetchApi, renderApi } from '../main';
+import { genres } from '../helpers/genres';
+
+import RenderApi from '../helpers/renderFuncApi';
+import FetchFilmsApi from '../helpers/fetchFilmsApi';
+const libFetchApi = new FetchFilmsApi();
+const libRender = new RenderApi();
 
 refs.btnQueue.addEventListener('click', onBtnQueueClick);
 refs.btnWatched.addEventListener('click', onBtnWatchedClick);
@@ -37,11 +43,39 @@ function onBtnQueueClick(e) {
             }
             //   const baseValues = Object
             console.log(resp);
-            // return base;
+            return resp;
           }
         })
         .then(resp => {
-          // fetchApi.getCurrentFilm();
+          console.log(resp);
+          const promiseArr = [];
+
+          for (const filmId of resp) {
+            const films = libFetchApi.getCurrentFilm({ id: filmId });
+            promiseArr.push(films);
+          }
+          Promise.all(promiseArr).then(value => {
+            // for (const filmObj of value) {
+            //   // console.log();
+
+            // }
+            libRender.renderMarkup({
+              selector: '.films__list--user',
+              innerHtml: true,
+              createMarkypFunc: libRender.createFilmCardsMarkup(value, genres),
+            });
+          });
+
+          // async function processFetchData(resp) {
+          //   // const data = resp.map(filmId => {
+
+          //   //   console.log(films);
+          //   // });
+          //
+          //   console.log(data);
+          // }
+          // processFetchData(resp);
+
           // const markup = renderApi.createFilmCardsMarkup(
           //   films.data.results,
           //   genres
