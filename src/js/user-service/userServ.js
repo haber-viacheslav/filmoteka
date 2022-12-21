@@ -90,6 +90,7 @@ function addFilmToWatched(e) {
       addToWatch.classList.remove('film-modal__btn-watched-active');
       addToWatch.disabled = true;
       setTimeout(() => (addToWatch.disabled = false), 2000);
+      location.reload();
     }
   }
 }
