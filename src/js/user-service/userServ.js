@@ -31,16 +31,14 @@ function addFilmToQueque(e) {
     );
   } else {
     const default_label = 'add to queue';
-    console.log(addToQueue.textContent);
     if (addToQueue.textContent === default_label) {
       const filmKey = postFilmToDatabase({
         id: userId,
         currentFilmId,
         reference: 'userQueue',
       });
-      console.log('before getFilmDatat func');
 
-      console.log(getFilmDataById(userId, 'userQueue', filmKey));
+      getFilmDataById(userId, 'userQueue', filmKey);
       //
       //
 
@@ -73,7 +71,6 @@ function addFilmToWatched(e) {
   } else {
     const addToWatch = document.querySelector('.film-modal__btn--watched');
     const default_label = 'add to Watched';
-    console.log(addToWatch.textContent);
     if (addToWatch.textContent === default_label) {
       const filmKey = postFilmToDatabase({
         id: userId,
@@ -128,11 +125,8 @@ function deleteFilmFromQueue() {
 function getCurrentUser() {
   const user = auth.currentUser;
   if (user !== null) {
-    console.log('get user');
-    console.log(user);
     return user;
   }
-  console.log('no user');
   return false;
 }
 // getCurrentUser();
