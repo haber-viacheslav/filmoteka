@@ -53,9 +53,35 @@ export async function onShowFilmModal(event) {
   const addToQueue = document.querySelector('.film-modal__btn--queue');
   const addToWatch = document.querySelector('.film-modal__btn--watched');
   currentFilmId = filmId;
-  
+// change textContent btn
+  console.log(addToQueue)
+  console.log(addToWatch)
+
   addToQueue.addEventListener('click', addFilmToQueque);
   addToWatch.addEventListener('click', addFilmToWatched);
+
+  addToQueue.addEventListener('click', removeToQueue);
+  addToWatch.addEventListener('click', removeToWatch);
+
+  function removeToQueue(e) {
+    addToQueue.textContent = 'DELETE FROM QUEUE';
+    addToQueue.classList.add('film-modal__btn-queue-active');
+    // if (!addToQueue.textContent === 'ADD FROM QUEUE') {
+    //   addToQueue.textContent = 'ADD FROM QUEUE'
+    // }
+  }
+
+  function removeToWatch(e) {
+    addToWatch.textContent = 'DELETE FROM WATCHED';
+    addToWatch.classList.add('film-modal__btn-watched-active');
+    // if (addToWatch.textContent === 'DELETE FROM WATCHED') {
+    //   addToWatch.textContent = 'ADD FROM WATCHED'
+    // }
+  }
+
+
+
+
   //
   // getUserFilmsData('userQueue');
   const obj = getUserFilmsData('userQueue');
@@ -83,3 +109,6 @@ export async function onShowFilmModal(event) {
   trailerBtn.addEventListener('click', onShowTrailer);
   //
 }
+
+
+
