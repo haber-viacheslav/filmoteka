@@ -18,7 +18,6 @@ function postUserIntoDatebase({ uid: userId, email, displayName }) {
     username: displayName,
     email,
   });
-  console.log('add');
 }
 
 //

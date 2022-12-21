@@ -54,6 +54,7 @@ function addFilmToQueque(e) {
       addToQueue.classList.remove('film-modal__btn-queue-active');
       addToQueue.disabled = true;
       setTimeout(() => (addToQueue.disabled = false), 2000);
+      location.reload();
     }
   }
 }

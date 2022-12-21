@@ -38,10 +38,7 @@ async function onSignIn() {
       const credential = GoogleAuthProvider.credentialFromResult(result);
       const token = credential.accessToken;
       // The signed-in user info.
-      console.log(token);
-
       const user = result.user;
-      console.log(user);
       postUserIntoDatebase(user);
       // getUserDataById(user.uid, 'userData');
 
