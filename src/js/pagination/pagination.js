@@ -8,6 +8,7 @@ export function onCreatePagination(e) {
   const prevPage = refs.prevPage;
 
   // Numb page
+ 
   if (e.target.dataset.numbId) {
     fetchApi.actualPage = Number(e.target.dataset.numbId);
   }
