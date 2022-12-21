@@ -3,6 +3,7 @@ import FetchFilmsApi from '../helpers/fetchFilmsApi';
 import getFilmSearchCheck from '../checkers/filmSearchChecker';
 import { refs } from '../helpers/refsApiServ';
 import { getErrMessage } from '../checkers/filmSearchChecker';
+
 const renderApi = new RenderApi();
 
 const apiSearch = new FetchFilmsApi({
